@@ -35,5 +35,5 @@ Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 
 
 
-Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
+//Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 
