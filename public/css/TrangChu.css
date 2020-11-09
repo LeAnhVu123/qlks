@@ -1,0 +1,229 @@
+                                .card-text {
+                                    overflow: hidden;
+                                    /* text-overflow: ellipsis;
+                        white-space: nowrap; */
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-line-clamp: 3;
+                                    width: 100%;
+                                    height: 70px;
+                                    float: left;
+                                    word-break: break-word;
+                                }
+                                
+                                .cot .gt {
+                                    text-decoration: none;
+                                    padding-left: 23px;
+                                    font-weight: bolder;
+                                    color: royalblue;
+                                }
+                                
+                                .cot .gt:hover {
+                                    color: blue;
+                                }
+                                
+                                .cot .gtd {
+                                    margin-left: 100px;
+                                    text-decoration: none;
+                                    font-weight: bolder;
+                                    color: royalblue;
+                                }
+                                
+                                .cot .gtd:hover {
+                                    color: blue;
+                                }
+                                
+                                .cot {
+                                    padding-top: 10px;
+                                    text-decoration: none;
+                                }
+                                
+                                .header {
+                                    background-color: lightskyblue;
+                                    /*  background: linear-gradient(60deg, rgb(45, 162, 216), blue, rgb(50, 151, 109), rgb(48, 122, 172), rgb(23, 209, 70)); */
+                                }
+                                
+                                .cl {
+                                    width: 100%;
+                                    height: 50px;
+                                    padding-top: 10px;
+                                }
+                                
+                                .cl .DanhMuc {
+                                    font-weight: bolder;
+                                    padding-left: 40px;
+                                    text-align: center;
+                                    color: black;
+                                }
+                                
+                                .cl .DanhMuc:hover {
+                                    text-decoration: none;
+                                    color: blue;
+                                }
+                                
+                                .cl .DanhMucTC {
+                                    text-decoration: none;
+                                    padding-left: 80px;
+                                    font-weight: bolder;
+                                    text-align: center;
+                                    color: black;
+                                }
+                                
+                                .cl .DanhMucTC:hover {
+                                    color: blue;
+                                }
+                                
+                                .cl .DanhMucTT:hover {
+                                    color: blue;
+                                }
+                                
+                                .cl .DanhMucTT {
+                                    text-decoration: none;
+                                    padding-left: 60px;
+                                    font-weight: bolder;
+                                    text-align: center;
+                                    color: black;
+                                }
+                                /* Menu */
+                                
+                                .sanpham {
+                                    height: auto;
+                                    width: 100%;
+                                }
+                                
+                                .sanpham .row {
+                                    margin-left: 5px;
+                                    padding-top: 20px;
+                                    height: auto;
+                                }
+                                
+                                .sanpham .row1 .hinhsp {
+                                    text-align: center;
+                                    font-weight: bolder;
+                                    padding-top: 20px;
+                                }
+                                
+                                .sanpham .row .card .card-img-top {
+                                    height: 180px;
+                                }
+                                
+                                .sanpham .row .card {
+                                    margin-left: 5px;
+                                    margin-right: 5px;
+                                    overflow: hidden;
+                                }
+                                
+                                .sanpham .km {
+                                    text-decoration: none;
+                                    color: dodgerblue;
+                                }
+                                
+                                .sanpham .km:hover {
+                                    color: blue;
+                                }
+                                /* End KM */
+                                /* Phong Vip */
+                                
+                                .hinhanh .row .card .card-img-top {
+                                    height: 200px;
+                                }
+                                
+                                .hinhanh {
+                                    height: auto;
+                                    width: 100%;
+                                }
+                                
+                                .hinhanh .hinh {
+                                    text-align: center;
+                                    font-weight: bolder;
+                                    padding-top: 20px;
+                                    padding-bottom: 20px;
+                                }
+                                
+                                .hinhanh .row {
+                                    margin-left: 5px;
+                                    padding-top: 5px;
+                                    height: auto;
+                                }
+                                
+                                .hinhanh .p {
+                                    text-decoration: none;
+                                    color: dodgerblue;
+                                }
+                                
+                                .hinhanh .p:hover {
+                                    color: blue;
+                                }
+                                
+                                .hinhanh.row .card {
+                                    margin-left: 5px;
+                                    margin-right: 5px;
+                                    overflow: hidden;
+                                }
+                                /* End PhongVIp */
+                                /* Dia Chi Lien He */
+                                
+                                .diachilienhe {
+                                    width: 100%;
+                                    background-color: beige;
+                                }
+                                
+                                .diachi {
+                                    width: 100%;
+                                    background-color: beige;
+                                    padding-left: 70px;
+                                    padding-top: 50px;
+                                }
+                                
+                                .lienhe {
+                                    width: 100%;
+                                    background-color: beige;
+                                    padding-right: 50px;
+                                }
+                                
+                                .tk {
+                                    float: right;
+                                    width: 100px;
+                                    margin-left: 10px;
+                                    margin-top: 10px;
+                                    background-color: wheat;
+                                    color: blue;
+                                    border: 1px solid;
+                                }
+                                
+                                .tk:hover {
+                                    background-color: #6699FF;
+                                }
+                                
+                                .ry {
+                                    text-decoration: none;
+                                    font-weight: bolder;
+                                    height: 100px;
+                                    color: darkblue;
+                                }
+                                
+                                .ro {
+                                    padding-left: 80px;
+                                    padding-top: 2px;
+                                }
+                                
+                                .ry:hover {
+                                    text-decoration: none;
+                                }
+                                
+                                .tki {
+                                    float: right;
+                                    width: 120px;
+                                    margin-left: 10px;
+                                    margin-top: 2px;
+                                    background-color: wheat;
+                                    color: black;
+                                    border: 1px solid;
+                                }
+                                
+                                .tki:hover {
+                                    background-color: #6699FF;
+                                }
+                                
+                                .gt:hover {}
+                                /* End Dia Chi Lien He */
