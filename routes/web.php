@@ -33,3 +33,7 @@ Route::get('/DangNhapADMin','ControllerQLKS@dangnhapadmin')->name('dangnhap');
 Route::get('/QuanLy','ControllerQLKS@quanly')->name('quanly');
 Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 
+
+
+Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
+
