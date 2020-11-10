@@ -8,5 +8,6 @@ class Khachhang extends Model
 {
     protected $table = 'khachhang';
     protected $fillable = ['MaKh','PassWord'];
+    public $timestamps = false;
     //
 }

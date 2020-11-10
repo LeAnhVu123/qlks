@@ -120,7 +120,16 @@ class ControllerQLKS extends Controller
         $message->add('thatbai','Dang Nhap That Bai');
         return redirect(route('dangnhap'))->withErrors($message);
     }
-   
+    public function idkh(Request $reg)
+    {
+        $id = $reg['id'];
+        $pw = $reg['pw'];
+        //$sm = $reg['smad'];
+        $sm = $reg['xoaid'];
+       // Khachhang::create(['MaKh'=>$id,'PassWord'=>$pw]);
+        //Khachhang::Where('MaKh',$id)-> update(['PassWord'=>$pw]);
+        Khachhang::Where('MaKh',$id)->delete();
+    }
     /* public function gui(Request $reg)
     {
         $gui = $reg['gui'];//cai nay la click nut gui 

@@ -11,6 +11,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <title>Quan Ly</title>
 </head>
+<style>
+.hover:hover{
+    color:blue;
+    cursor:pointer;
+}
+</style>
 <body>
 <!-- {{session('thanhcong')}} -->
     <div class="container-fluid mt-1" style="text-align:center;">
@@ -20,111 +26,234 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-1">
+    <div class="container-fluid mt-1" style="background-color: lightskyblue;">
         <div class="row">
-            <div class="col-2" style="border: 1px solid;height:500px;">
+            <div class="col-3" style="border: 1px solid;height:500px;">
                 <div class="row">
-                    <div class="col-12" style="font-weight: bolder;padding-left:70px;border-bottom: 0.5px solid; width: 100%;  background-color: cornflowerblue;">
-                        <span>Menu</span>
+                    <div class="col-12" style="font-weight: bolder;border-bottom: 0.5px solid; width: 100%;text-align:center;  background-color: cornflowerblue;">
+                        <span style="text-align:center;">Menu</span>
                     </div>
 
-                    <div class="col-12">
-                        <span class="a">Quản Lý Đơn Đặt Phòng</span>
+                    <div class="col-12 mt-2 hover">
+                        <span class="b" style="padding-left:25px;">- Quản Lý Tài Khoản</span>
                     </div>
-
-                    <div class="col-12">
-                        <span class="b">Quản Lý Tài Khoản</span>
+                    <div class="col-12 mt-2 hover">
+                        <span class="c" style="padding-left:25px;">- Quản Lý Phòng</span>
                     </div>
-
-                    <div class="col-12">
-                    <span class="c">Quản Lý Phòng</span>
+                    <div class="col-12 mt-2 hover">
+                        <span class="e" style="padding-left:25px;">- Quản Lý Loại Phòng</span>
                     </div>
-
-                    <div class="col-12">
-                    <span class="d">Thống Kê Báo Cáo</span>
+                    <div class="col-12 mt-2 hover">
+                        <span class="a" style="padding-left:25px;">- Quản Lý Đơn Đặt Phòng</span>
                     </div>
+                    <div class="col-12 mt-2 hover">
+                        <span class="d" style="padding-left:25px;">- Thống Kê Báo Cáo</span>
+                    </div>
+                    
                 </div>
                
                 
             </div>
-            <div class="col-10" style="border-right: 1px solid;border-top: 1px solid;border-bottom: 1px solid;height:500px;width:100%;">
-                         <!--     -----------------------------      -->
-                <div class="row xddp" style="display:none;">
-                    <div class="col-12" >Xem đơn đặt phòng : 
-                        <select name="" id="">
-                            <option class="dtt" value="">Đã thanh toán</option>
-                            <option class="ctt" value="">Chưa thanh toán</option>
-                            <option class="nd" value="">Ngày Đặt</option>
-                            <option class="tnn" value="">Từ Ngày -> Ngày</option>
-                        </select>
-                    </div> 
-                </div>
-                        <!--     -----------------------------      -->
-                <div class="row qltk" style="display:none;">
-                    <div class="col-12 mt-3" >
+            <div class="col-9" style="border-right: 1px solid;border-top: 1px solid;border-bottom: 1px solid;height:500px;width:100%;">
+                          <!--     -----------------------------      -->
+                    <div class="row qltk" style="display:none;">
+                        <div class="col-2 mt-3" >
+                            <div class="row">
+                                <div class="col-12 mt-3 hover">
+                                    <span class="themid">Thêm tài khoản : </span>
+                                </div>
+                                <div class="col-12 mt-3 hover">
+                                    <span class="deleteid">Xóa tài khoản : </span>
+                                </div>
+                                <div class="col-12 mt-3 hover">
+                                    <span class="updateid">Sửa tài khoản : </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 mt-5 add" style="height:auto;width:100px;display:none;">
                         <form action="" method="post">
-                            <table>
-                                <tr>
-                                    <td>Thêm tài khoản : </td>
-                                    <td><input type="text" placeholder="ID"></td>
-                                    <td><input type="password" placeholder="PW"></td>
-                                    <td><input type="submit" value="Đăng Ký"></td>
-                                </tr>
-                            </table>
+                        @csrf
+                            <div class="col-12 mt-1">
+                                <input type="text" name="id" placeholder="Nhập ID">
+                            </div>
+                            <div class="col-12 mt-1">
+                                <input type="password" name="pw" placeholder="Nhập PW">
+                            </div>
+                            <div class="col-12 mt-1 smad" style="padding-left:132px;display:none;">
+                                <input  type="submit" name="" value="Đăng Kí">
+                            </div>
+                            <div class="col-12 mt-1 smup" style="padding-left:135px;display:none;">
+                            <input  type="submit" name="" value="Update">
+                            </div>
+                        </div>
                         </form>
-                    </div> 
-                    <div class="col-12 mt-3" >
-                        <form action="" method="post">
-                            <table>
-                                <tr>
-                                    <td>Xóa tài khoản : </td>
-                                    <td><input type="text" placeholder="ID"></td>
-                                    <td><input type="submit" value="Delete"></td>
-                                   
-                                </tr>
-                            </table>
-                        </form>
-
-                        
-                        
-                    </div> 
-                    <div class="col-12 mt-3" >Sửa tài khoản : 
-                    <input type="text" placeholder="Nhập ID">
-                        <input type="password" placeholder="PW Mới">
-                        <input type="submit" value="Update">
-                    </div> 
-                </div>
-                         <!--     -----------------------------      -->
-                 <div class="row qlp" style="display:none;">
-                    <div class="col-12" >Thêm Phòng : 
-                        <input type="text" placeholder="Mã Phòng">
-                        <input type="text" placeholder="Mã Loại">
-                        <input type="text" placeholder="Ghi Chú">
-                        <input type="text" placeholder="Trạng Thái">
-                        <input type="text" placeholder="Mã Tầng">
-                        <input type="submit" value="Add">
-                    </div> 
-                    <div class="col-12" >Xóa Phòng : 
-                        <input type="text" placeholder="Mã Phòng">
-                        <input type="submit" value="Delete">
-                    </div> 
-                    <div class="col-12" >Sửa Phòng : 
-                        <input type="text" placeholder="Mã Phòng">
-                        <input type="text" placeholder="Mã Loại">
-                        <input type="text" placeholder="Ghi Chú">
-                        <input type="text" placeholder="Trạng Thái">
-                        <input type="text" placeholder="Mã Tầng">
-                        <input type="submit" value="Update">
-                    </div> 
-                </div>
-                         <!--     -----------------------------      -->
-                <div class="row tkbc" style="display:none;">
-                    <div class="col-12" >---------------- : 
                        
-                    </div> 
+                        <div class="col-3 mt-5 del" style="height:auto;width:100px;display:none;">
+                        <form action="" method="post">
+                        @csrf
+                            <div class="col-12 mt-1">
+                                <input type="text" name="id" placeholder="Nhập ID">
+                            </div>
+                            <div class="col-12 mt-1 xoaid" style="padding-left:142px;">
+                                <input  type="submit" name="" value="Delete">
+                            </div>
+                        </form>
+                        </div>
+                        
+                </div>
+                             <!-- -----------------------------      -->
+                         <!--     -----------------------------      -->
+                <div class="row mt-3 qllp" style="display:none;">
+                        <div class="col-3 ">
+                            <div class="row">
+                                <div class="col-12 hover">
+                                    <span class="addlp">Thêm Loại Phòng</span>
+                                </div>
+                                <div class="col-12 mt-3 hover">
+                                    <span class="dellp">Xóa Loại Phòng</span>
+                                </div>
+                                <div class="col-12 mt-3 hover">
+                                    <span class="updlp">Sửa Loại Phòng</span>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-3 adup" style="display:none;">
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Mã Loại">
+                           </div>
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Tên Loại">
+                           </div>
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Sức Chứa">
+                           </div>
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Giá">
+                           </div>
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Hình Ảnh">
+                           </div>
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Mô Tả">
+                           </div>
+                           <div class="col-12 mt-1 smadl" style="padding-left:148px;display:none;">
+                               <input type="submit" value="Thêm">
+                           </div> 
+                           <div class="col-12 mt-1 smupl" style="padding-left:136px;display:none;">
+                               <input type="submit" value="Update">
+                           </div> 
+                   </div>    
+
+
+                   <div class="col-3 xoalp" style="display:none;">
+                           <div class="col-12 mt-1">
+                               <input type="text" placeholder="Mã Loại">
+                           </div>
+                           <div class="col-12 mt-1 " style="padding-left:136px;">
+                               <input type="submit" value="Delete">
+                           </div> 
+                   </div> 
+                   
+                    
+                </div>
+                         <!--     -----------------------------      -->
+
+                 <div class="row mt-4 qlp" style="display:none;">
+                        <div class="col-3 ">
+                            <div class="row">
+                                <div class="col-12 hover">
+                                    <span class="addp">Thêm Phòng</span>
+                                </div>
+                                <div class="col-12 mt-3 hover">
+                                    <span class="delp">Xóa Phòng</span>
+                                </div>
+                                <div class="col-12 mt-3 hover">
+                                    <span class="upp">Sửa Phòng</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-3 themp" style="display:none;">
+                           
+                                <div class="col-12 mt-1">
+                                    <input type="text" placeholder="Mã Phòng">
+                                </div>
+                                <div class="col-12 mt-1">
+                                    <input type="text" placeholder="Mã Loại">
+                                </div>
+                                <div class="col-12 mt-1">
+                                    <input type="text" placeholder="Ghi Chú">
+                                </div>
+                                <div class="col-12 mt-1">
+                                    <input type="text" placeholder="Trạng Thái">
+                                </div>
+                                <div class="col-12 mt-1">
+                                    <input type="text" placeholder="Số Tầng">
+                                </div>
+                                <div class="col-12 mt-1 smadp" style="padding-left:148px;display:none;">
+                                    <input type="submit" value="Thêm">
+                                </div>
+                                <div class="col-12 mt-1 smp" style="padding-left:136px;display:none;">
+                                    <input type="submit" value="Update">
+                                </div>
+                                
+                        </div>  
+                        
+                        <div class="col-3 xoap" style="display:none;">
+                                <div class="col-12 mt-1">
+                                    <input type="text" placeholder="Mã Phong">
+                                </div>
+                                <div class="col-12 mt-1 " style="padding-left:140px;">
+                                    <input type="submit" value="Delete">
+                                </div> 
+                        </div>   
+                          
+                    </div>
+                 
+            
+                         <!--     -----------------------------      -->
+                <div class="row tkbc mt-3" style="display:none;">
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-12 hover">
+                                <span>Theo Tuần</span>
+                            </div>
+                            <div class="col-12 mt-3 hover">
+                                <span>Theo Tháng</span>
+                            </div>
+                            <div class="col-12 mt-3 hover">
+                                <span>Theo Quý</span>
+                            </div>
+                            <div class="col-12 mt-3 hover">
+                                <span>Theo Năm</span>
+                            </div>
+                        </div>
+                    </div>                 
                 </div>
                         <!--     -----------------------------      -->
-              <!-- <div class="noidung1" style="display:none;">Nội Dung1</div>  -->
+                        <div class="row mt-3 xddp" style="display:none;">
+                    <div class="col-3" >
+                        <div class="row">
+                            <div class="col-12 mt-3 hover">
+                                <span>Đã Thanh Toán</span>
+                            </div>
+                            <div class="col-12 mt-3 hover">
+                                <span>Chưa Thanh Toán</span>
+                            </div>
+                            <div class="col-12 mt-3 hover">
+                                <span>Ngày Đặt</span>
+                            </div>
+                            <div class="col-12 mt-3 hover">
+                                <span>Từ Ngày Đến Ngày</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-9 mt-3">
+                       <span>..........................</span> 
+                    </div> 
+                </div>
+                 <!--     -----------------------------      -->
             </div>
            
            
@@ -137,6 +266,8 @@
                 $('.xddp').show();
                 $('.qltk').hide();
                 $('.qlp').hide();
+                $('.tkbc').hide();
+                $('.qllp').hide();
             })
         })
 
@@ -146,6 +277,7 @@
                 $('.xddp').hide();
                 $('.qlp').hide();
                 $('.tkbc').hide();
+                $('.qllp').hide();
             })
         })
 
@@ -155,7 +287,7 @@
                 $('.qltk').hide();
                 $('.xddp').hide();
                 $('.tkbc').hide();
-                
+                $('.qllp').hide();
             })
         })
 
@@ -165,9 +297,90 @@
                 $('.qlp').hide();
                 $('.qltk').hide();
                 $('.xddp').hide();
+                $('.qllp').hide();
+            })
+        })
+        $('.e').each(function(){
+            $(this).click(function(){
+                $('.qllp').show();
+                $('.xddp').hide();
+                $('.qltk').hide();
+                $('.qlp').hide();
+                $('.tkbc').hide();
+            })
+        })
+        $('.themid').each(function(){
+            $(this).click(function(){
+                $('.add').show();
+                $('.smad').show();
+                $('.del').hide();
+                $('.smup').hide();
                 
             })
         })
+        $('.deleteid').each(function(){
+            $(this).click(function(){
+                $('.del').show();
+                $('.add').hide(); 
+            })
+        })
+        $('.updateid').each(function(){
+            $(this).click(function(){
+                $('.add').show();
+                $('.smup').show();
+                $('.smad').hide();
+                $('.del').hide();
+             
+                
+            })
+        })
+        $('.addlp').each(function(){
+            $(this).click(function(){
+                $('.adup').show();
+                $('.smadl').show();
+                $('.xoalp').hide();
+                $('.smupl').hide();    
+            })
+        })       
+        $('.updlp').each(function(){
+            $(this).click(function(){
+                $('.adup').show();
+                $('.smupl').show();
+                $('.smadl').hide();
+                $('.xoalp').hide();     
+            })
+        })
+        $('.dellp').each(function(){
+            $(this).click(function(){
+                $('.xoalp').show();
+                $('.adup').hide();
+            })
+        })
+        $('.addp').each(function(){
+            $(this).click(function(){
+                $('.themp').show();
+                $('.smadp').show();
+                $('.smp').hide();
+                $('.xoap').hide();
+            })
+        })
+        $('.upp').each(function(){
+            $(this).click(function(){
+                $('.themp').show();
+                $('.smp').show();
+                $('.smadp').hide();
+                $('.xoap').hide();
+               
+            })
+        })
+        $('.delp').each(function(){
+            $(this).click(function(){
+                $('.xoap').show();
+                $('.themp').hide();
+               
+            })
+        })
+      
 
     })
     </script>

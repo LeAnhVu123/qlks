@@ -32,7 +32,7 @@ Route::post('/get-val','ControllerQLKS@getval')->name('getval');
 Route::get('/DangNhapADMin','ControllerQLKS@dangnhapadmin')->name('dangnhap');
 Route::get('/QuanLy','ControllerQLKS@quanly')->name('quanly');
 Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
-
+Route::post('/QuanLy','ControllerQLKS@idkh')->name('idkh');
 
 
 //Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
