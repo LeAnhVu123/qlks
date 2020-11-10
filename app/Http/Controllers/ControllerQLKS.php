@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use  App\Loaiphong;
 use  App\Phong;
 use  App\Khachhang;
-
+use  App\Nhanvien;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 
@@ -105,15 +105,15 @@ class ControllerQLKS extends Controller
         $message = new MessageBag();
         $id = $reg['id'];
         $pass = $reg['pass'];
-        $slid = Khachhang::select(['MaKh','PassWord'])->get();
+        $slid = Nhanvien::select(['MaNV','PassWordNV'])->get();
         foreach($slid as $key => $value){
-           $a = $value['MaKh'];
-           $b = $value['PassWord'];
+           $a = $value['MaNV'];
+           $b = $value['PassWordNV'];
            if($a == $id)
            {
                if($b == $pass)
                {                
-                return redirect(route('quanly'))->with('thanhcong','Ban da dang nhap thanh cong');
+                return redirect(route('quanly'))/*->with('thanhcong','Ban da dang nhap thanh cong')*/;
                }
            }
         }

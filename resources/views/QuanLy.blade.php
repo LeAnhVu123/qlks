@@ -12,7 +12,7 @@
     <title>Quan Ly</title>
 </head>
 <body>
-{{session('thanhcong')}}
+<!-- {{session('thanhcong')}} -->
     <div class="container-fluid mt-1" style="text-align:center;">
         <div class="row">
             <div class="col-12" style="width:100%;height:50px;padding-top: 8px;">
@@ -33,21 +33,22 @@
                     </div>
 
                     <div class="col-12">
-                        <span class="b">Menu</span>
+                        <span class="b">Quản Lý Tài Khoản</span>
                     </div>
 
                     <div class="col-12">
-                     <span >Menu</span>
+                    <span class="c">Quản Lý Phòng</span>
                     </div>
 
                     <div class="col-12">
-                        <span >Menu</span>
+                    <span class="d">Thống Kê Báo Cáo</span>
                     </div>
                 </div>
                
                 
             </div>
             <div class="col-10" style="border-right: 1px solid;border-top: 1px solid;border-bottom: 1px solid;height:500px;width:100%;">
+                         <!--     -----------------------------      -->
                 <div class="row xddp" style="display:none;">
                     <div class="col-12" >Xem đơn đặt phòng : 
                         <select name="" id="">
@@ -59,17 +60,70 @@
                     </div> 
                 </div>
                         <!--     -----------------------------      -->
-                <div class="row noidung1" style="display:none;">
-                    <div class="col-12" >Xem đơn đặt phòng : 
-                        <select name="" id="">
-                            <option class="dtt" value="">Đã thanh toán</option>
-                            <option class="ctt" value="">Chưa thanh toán</option>
-                            <option class="nd" value="">Ngày Đặt</option>
-                            <option class="tnn" value="">Từ Ngày -> Ngày</option>
-                        </select>
+                <div class="row qltk" style="display:none;">
+                    <div class="col-12 mt-3" >
+                        <form action="" method="post">
+                            <table>
+                                <tr>
+                                    <td>Thêm tài khoản : </td>
+                                    <td><input type="text" placeholder="ID"></td>
+                                    <td><input type="password" placeholder="PW"></td>
+                                    <td><input type="submit" value="Đăng Ký"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div> 
+                    <div class="col-12 mt-3" >
+                        <form action="" method="post">
+                            <table>
+                                <tr>
+                                    <td>Xóa tài khoản : </td>
+                                    <td><input type="text" placeholder="ID"></td>
+                                    <td><input type="submit" value="Delete"></td>
+                                   
+                                </tr>
+                            </table>
+                        </form>
+
+                        
+                        
+                    </div> 
+                    <div class="col-12 mt-3" >Sửa tài khoản : 
+                    <input type="text" placeholder="Nhập ID">
+                        <input type="password" placeholder="PW Mới">
+                        <input type="submit" value="Update">
                     </div> 
                 </div>
                          <!--     -----------------------------      -->
+                 <div class="row qlp" style="display:none;">
+                    <div class="col-12" >Thêm Phòng : 
+                        <input type="text" placeholder="Mã Phòng">
+                        <input type="text" placeholder="Mã Loại">
+                        <input type="text" placeholder="Ghi Chú">
+                        <input type="text" placeholder="Trạng Thái">
+                        <input type="text" placeholder="Mã Tầng">
+                        <input type="submit" value="Add">
+                    </div> 
+                    <div class="col-12" >Xóa Phòng : 
+                        <input type="text" placeholder="Mã Phòng">
+                        <input type="submit" value="Delete">
+                    </div> 
+                    <div class="col-12" >Sửa Phòng : 
+                        <input type="text" placeholder="Mã Phòng">
+                        <input type="text" placeholder="Mã Loại">
+                        <input type="text" placeholder="Ghi Chú">
+                        <input type="text" placeholder="Trạng Thái">
+                        <input type="text" placeholder="Mã Tầng">
+                        <input type="submit" value="Update">
+                    </div> 
+                </div>
+                         <!--     -----------------------------      -->
+                <div class="row tkbc" style="display:none;">
+                    <div class="col-12" >---------------- : 
+                       
+                    </div> 
+                </div>
+                        <!--     -----------------------------      -->
               <!-- <div class="noidung1" style="display:none;">Nội Dung1</div>  -->
             </div>
            
@@ -81,14 +135,40 @@
         $('.a').each(function(){
             $(this).click(function(){
                 $('.xddp').show();
+                $('.qltk').hide();
+                $('.qlp').hide();
             })
         })
-        // $('.b').each(function(){
-        //     $(this).click(function(){
-        //         $('.noidung1').show();
-        //         $('.noidung').hide();
-        //     })
-        // })
+
+        $('.b').each(function(){
+            $(this).click(function(){
+                $('.qltk').show();
+                $('.xddp').hide();
+                $('.qlp').hide();
+                $('.tkbc').hide();
+            })
+        })
+
+        $('.c').each(function(){
+            $(this).click(function(){
+                $('.qlp').show();
+                $('.qltk').hide();
+                $('.xddp').hide();
+                $('.tkbc').hide();
+                
+            })
+        })
+
+        $('.d').each(function(){
+            $(this).click(function(){
+                $('.tkbc').show();
+                $('.qlp').hide();
+                $('.qltk').hide();
+                $('.xddp').hide();
+                
+            })
+        })
+
     })
     </script>
 </body>
