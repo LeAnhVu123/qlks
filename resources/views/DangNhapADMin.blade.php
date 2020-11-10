@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-@include('notice');
+@include('notice');sadsadsadsad
     <div class="container">
         <div class="row">
             <div class="col-12">
