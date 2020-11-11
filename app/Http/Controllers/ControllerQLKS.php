@@ -30,7 +30,7 @@ class ControllerQLKS extends Controller
         $km = Loaiphong::select(['HinhAnh','MoTa','Gia'])->Where('MaLoai','>',3)->Where('MaLoai','<=',7)->get();
         $pv = Loaiphong::select(['HinhAnh','MoTa','Gia'])->Where('MaLoai','>',7)->Where('MaLoai','<=',11)->get();
         $dv = Loaiphong::select(['HinhAnh','MoTa','Gia'])->Where('MaLoai','>',11)->Where('MaLoai','<=',15)->get();
-        return view('TrangChu',compact('data','path','mota','km','pv','dv'));//compact(biến) đưa dữ liệu sang trang html
+        return view('TrangChu',compact('data','path','km','pv','dv'));//compact(biến) đưa dữ liệu sang trang html
     }
     public function phongdadat(Loaiphong $data1){
         $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();
@@ -47,7 +47,7 @@ class ControllerQLKS extends Controller
         $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();//take gioi han luot xuat cua foreach
         $data2= Loaiphong::Where('MaLoai','>',3)->Where('MaLoai','<=',9)->get();
         $path =  'img\km\\';
-        return view('DatPhong',compact('data','path','mota','data1','data2','test'));
+        return view('DatPhong',compact('data','path','data1','data2','test'));
     }
     public function click(Request $reg)
     {
@@ -65,7 +65,7 @@ class ControllerQLKS extends Controller
         $id = $reg['id'];
         $phong = Phong::where('MaPhong',$id)->first();
         $session = Session::get('itemCart');
-        if(count($session) != 0){
+        if($session){
         foreach($session as $value){
             if($value['MaLoai'] == $id){
                 return redirect(route('phongdadat'));
