@@ -33,6 +33,15 @@ Route::get('/DangNhapADMin','ControllerQLKS@dangnhapadmin')->name('dangnhap');
 Route::get('/QuanLy','ControllerQLKS@quanly')->name('quanly');
 Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 Route::post('/QuanLy','ControllerQLKS@idkh')->name('idkh');
+/* Quản Lí ID khách hàng */
+Route::group(['prefix'=>'Admin'],function(){
+    Route::get('indexQLKH','ControllerAdmin@qltk')->name('khachhang');//index ID KH
+    Route::get('indexQLP','ControllerAdmin@qlp')->name('phong');//index Phòng
+    Route::group(['prefix'=>'QLKH'],function(){
+        
+});
+});
+
 
 
 //Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');

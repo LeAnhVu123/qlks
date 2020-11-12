@@ -72,7 +72,7 @@
                       <div class="col-md-12 " style="height:25px;width:100%;padding-top:0px; padding-left:30px;"> 
                     - Loại : <span class="loai">{{$value->TenLoai}}</span>
                       </div>
-                      <div class="col-md-12 " style="height:50px;width:100%;padding-top:10px;"> 
+                      <div class="col-md-12 " style="height:50px;width:100%;padding-top:10px;padding-left:350px;"> 
                         <!-- <a href="{{route('phongdadat')}}">
                          <button  type="button" class="btn btn-primary datphong" data-toggle="button" aria-pressed="false" autocomplete="off" style="float:right;margin-left:10px">
                                 Đặt Phòng
@@ -81,7 +81,7 @@
                           <form action="{{route('getid')}}" method="POST">
                             @csrf
                             <input type="hidden" value="{{$value->MaLoai}}" name="id" >
-                              <button type="submit" class="btn btn-primary datphong">Datphong</button>
+                              <button type="submit" class="btn btn-primary datphong" style="">Đặt Phòng</button>
                           </form>
                           <a href="" style="color:blue;font-weight: bolder;padding-left:25px;">Xem Chi Tiết</a>
                       </div>
