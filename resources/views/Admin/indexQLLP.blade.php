@@ -5,28 +5,28 @@
                 <div class="col-12" style="padding-top:20px;padding-left:40px;"><span style="font-size: 20px;">Quản Lí Phòng</span></div>
                 <div class="col-12" style="padding-left:40px;"><hr></div>
                 <div class="col-12" style="padding-left:40px;">
-                <table id="example" class="display" style="width:100%">
+                <table id="example" class="display">
                     <thead>
                         <tr>
-                            <th>Mã Phòng</th>
                             <th>Mã Loại</th>
-                            <th>Ghi Chú</th>
-                            <th>Trạng Thái</th>
-                            <th>Mã Tầng</th>
+                            <th>Tên Loại</th>
+                            <th>Sức Chứa</th>
+                            <th>Mô Tả</th>
+                            <th>Hình Ảnh</th>
+                            <th>Giá</th>
                             <th>Delete</th>
                             <th>Update</th>
-                            
-                            
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($ph as $value)
+                    @foreach($lp as $value)
                         <tr>
-                            <td>{{$value->MaPhong}}</td>
                             <td>{{$value->MaLoai}}</td>
-                            <td>{{$value->GhiChu}}</td>
-                            <td>{{$value->TrangThai}}</td>
-                            <td>{{$value->MaTang}}</td>
+                            <td>{{$value->TenLoai}}</td>
+                            <td>{{$value->SucChua}}</td>
+                            <td>{{$value->MoTa}}</td>
+                            <td>{{$value->HinhAnh}}</td>
+                            <td>{{$value->Gia}}</td>
                             <td><i class="fa fa-home"></i><a href=""><span class="del">Delete</span></a></td>
                             <td><i class="fa fa-home"></i><a href=""><span class="del">Update</span></a></td>
                         </tr>
@@ -38,4 +38,5 @@
                 </div>
             </div>
         </div>
+       
 @endsection

@@ -25,8 +25,8 @@
                             <td>{{$value->HoTen}}</td>
                             <td>{{$value->SDT}}</td>
                             <td>{{$value->Email}}</td>
-                            <td>del</td>
-                            <td>upd</td>
+                            <td><i class="fa fa-home"></i><a href=""><span class="del">Delete</span></a></td>
+                            <td><i class="fa fa-home"></i><a href=""><span class="del">Update</span></a></td>
                         </tr>
                     @endforeach  
                     </tbody>

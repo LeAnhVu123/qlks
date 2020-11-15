@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
@@ -22,7 +23,14 @@
 }
 .row a:hover{
     color:blue;
+    
 }
+.del{
+                color:blue;
+            }
+            .del:hover{
+                color:red;
+            }
 </style>
 <div class="container-fluid">
     <div class="row">
@@ -30,25 +38,34 @@
         <div class="col-2" style="background-color: #EEEEEE;height:585px;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;">
             <div class="row">
                 <div class="col-12" style="border-bottom: 1px solid #ddd;text-align:center;font-size:18px;padding-top:5px;padding-bottom:5px;">
-                    <span>MeNu</span>
+                    <span style="font-weight: bolder;">MeNu</span>
                 </div>
                 <div class="col-12" style="padding-top:10px;">
-                    <a href="{{route('khachhang')}}">- QL Tài Khoản KH</a>
+                    <a href="{{route('khachhang')}}"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href="{{route('phong')}}">- QL Phòng</a>
+                    <a href="{{route('phong')}}"><i class="fa fa-home"></i> QL Phòng</a>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href="">- QL Loại Phòng</a>
+                    <a href="{{route('loaiphong')}}"><i class="fa fa-home"></i> QL Loại Phòng</a>
+                </div>
+                <div class="col-12 mt-1" style="height:auto;">
+                    <a href="" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home"></i> QL Đơn Đặt</a>
+                        <div class="dropdown-menu" style="background-color:#EEEEEE;">
+                                <ul style="list-style-type:none;padding-left:30px;list-style: none;">
+                                    <li><a href="">Đã Thanh Toán</a></li>
+                                    <li><a href="">Chưa Thanh Toán</a></li>
+                                    <li><a href="">Ngày Đặt</a></li>
+                                
+                                </ul>
+                                
+                        </div>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href="">- QL Đơn Đặt Phòng</a>
+                    <a href=""><i class="fa fa-home"></i> QL Chi Tiết Đặt</a>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href="">- QL Chi Tiết Đặt Phòng</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a href="">- Thống Kê Báo Cáo</a>
+                    <a href=""><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
                 </div>
             </div>
         </div>
@@ -57,6 +74,7 @@
     </div>
    
 </div>
+
 
 
 <!--  -->

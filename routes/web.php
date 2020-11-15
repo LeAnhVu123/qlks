@@ -37,6 +37,7 @@ Route::post('/QuanLy','ControllerQLKS@idkh')->name('idkh');
 Route::group(['prefix'=>'Admin'],function(){
     Route::get('indexQLKH','ControllerAdmin@qltk')->name('khachhang');//index ID KH
     Route::get('indexQLP','ControllerAdmin@qlp')->name('phong');//index Phòng
+    Route::get('indexQLLP','ControllerAdmin@qllp')->name('loaiphong');//index Phòng
     Route::group(['prefix'=>'QLKH'],function(){
         
 });
