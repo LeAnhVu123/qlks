@@ -70,9 +70,9 @@ class CreateInitTable extends Migration
         });
         Schema::create('dondats', function (Blueprint $table) {
             $table->increments('madon'); 
-            $table->unsignedInteger('manv');
-            $table->unsignedInteger('makh'); 
-            $table->unsignedInteger('makm');
+            $table->unsignedInteger('manv')->nullable();
+            $table->unsignedInteger('makh')->nullable(); 
+            $table->unsignedInteger('makm')->nullable();
             $table->date('ngaylap');
             $table->bigInteger('tongtien');   
             $table->bigInteger('thanhtoan');
@@ -84,8 +84,8 @@ class CreateInitTable extends Migration
         });
         Schema::create('phongs', function (Blueprint $table) {
             $table->unsignedInteger('maphong'); 
-            $table->unsignedInteger('maloai');
-            $table->unsignedInteger('madon');
+            $table->unsignedInteger('maloai')->nullable();
+            $table->unsignedInteger('madon')->nullable();
             $table->string('ghichu');
             $table->string('trangthai');
             $table->Integer('sotang');
