@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Khachhang extends Model
+class Phong extends Model
 {
-	//	
+	//
 	protected $fillable = [
-		'makh','username','password','hoten','sdt','email',
+		'maphong','maloai','madon','ghichu','trangthai','sotang'
 	];
 }

@@ -2,7 +2,8 @@
 @section('content')
 <div class="col-9" style="height:550px;">
             <div class="row">
-                <div class="col-12" style="padding-top:20px;padding-left:40px;"><span style="font-size: 20px;">Quản Lí Tài Khoản Khách Hàng</span></div>
+				<div class="col-7" style="padding-top:20px;padding-left:40px;display:float-left"><span style="font-size: 20px;">Quản Lí Tài Khoản Khách Hàng</span> </div>
+				<div class="col-5" style="padding-top:20px;padding-left:40px;display:float-right"><span style="font-size: 20px;">Thêm tài khoản</span><a href="{{route('insert-qlkh')}}"><button class="btn btn-success ml-1">insert</button></a></div>
                 <div class="col-12" style="padding-left:40px;"><hr></div>
                 <div class="col-12" style="padding-left:40px;">
                 <table id="example" class="display" style="width:100%">
@@ -13,20 +14,20 @@
                             <th>Họ Tên</th>
                             <th>SDT</th>
                             <th>Email</th>
-                            <th>Delete</th>
-                            <th>Update</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($kh as $value)
                         <tr>
-                            <td>{{$value->MaKh}}</td>
-                            <td>{{$value->PassWord}}</td>
-                            <td>{{$value->HoTen}}</td>
-                            <td>{{$value->SDT}}</td>
-                            <td>{{$value->Email}}</td>
-                            <td><i class="fa fa-home"></i><a href=""><span class="del">Delete</span></a></td>
-                            <td><i class="fa fa-home"></i><a href=""><span class="del">Update</span></a></td>
+                            <td>{{$value->makh}}</td>
+                            <td>{{$value->password}}</td>
+                            <td>{{$value->hoten}}</td>
+                            <td>{{$value->sdt}}</td>
+                            <td>{{$value->email}}</td>
+							<td>
+								<a href="QLKH/edit/{{$value->makh}}"><button class="btn btn-danger">Update</button></a>						
+							</td>
                         </tr>
                     @endforeach  
                     </tbody>

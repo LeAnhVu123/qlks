@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use  App\Khachhang;
 use  App\Phong;
 use  App\Loaiphong;   
+use Illuminate\Support\MessageBag;
 class ControllerAdmin extends Controller
 {
     public  function qltk(){
         $kh = Khachhang::All();
-        // dd($kh);
         return view('Admin.indexQLKH',compact('kh'));
     }
     public  function qlp(){
@@ -22,6 +22,74 @@ class ControllerAdmin extends Controller
         $lp = Loaiphong::All();
         // dd($kh);
         return view('Admin.indexQLLP',compact('lp'));
-    }
+	}
+	
+	public function insertqlkh(){
+		$kh = Khachhang::all();
+		return view('Admin.insertQLKH',compact('kh'));
+	}
+
+	public function postinsertqlkh(Request $reg){
+		Khachhang::create([
+			'makh' => $reg['makh'],
+			'username' => $reg['ttk'],
+			'password' => $reg['mk'],
+			'hoten' => $reg['hoten'],
+			'email' => $reg['email'],
+			'sdt' => $reg['sdt'],
+		]);
+		return redirect(route('khachhang'));
+	}
+
+	public function editqlkh($makh){
+		$kh = Khachhang::where('makh',$makh)->first();
+		return view('Admin.editQLKH',compact('kh'));
+	}
+	public function posteditqlkh(Request $reg,$makh){
+		$kh = Khachhang::where('makh',$reg['makh'])->first();
+		if($kh->password == $reg['password'] && $kh->sdt == $reg['sdt'] && $kh->email == $reg['email'] && $kh->hoten == $reg['hoten']){
+			return false;
+		}else{
+			
+			Khachhang::update([
+				$kh->password => $reg['matkhau'],
+				$kh->sdt => $reg['sdt'],
+				$kh->email => $reg['email'],
+				$kh->hoten => $reg['hoten'],
+			]);
+		}
+		return view('Admin.editQLKH',compact('kh'));
+	}
+
+	public function insertqllp(){
+		return view('Admin.insertQLLP');
+	}
+
+	public function postinsertqllp(Request $reg){
+		Loaiphong::create([
+			'maphong' => $reg['maphong'],
+			'tenloai' => $reg['tenloai'],
+			'succhua' => $reg['succhua'],
+			'mota' => $reg['mota'],
+			'hinhanh' => $reg['hinhanh'],
+			'gia' => $reg['gia'],
+		]);
+		return redirect(route('loaiphong'));
+	}
+	public function insertqlp(){
+		return view('Admin.insertQLP');
+	}
+
+	public function postinsertqlp(Request $reg){
+		Phong::create([
+			'maphong' => $reg['maphong'],
+			'maloai' => $reg['maloai'],
+			'madon' => $reg['madon'],
+			'ghichu' => $reg['ghichu'],
+			'trangthai' => $reg['trangthai'],
+			'sotang' => $reg['sotang'],
+		]);
+		return redirect(route('phong'));
+	}
     //
 }
