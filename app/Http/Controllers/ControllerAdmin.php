@@ -5,31 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  App\Khachhang;
 use  App\Phong;
-use  App\Loaiphong;   
+use  App\Loaiphong;
 use Illuminate\Support\MessageBag;
+
 class ControllerAdmin extends Controller
 {
-    public  function qltk(){
-        $kh = Khachhang::All();
-        return view('Admin.indexQLKH',compact('kh'));
-    }
-    public  function qlp(){
-        $ph = Phong::All();
-        // dd($kh);
-        return view('Admin.indexQLP',compact('ph'));
-    }
-    public  function qllp(){
-        $lp = Loaiphong::All();
-        // dd($kh);
-        return view('Admin.indexQLLP',compact('lp'));
+	public  function qltk()
+	{
+		$kh = Khachhang::All();
+		return view('Admin.indexQLKH', compact('kh'));
 	}
-	
-	public function insertqlkh(){
-		$kh = Khachhang::all();
-		return view('Admin.insertQLKH',compact('kh'));
+	public  function qlp()
+	{
+		$ph = Phong::All();
+		// dd($kh);
+		return view('Admin.indexQLP', compact('ph'));
+	}
+	public  function qllp()
+	{
+		$lp = Loaiphong::All();
+		// dd($kh);
+		return view('Admin.indexQLLP', compact('lp'));
 	}
 
-	public function postinsertqlkh(Request $reg){
+	public function insertqlkh()
+	{
+		$kh = Khachhang::all();
+		return view('Admin.insertQLKH', compact('kh'));
+	}
+
+	public function postinsertqlkh(Request $reg)
+	{
 		Khachhang::create([
 			'makh' => $reg['makh'],
 			'username' => $reg['ttk'],
@@ -41,31 +47,32 @@ class ControllerAdmin extends Controller
 		return redirect(route('khachhang'));
 	}
 
-	public function editqlkh($makh){
-		$kh = Khachhang::where('makh',$makh)->first();
-		return view('Admin.editQLKH',compact('kh'));
+	public function editqlkh($makh)
+	{
+		$kh = Khachhang::where('makh', $makh)->first();
+		return view('Admin.editQLKH', compact('kh'));
 	}
-	public function posteditqlkh(Request $reg,$makh){
-		$kh = Khachhang::where('makh',$reg['makh'])->first();
-		if($kh->password == $reg['password'] && $kh->sdt == $reg['sdt'] && $kh->email == $reg['email'] && $kh->hoten == $reg['hoten']){
-			return false;
-		}else{
-			
-			Khachhang::update([
-				$kh->password => $reg['matkhau'],
-				$kh->sdt => $reg['sdt'],
-				$kh->email => $reg['email'],
-				$kh->hoten => $reg['hoten'],
-			]);
-		}
-		return view('Admin.editQLKH',compact('kh'));
+	public function posteditqlkh(Request $reg, $makh)
+	{
+		$kh = Khachhang::findOrFail($makh);
+		$kh->password = $reg['mk'];
+		$kh->sdt = $reg['sdt'];
+		$kh->email = $reg['email'];
+		$kh->hoten = $reg['hoten'];
+		$kh->save();
+		return redirect(route('khachhang'))->with('thanhcong','Update thanh cong');
 	}
-
-	public function insertqllp(){
+	public function deleteqlkh($makh){
+		Khachhang::findOrFail($makh)->delete();
+		return redirect(route('khachhang'));
+	}
+	public function instqllp()
+	{
 		return view('Admin.insertQLLP');
 	}
 
-	public function postinsertqllp(Request $reg){
+	public function postinsertqllp(Request $reg)
+	{
 		Loaiphong::create([
 			'maphong' => $reg['maphong'],
 			'tenloai' => $reg['tenloai'],
@@ -76,11 +83,13 @@ class ControllerAdmin extends Controller
 		]);
 		return redirect(route('loaiphong'));
 	}
-	public function insertqlp(){
+	public function insertqlp()
+	{
 		return view('Admin.insertQLP');
 	}
 
-	public function postinsertqlp(Request $reg){
+	public function postinsertqlp(Request $reg)
+	{
 		Phong::create([
 			'maphong' => $reg['maphong'],
 			'maloai' => $reg['maloai'],
@@ -91,5 +100,5 @@ class ControllerAdmin extends Controller
 		]);
 		return redirect(route('phong'));
 	}
-    //
+	//
 }

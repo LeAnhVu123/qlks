@@ -25,8 +25,15 @@
                             <td>{{$value->hoten}}</td>
                             <td>{{$value->sdt}}</td>
                             <td>{{$value->email}}</td>
-							<td>
-								<a href="QLKH/edit/{{$value->makh}}"><button class="btn btn-danger">Update</button></a>						
+							<td>		
+								<a href="QLKH/edit/{{$value->makh}}"><button class="btn btn-danger float-left">Update</button></a>
+								<div class="float-left mx-3">													
+									<form action="/Admin/QLKH/delete/{{$value->makh}}" method="POST" >
+										{{method_field('Delete')}}
+										@csrf																
+										<button type="submit" class="btn btn-danger">Delete</button	>	
+									</form>
+								</div>
 							</td>
                         </tr>
                     @endforeach  
@@ -34,5 +41,18 @@
                 </table>
                 </div>
             </div>
-        </div>
+		</div>
+		@if(Session::get('thanhcong'))
+			@include('message');
+		@endif
+		
+<script>
+		$(document).ready(function(){
+			// if("{{Session('thanhcong')}}"){
+			// 	alert("{{Session('thanhcong')}}");
+			// }
+			// $('#message').html(message);
+			$('#messageModal').modal();
+		})
+</script>
 @endsection

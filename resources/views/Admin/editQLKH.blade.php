@@ -1,10 +1,11 @@
-<!-- @extends('QuanLy')
+@extends('QuanLy')
 @section('content')
 <div class="col-9">
 	<h4>Sửa thông tin khách hàng</h4>
 	<hr>
 	<p class="text-center text-primary h3 mb-4">Thêm</p>	
-	<form action="{{route('post.edit-qlkh')}}" method="post">
+	<form action="/Admin/QLKH/edit/{{$kh->makh}}" method="POST" >
+		{{method_field('PATCH')}}
 		@csrf
 		<div class="row " style="font-size:20px;">
 			<div class="offset-1 col-4 my-2">Mã KH</div>
@@ -23,4 +24,4 @@
 		<div class="text-center mt-4"><button type="submit" class="btn btn-success btn-lg">Update</button></div>
 	</form>
 </div>
-@endsection -->
+@endsection
