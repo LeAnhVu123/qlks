@@ -10,4 +10,5 @@ class Loaiphong extends Model
 	protected $fillable =[
 		'tenloai','succhua','mota','hinhanh','gia'
 	];
+	protected $primaryKey= 'maloai';
 }

@@ -8,6 +8,7 @@ class Phong extends Model
 {
 	//
 	protected $fillable = [
-		'maphong','maloai','madon','ghichu','trangthai','sotang'
+		'maloai','madon','ghichu','trangthai','sotang'
 	];
+	protected $primaryKey = 'maphong';
 }

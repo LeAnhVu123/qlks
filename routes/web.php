@@ -35,7 +35,7 @@ Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 Route::post('/QuanLy','ControllerQLKS@idkh')->name('idkh');
 /* Quản Lí ID khách hàng */
 Route::group(['prefix'=>'Admin'],function(){
-    Route::get('QLKH','ControllerAdmin@qltk')->name('khachhang');//index ID KH
+    Route::get('QLKH','ControllerAdmin@qlkh')->name('khachhang');//index ID KH
     Route::get('QLP','ControllerAdmin@qlp')->name('phong');//index Phòng
     Route::get('QLLP','ControllerAdmin@qllp')->name('loaiphong');//index Phòng
     Route::group(['prefix'=>'QLKH'],function(){
@@ -48,10 +48,16 @@ Route::group(['prefix'=>'Admin'],function(){
 	Route::group(['prefix'=>'QLLP'],function(){
 		Route::get('insert','ControllerAdmin@insertqllp')->name('insert-qllp');
 		Route::post('insert','ControllerAdmin@postinsertqllp')->name('post.insert-qllp');
+		Route::get('edit/{malp}','ControllerAdmin@editqllp')->name('edit.qllp');
+		Route::PATCH('edit/{malp}','ControllerAdmin@updateqllp')->name('update.qllp');
+		Route::Delete('delete/{malp}','ControllerAdmin@deleteqllp')->name('delete.qllp');
 	});
 	Route::group(['prefix'=>'QLP'],function(){
 		Route::get('insert','ControllerAdmin@insertqlp')->name('insert-qlp');
 		Route::post('insert','ControllerAdmin@postinsertqlp')->name('post.insert-qlp');
+		Route::get('edit/{map}','ControllerAdmin@editqlp')->name('edit.qlp');
+		Route::PATCH('edit/{map}','ControllerAdmin@updateqlp')->name('update.qlp');
+		Route::Delete('delete/{map}','ControllerAdmin@deleteqlp')->name('delete.qlp');
 	});
 });
 
