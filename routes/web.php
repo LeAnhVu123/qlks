@@ -37,7 +37,8 @@ Route::post('/QuanLy','ControllerQLKS@idkh')->name('idkh');
 Route::group(['prefix'=>'Admin'],function(){
     Route::get('QLKH','ControllerAdmin@qlkh')->name('khachhang');//index ID KH
     Route::get('QLP','ControllerAdmin@qlp')->name('phong');//index Phòng
-    Route::get('QLLP','ControllerAdmin@qllp')->name('loaiphong');//index Phòng
+	Route::get('QLLP','ControllerAdmin@qllp')->name('loaiphong');//index Phòng
+	Route::get('NhanVien','NhanvienController@index')->name('nhanvien');//index nhan vien
     Route::group(['prefix'=>'QLKH'],function(){
 		Route::get('insert','ControllerAdmin@insertqlkh')->name('insert-qlkh');
 		Route::post('insert','ControllerAdmin@postinsertqlkh')->name('post.insert-qlkh');
@@ -58,6 +59,13 @@ Route::group(['prefix'=>'Admin'],function(){
 		Route::get('edit/{map}','ControllerAdmin@editqlp')->name('edit.qlp');
 		Route::PATCH('edit/{map}','ControllerAdmin@updateqlp')->name('update.qlp');
 		Route::Delete('delete/{map}','ControllerAdmin@deleteqlp')->name('delete.qlp');
+	});
+	Route::group(['prefix'=>'NhanVien'],function(){
+		Route::get('insert','NhanvienController@create')->name('insert-nv');
+		Route::post('insert','NhanvienController@store')->name('post.insert-nv');	
+		Route::get('edit/{manv}','NhanvienController@edit')->name('edit.nv');
+		Route::PATCH('edit/{manv}','NhanvienController@update')->name('update.nv');
+		Route::Delete('delete/{manv}','NhanvienController@destroy')->name('delete.nv');
 	});
 });
 
