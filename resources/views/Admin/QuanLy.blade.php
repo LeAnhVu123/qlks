@@ -41,28 +41,19 @@
                     <span style="font-weight: bolder;">MeNu</span>
                 </div>
                 <div class="col-12" style="padding-top:10px;">
-                    <a href="{{route('khachhang')}}"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
+                    <a href="{{route('qltk')}}"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
                 </div>
                 <div class="col-12 mt-1">
                     <a href="{{route('phong')}}"><i class="fa fa-home"></i> QL Phòng</a>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href="{{route('loaiphong')}}"><i class="fa fa-home"></i> QL Loại Phòng</a>
+                    <a href="{{route('lphong')}}"><i class="fa fa-home"></i> QL Loại Phòng</a>
                 </div>
                 <div class="col-12 mt-1" style="height:auto;">
-                    <a href="" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home"></i> QL Đơn Đặt</a>
-                        <div class="dropdown-menu" style="background-color:#EEEEEE;">
-                                <ul style="list-style-type:none;padding-left:30px;list-style: none;">
-                                    <li><a href="">Đã Thanh Toán</a></li>
-                                    <li><a href="">Chưa Thanh Toán</a></li>
-                                    <li><a href="">Ngày Đặt</a></li>
-                                
-                                </ul>
-                                
-                        </div>
+                    <a href="{{route('alldondat')}}"><i class="fa fa-home"></i> QL Đơn Đặt</a>
                 </div>
                 <div class="col-12 mt-1">
-                    <a href=""><i class="fa fa-home"></i> QL Chi Tiết Đặt</a>
+                    <a href="{{route('ctdondat')}}"><i class="fa fa-home"></i> QL CT Đơn Đặt</a>
                 </div>
                 <div class="col-12 mt-1">
                     <a href=""><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>

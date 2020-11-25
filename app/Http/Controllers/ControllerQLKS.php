@@ -93,43 +93,43 @@ class ControllerQLKS extends Controller
 
 
 
-    public function dangnhapadmin(){
-        return view('DangNhapADMin');
-    }
-    public function quanly(){
-        //$data = Khachhang::get();
-        return view('quanly');
-    }
-    public function ktid(Request $reg)
-    {
-        $message = new MessageBag();
-        $id = $reg['id'];
-        $pass = $reg['pass'];
-        $slid = Nhanvien::select(['MaNV','PassWordNV'])->get();
-        foreach($slid as $key => $value){
-           $a = $value['MaNV'];
-           $b = $value['PassWordNV'];
-           if($a == $id)
-           {
-               if($b == $pass)
-               {                
-                return redirect(route('quanly'))/*->with('thanhcong','Ban da dang nhap thanh cong')*/;
-               }
-           }
-        }
-        $message->add('thatbai','Dang Nhap That Bai');
-        return redirect(route('dangnhap'))->withErrors($message);
-    }
-    public function idkh(Request $reg)
-    {
-        $id = $reg['id'];
-        $pw = $reg['pw'];
-        //$sm = $reg['smad'];
-        $sm = $reg['xoaid'];
-       // Khachhang::create(['MaKh'=>$id,'PassWord'=>$pw]);
-        //Khachhang::Where('MaKh',$id)-> update(['PassWord'=>$pw]);
-        Khachhang::Where('MaKh',$id)->delete();
-    }
+    // public function dangnhapadmin(){
+    //     return view('DangNhapADMin');
+    // }
+    // public function quanly(){
+    //     //$data = Khachhang::get();
+    //     return view('quanly');
+    // }
+    // public function ktid(Request $reg)
+    // {
+    //     $message = new MessageBag();
+    //     $id = $reg['id'];
+    //     $pass = $reg['pass'];
+    //     $slid = Nhanvien::select(['MaNV','PassWordNV'])->get();
+    //     foreach($slid as $key => $value){
+    //        $a = $value['MaNV'];
+    //        $b = $value['PassWordNV'];
+    //        if($a == $id)
+    //        {
+    //            if($b == $pass)
+    //            {                
+    //             return redirect(route('quanly'))/*->with('thanhcong','Ban da dang nhap thanh cong')*/;
+    //            }
+    //        }
+    //     }
+    //     $message->add('thatbai','Dang Nhap That Bai');
+    //     return redirect(route('dangnhap'))->withErrors($message);
+    // }
+    // public function idkh(Request $reg)
+    // {
+    //     $id = $reg['id'];
+    //     $pw = $reg['pw'];
+    //     //$sm = $reg['smad'];
+    //     $sm = $reg['xoaid'];
+    //    // Khachhang::create(['MaKh'=>$id,'PassWord'=>$pw]);
+    //     //Khachhang::Where('MaKh',$id)-> update(['PassWord'=>$pw]);
+    //     Khachhang::Where('MaKh',$id)->delete();
+    // }
     /* public function gui(Request $reg)
     {
         $gui = $reg['gui'];//cai nay la click nut gui 

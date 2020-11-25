@@ -4,12 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Nhanvien extends Model
+class Dondat extends Model
 {
     //
     public $incrementing = false; 
-	protected $primaryKey = 'manv';
+	protected $primaryKey = 'madon';
 	protected $fillable =[
-		'manv','taikhoan','matkhau','hoten','sdt','emial','chucvu'
+		'madon','makh','manv','makm','matt','ngaylap','tongtien','trangthai'
 	];
+	
+	
 }

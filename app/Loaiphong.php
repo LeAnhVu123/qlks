@@ -6,8 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loaiphong extends Model
 {
-	//
+	public $incrementing = false; 
+	protected $primaryKey = 'maloai';
 	protected $fillable =[
-		'tenloai','succhua','mota','hinhanh','gia'
+		'maloai','tenloai','succhua','mota','hinhanh','gia'
 	];
+	
+	public function lvap()
+    {
+		return $this->hasMany('App\Phong', 'maloai','maloai');
+		
+    }
 }

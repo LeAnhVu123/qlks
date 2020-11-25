@@ -8,7 +8,8 @@ class Khachhang extends Model
 {
 	//	
 	protected $fillable = [
-		'makh','username','password','hoten','sdt','email',
+		'makh','taikhoan','matkhau','hoten','sdt','email',
 	];
 	protected $primaryKey = 'makh';
+	public $incrementing = false; 
 }
