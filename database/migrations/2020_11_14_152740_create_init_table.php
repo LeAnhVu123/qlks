@@ -13,22 +13,6 @@ class CreateInitTable extends Migration
      */
     public function up()
     {
-        // Schema::create('categories', function (Blueprint $table) {
-        //     $table->increments('id'); 
-        //     $table->string('note');
-        //     $table->bigInteger('status');
-        //     $table->timestamps();  
-                  
-        // });
-
-        // Schema::create('rooms', function (Blueprint $table) {
-        //     $table->increments('id'); 
-        //     $table->unsignedinteger('id_category');
-        //     $table->string('note');
-        //     $table->bigInteger('status');//2 cai nay khac gi eo tang
-        //     $table->timestamps();//du a k co tu dong tao ra 2 cot  create voi update ngay luc m` insert vao k can insert = tay chua hieu cai nay lam
-        //     $table->foreign('id_category')->references('id')->on('categories');
-        // });
         Schema::create('khachhangs', function (Blueprint $table) {
                 $table->increments('makh'); 
                 $table->string('taikhoan')->nullable();
@@ -64,7 +48,7 @@ class CreateInitTable extends Migration
         Schema::create('thanhtoans', function (Blueprint $table) {
             $table->increments('matt'); 
             $table->date('ngaytt');
-            $table->bigInteger('tongtien');
+            // $table->bigInteger('tongtien');
             $table->Integer('thanhtoan');
             // $table->Integer('conlai');
          
@@ -108,11 +92,11 @@ class CreateInitTable extends Migration
         });
         Schema::create('dichvus', function (Blueprint $table) {
                 $table->increments('madv'); 
-                $table->unsignedInteger('matt');
+                $table->unsignedInteger('madon');
                 $table->string('tendv');
                 $table->bigInteger('gia');
                 $table->timestamps();  
-                $table->foreign('matt')->references('matt')->on('thanhtoans');    
+                $table->foreign('madon')->references('madon')->on('dondats');    
             });
       
         Schema::create('chitiets', function (Blueprint $table) {
@@ -144,8 +128,5 @@ class CreateInitTable extends Migration
            Schema::dropIfExists('dichvus');
            Schema::dropIfExists('thanhtoans');
            Schema::dropIfExists('chitiets');
-           
-        // Schema::dropIfExists('categorys');
-        // Schema::dropIfExists('rooms');
     }
 }
