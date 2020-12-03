@@ -70,6 +70,8 @@ Route::group(['prefix'=>'Admin'],function(){
 		Route::get('Xoa/{makh}','ControllerAdmin@getxoa')->name('get-xoatk');
 		Route::get('XoaPhong/{maphong}','ControllerAdmin@xoaphong')->name('get-xoaphong');
 		Route::get('XoaLoaiPhong/{maloai}','ControllerAdmin@xoaloaiphong')->name('get-xoaloaiphong');
+		Route::get('XoaDonDat/{madon}','ControllerAdmin@xoadondat')->name('get-xoadondat');
+		Route::get('XoaChiTiet/{mact}','ControllerAdmin@getxoact')->name('get-xoact');
 			Route::group(['prefix'=>'Them'],function(){
 					// Admin/Them/
 					Route::get('ThemTKKH','ControllerAdmin@getthemtk')->name('get-themtk');
@@ -83,6 +85,9 @@ Route::group(['prefix'=>'Admin'],function(){
 
 					Route::get('Themdondat','ControllerAdmin@getthemdd')->name('get-themdd');
 					Route::post('Themdondat','ControllerAdmin@postthemdd')->name('post-themdd');
+
+					Route::get('Themchitiet','ControllerAdmin@getviewthemct')->name('get-themct');
+					Route::post('Themchitiet','ControllerAdmin@postthemct')->name('post-themct');
 					
 				});
 			Route::group(['prefix'=>'Sua'],function(){
@@ -95,6 +100,11 @@ Route::group(['prefix'=>'Admin'],function(){
 
 				Route::get('Sualoaiphong/{maloai}','ControllerAdmin@getsualoaiphong')->name('get-sualoaiphong');
 				Route::post('Sualoaiphong/{maloai}','ControllerAdmin@postsualoaiphong')->name('post-sualoaiphong');
+
+				Route::get('Suadondat/{madon}','ControllerAdmin@getsuadondat')->name('get-suadondat');
+				Route::post('Suadondat/{madon}','ControllerAdmin@postsuadondat')->name('post-suadondat');
+				Route::get('Suachitiet/{mact}','ControllerAdmin@getsuact')->name('get-suact');
+				Route::post('Suachitiet/{mact}','ControllerAdmin@postsuact')->name('post-suact');
 			});
 		
 	 

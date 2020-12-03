@@ -76,11 +76,18 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">   
-    @foreach ($data as $value)
+   
       <div class="carousel-item"> 
-        <img src="{{$path}}{{$value->HinhAnh}}" height="420px" class="w-100" alt="...">
+        <img src="img/KS-886.jpg" height="500px" class="w-100" alt="...">
       </div>
-    @endforeach
+      
+      <div class="carousel-item"> 
+        <img src="img/KS-329.jpg" height="500px" class="w-100" alt="...">
+      </div>
+      <div class="carousel-item"> 
+        <img src="img/KS-895.jpg" height="500px" class="w-100" alt="...">
+      </div>
+    
     </div>
  
   </div>
@@ -130,7 +137,7 @@
           </div>
           @endforeach
 
-
+</div>
          </div>
         
     <!-- End Phong Vip -->

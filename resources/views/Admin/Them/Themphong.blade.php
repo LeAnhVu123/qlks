@@ -32,7 +32,7 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="trangthai"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Loại phòng</td>
+                        <td style="padding-top:10px;">Mã Loại</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai"></td>
                     </tr>
                    

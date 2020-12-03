@@ -40,24 +40,43 @@
                 <div class="col-12" style="border-bottom: 1px solid #ddd;text-align:center;font-size:18px;padding-top:5px;padding-bottom:5px;">
                     <span style="font-weight: bolder;">MeNu</span>
                 </div>
-                <div class="col-12" style="padding-top:10px;">
-                    <a href="{{route('qltk')}}"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
+                <div class="nv">    
+                        <div class="col-12" style="padding-top:10px;">
+                            <a href="{{route('qltk')}}"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="{{route('phong')}}"><i class="fa fa-home"></i> QL Phòng</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="{{route('lphong')}}"><i class="fa fa-home"></i> QL Loại Phòng</a>
+                        </div>
+                        <div class="col-12 mt-1" style="height:auto;">
+                            <a href="{{route('alldondat')}}"><i class="fa fa-home"></i> QL Đơn Đặt</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="{{route('ctdondat')}}"><i class="fa fa-home"></i> QL CT Đơn Đặt</a>
+                        </div>  
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> QL Dịch Vụ</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> QL Thanh Toán</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
+                        </div>
                 </div>
-                <div class="col-12 mt-1">
-                    <a href="{{route('phong')}}"><i class="fa fa-home"></i> QL Phòng</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a href="{{route('lphong')}}"><i class="fa fa-home"></i> QL Loại Phòng</a>
-                </div>
-                <div class="col-12 mt-1" style="height:auto;">
-                    <a href="{{route('alldondat')}}"><i class="fa fa-home"></i> QL Đơn Đặt</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a href="{{route('ctdondat')}}"><i class="fa fa-home"></i> QL CT Đơn Đặt</a>
-                </div>
-                <div class="col-12 mt-1">
-                    <a href=""><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
-                </div>
+                <div class="ql">                 
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> QL Khuyến Mãi</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> QL Tài Khoản NV</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> QL Lương NV</a>
+                        </div>
+                </div>   
             </div>
         </div>
         @yield('content') 

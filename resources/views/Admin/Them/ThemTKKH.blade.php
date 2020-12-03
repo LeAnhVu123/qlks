@@ -15,9 +15,9 @@
                         <td style="padding-top:10px;">Mật Khẩu</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="matkhau"></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td style="padding-top:10px;">CMND</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="makh"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="cmnd"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Họ Tên</td>

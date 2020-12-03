@@ -10,16 +10,20 @@
           
                 <table>
                     <tr>
+                        <td style="padding-top:10px;">Mã KH</td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="cmnd" placeholder="{{$kh->makh}}" readonly></td>
+                    </tr>
+                    <tr>
                         <td style="padding-top:10px;">Tài Khoản</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="taikhoan" placeholder="{{$kh->taikhoan}}"readonly></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Mật Khẩu</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="matkhau" value="{{$kh->matkhau}}"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="pw" type="password" autocomplete="off" name="matkhau" value="{{$kh->matkhau}}" readonly></td>
                     </tr>
                      <tr>
                         <td style="padding-top:10px;">CMND</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="makh" placeholder="{{$kh->makh}}" readonly></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="cmnd" value="{{$kh->cmnd}}"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Họ Tên</td>
@@ -34,7 +38,7 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="Email" autocomplete="off" name="email" value="{{$kh->email}}"></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Sửa"></a></td>
+                        <td colspan="2" style="padding-left:175px;padding-top:10px;"><input type="submit" value="Sửa"> <input class="rs" type="button"  value="RSPW"></td>
                     </tr> 
                 </table>
                 </form>
@@ -53,4 +57,14 @@
             </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('.rs').each(function(){
+        $(this).click(function(){
+            var resetmk = 123;
+            $('.pw').val(resetmk);
+        });
+    });
+});
+</script>
 @endsection

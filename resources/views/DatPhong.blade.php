@@ -39,9 +39,9 @@
         <div class="row"> 
         
           <div class="col-2 qc" style="padding-left:0px">
-              <img src="img\km\165804643720.png" alt="" style="width:100%;height:418px;padding-top:8px">
-              <img src="img\km\165804643720.png" alt="" style="width:100%;height:418px;padding-top:8px">
-              <img src="img\km\165804643720.png" alt="" style="width:100%;height:418px;padding-top:8px">
+              <img src="img/KS-895.jpg" alt="" style="width:100%;height:418px;padding-top:8px">
+              <img src="img/KS-895.jpg" alt="" style="width:100%;height:418px;padding-top:8px">
+              <img src="img/KS-895.jpg" alt="" style="width:100%;height:418px;padding-top:8px">
           </div>
           <div class="col-8" >
             <div class="row">
@@ -91,9 +91,9 @@
             </div> 
           </div>        
             <div class="col-2 qc" style="padding-right:0px">
-            <img src="img\km\165804643720.png" alt="" style="width:100%;height:418px;padding-top:8px">
-              <img src="img\km\165804643720.png" alt="" style="width:100%;height:418px;padding-top:8px">
-              <img src="img\km\165804643720.png" alt="" style="width:100%;height:418px;padding-top:8px">
+            <img src="img/KS-895.jpg" alt="" style="width:100%;height:418px;padding-top:8px">
+              <img src="img/KS-895.jpg" alt="" style="width:100%;height:418px;padding-top:8px">
+              <img src="img/KS-895.jpg" alt="" style="width:100%;height:418px;padding-top:8px">
             </div>
            
         </div>

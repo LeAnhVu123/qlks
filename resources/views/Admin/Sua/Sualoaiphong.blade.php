@@ -10,7 +10,7 @@
           
                 <table>
                 <tr>
-                        <td style="padding-top:10px;">Tên loại</td>
+                        <td style="padding-top:10px;">Mã loại</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai" placeholder="{{$lp->maloai}}"readonly></td>
                     </tr>
                 <tr>

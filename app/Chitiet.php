@@ -10,7 +10,7 @@ class Chitiet extends Model
       public $incrementing = false; 
       protected $primaryKey = 'mact';
       protected $fillable =[
-          'mact','madon','maphong','ngayden','ngaydi','slphong','nguoilon','treem'
+          'mact','madon','ngayden','ngaydi','slphong','nguoilon','treem'
       ];
       
 }
