@@ -10,6 +10,6 @@ class Nhanvien extends Model
     public $incrementing = false; 
 	protected $primaryKey = 'manv';
 	protected $fillable =[
-		'manv','taikhoan','matkhau','hoten','sdt','emial','chucvu'
+		'manv','taikhoan','matkhau','hoten','sdt','email','role','cmnd'
 	];
 }

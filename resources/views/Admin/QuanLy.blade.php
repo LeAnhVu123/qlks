@@ -34,7 +34,10 @@
 </style>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12" style="background-color: #EEEEEE;height:50px;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;"><h3 style="padding-top:7px;">Admin - Anh Vũ</h3></div>
+        <div class="col-12" style="background-color: #EEEEEE;height:50px;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;">
+        <h3 style="padding-top:7px;float:left">Admin - Anh Vũ</h3>
+        <a href="{{route('dangxuat')}}"><button class="btn btn-success float-right">Logout</button></a>
+        </div>
         <div class="col-2" style="background-color: #EEEEEE;height:585px;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;">
             <div class="row">
                 <div class="col-12" style="border-bottom: 1px solid #ddd;text-align:center;font-size:18px;padding-top:5px;padding-bottom:5px;">
@@ -71,7 +74,7 @@
                             <a href="#"><i class="fa fa-home"></i> QL Khuyến Mãi</a>
                         </div>
                         <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> QL Tài Khoản NV</a>
+                            <a href="{{route('nv')}}"><i class="fa fa-home"></i> QL Tài Khoản NV</a>
                         </div>
                         <div class="col-12 mt-1">
                             <a href="#"><i class="fa fa-home"></i> QL Lương NV</a>

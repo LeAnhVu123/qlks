@@ -7,7 +7,7 @@
             <form action="" method="POST" enctype="multipart/form-data">
             <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
             @csrf
-          
+            <input type="hidden" value="{{$lp->role}}">
                 <table>
                 <tr>
                         <td style="padding-top:10px;">Mã loại</td>

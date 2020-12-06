@@ -58,7 +58,13 @@ Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 
 // Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 // ---------------------------------
-Route::group(['prefix'=>'Admin'],function(){
+
+Route::get('Admin/dangnhap','LoginController@dangnhap')->name('dangnhap');
+Route::post('Admin/dangnhap','LoginController@xetdangnhap')->name('xetdangnhap');// ua post get dang nhap la sao m, sao phai them thang post
+Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
+	// Dangxuat
+	Route::get('dangxuat','LoginController@dangxuat')->name('dangxuat');
+	
 	/* View Quan Ly */
 		Route::get('QuanLy','ControllerAdmin@quanly')->name('quanly');
 		Route::get('QLTKKH','ControllerAdmin@getkh')->name('qltk');
@@ -66,8 +72,9 @@ Route::group(['prefix'=>'Admin'],function(){
 		Route::get('QLLP','ControllerAdmin@getlp')->name('lphong');
 		Route::get('AllDonDat','ControllerAdmin@getalldondat')->name('alldondat');
 		Route::get('Chitietdondat','ControllerAdmin@getchitietdd')->name('ctdondat');
+		Route::get('QLTKNV','ControllerAdmin@getviewnv')->name('nv');
 		/* Xoa */
-		Route::get('Xoa/{makh}','ControllerAdmin@getxoa')->name('get-xoatk');
+		Route::get('Xoa/{makh}','ControllerAdmin@getxoa')->middleware('checkrole')->name('get-xoatk');
 		Route::get('XoaPhong/{maphong}','ControllerAdmin@xoaphong')->name('get-xoaphong');
 		Route::get('XoaLoaiPhong/{maloai}','ControllerAdmin@xoaloaiphong')->name('get-xoaloaiphong');
 		Route::get('XoaDonDat/{madon}','ControllerAdmin@xoadondat')->name('get-xoadondat');
@@ -88,6 +95,9 @@ Route::group(['prefix'=>'Admin'],function(){
 
 					Route::get('Themchitiet','ControllerAdmin@getviewthemct')->name('get-themct');
 					Route::post('Themchitiet','ControllerAdmin@postthemct')->name('post-themct');
+
+					Route::get('ThemTKNV','ControllerAdmin@getviewthemnv')->name('get-themnv');
+					Route::post('ThemTKNV','ControllerAdmin@postthemnv')->name('postthemnv');
 					
 				});
 			Route::group(['prefix'=>'Sua'],function(){
@@ -103,8 +113,12 @@ Route::group(['prefix'=>'Admin'],function(){
 
 				Route::get('Suadondat/{madon}','ControllerAdmin@getsuadondat')->name('get-suadondat');
 				Route::post('Suadondat/{madon}','ControllerAdmin@postsuadondat')->name('post-suadondat');
+
 				Route::get('Suachitiet/{mact}','ControllerAdmin@getsuact')->name('get-suact');
 				Route::post('Suachitiet/{mact}','ControllerAdmin@postsuact')->name('post-suact');
+						
+				Route::get('SuaTKNV/{manv}','ControllerAdmin@getviewsuanv')->middleware('checkrole')->name('get-suanv');
+				Route::post('SuaTKNV/{manv}','ControllerAdmin@postsuanv')->middleware('checkrole')->name('post-suanv');
 			});
 		
 	 

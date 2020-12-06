@@ -13,6 +13,12 @@ class CreateInitTable extends Migration
      */
     public function up()
     {
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('role_id');
+            $table->string('name_role');
+            $table->timestamps();
+    });
+    
         Schema::create('khachhangs', function (Blueprint $table) {
                 $table->increments('makh'); 
                 $table->string('taikhoan')->nullable();
@@ -32,10 +38,12 @@ class CreateInitTable extends Migration
                 $table->string('hoten');
                 $table->string('sdt');
                 $table->string('email');
-                $table->string('chucvu');
+                $table->unsignedInteger('role');
                 $table->timestamps();
+                $table->foreign('role')->references('role_id')->on('roles');
                 // $table->primary('manv');
             });
+
         Schema::create('loaiphongs', function (Blueprint $table) {
             $table->increments('maloai');
             $table->string('tenloai');
@@ -45,6 +53,7 @@ class CreateInitTable extends Migration
             $table->bigInteger('gia'); 
             $table->timestamps();      
         });
+        
         Schema::create('thanhtoans', function (Blueprint $table) {
             $table->increments('matt'); 
             $table->date('ngaytt');
@@ -110,6 +119,9 @@ class CreateInitTable extends Migration
             $table->timestamps();  
             $table->foreign('madon')->references('madon')->on('dondats');      
     });
+
+        
+
     }
 
     /**
@@ -119,6 +131,7 @@ class CreateInitTable extends Migration
      */
     public function down()
     {
+            
            Schema::dropIfExists('khachhangs');
            Schema::dropIfExists('nhanviens');
            Schema::dropIfExists('phongs');
@@ -128,5 +141,7 @@ class CreateInitTable extends Migration
            Schema::dropIfExists('dichvus');
            Schema::dropIfExists('thanhtoans');
            Schema::dropIfExists('chitiets');
+           Schema::dropIfExists('roles');
+           
     }
 }

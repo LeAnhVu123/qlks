@@ -12,11 +12,12 @@ use  App\Nhanvien;
 use  App\Khuyenmai;
 use  App\Chitiet;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Cookie;
 
 class ControllerAdmin extends Controller
 {
 	public function quanly()
-	{
+	{		
 		return view('Admin.QuanLy');
 	}
 	/* View Show QLKH */
@@ -373,7 +374,7 @@ class ControllerAdmin extends Controller
 		if($a == '.jpg' || $a == '.png')
 		{
 			$path = public_path().'/img';
-			$reg['hinhanh']->move($path,$b);
+			$reg['hinhanh']->move($path,$b);//$reg['hinhanh'] tmp_name, noi luu tru tam thoi cai hinh anh
 			$lp->hinhanh = $b;
 		}	
 		else
@@ -641,5 +642,54 @@ class ControllerAdmin extends Controller
 		
 		return redirect('Admin/Chitietdondat')->with('thanhcong','Xóa chi tiết đơn đặt phòng thành công');	
 	}
-	
+	/* Them nhan vien */
+	public function getviewnv()
+	{
+		$nv = Nhanvien::all();
+		return view('Admin/QLTKNV',compact('nv'));
+	}
+	/* view  them tai khoan nhan vien*/
+	public function getviewthemnv()
+	{
+		return view('Admin/Them/ThemTKNV');
+	}
+	/* Them tai khoan nhan vien */
+	public function postthemnv(request $reg)
+	{
+		$nv = new Nhanvien; 
+		$nv->taikhoan=$reg['taikhoan'];
+		$nv->role=$reg['role'];
+		$nv->matkhau=$reg['matkhau'];
+		$nv->sdt=$reg['sdt'];
+		$nv->cmnd=$reg['cmnd'];
+		$nv->hoten=$reg['hoten'];
+		$nv->email=$reg['email'];
+		$nv->save();
+		return redirect('Admin/Them/ThemTKNV')->with('thanhcong','Bạn thêm thành công');	
+	}
+	/* view  sua tai khoan nhan vien*/
+	public function getviewsuanv($manv)
+	{
+		$manv = Nhanvien::find($manv);
+		return view('Admin/Sua/SuaTKNV',compact('manv'));
+	}
+	/* Post sua tai khoan nhan vien  */
+	public function postsuanv(request $reg,$manv)
+	{
+		$role = Cookie::get('account')->role;
+		if($role == 1 || $role == 2){
+			$nv = Nhanvien::find($manv);
+			$nv->taikhoan=$reg['taikhoan'];
+			$nv->role=$reg['role'];
+			$nv->matkhau=$reg['matkhau'];
+			$nv->sdt=$reg['sdt'];
+			$nv->cmnd=$reg['cmnd'];
+			$nv->hoten=$reg['hoten'];
+			$nv->email=$reg['email'];
+			$nv->save();
+			return redirect('Admin/QLTKNV')->with('thanhcong','Bạn thêm thành công');	
+		}else{
+			return back();
+		}
+	}
 }		
