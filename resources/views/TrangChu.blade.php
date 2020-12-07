@@ -8,7 +8,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Trang Chu</title>
    
 </head>
@@ -34,7 +37,7 @@
 
 
 
-<div class="contaier-fluid mt-1 header">
+<div class="contaier-fluid mt-1 header" style="background-color:#000080;color:white;">
         <div class="row">
             <div class="col-md-2 col-sm-6 col-12 cl">
               <a class="DanhMucTC" href="TrangChu">Trang Chủ</a>
@@ -102,20 +105,19 @@
 
     <!-- KM -->
       <div class="container-fluid mt-1 sanpham">
-        <div class="row1"><h3 class="hinhsp" style="padding:50px 0 20px 0;">LOẠI PHÒNG</h3></div>
-      
-        <div class="row">
-        @foreach($lp as $value)
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="card mb-3">
-              <a href=""><img src="img/{{$value->hinhanh}}"  class="card-img-top" alt=""></a>
-            <div class="card-body" style="padding-top:5px;">
-              <p class="card-text" style="text-align:center;padding-top:20px;"><a href="" style="text-decoration: none;">{{$value->tenloai}}</a></p>
+          <div class="row1"><h3 class="hinhsp" style="padding:50px 0 20px 0;">LOẠI PHÒNG</h3></div>
+            <div class="row">
+                @foreach($lp as $value)
+                  <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card mb-3">
+                      <a href=""><img src="img/{{$value->hinhanh}}"  class="card-img-top" alt=""></a>
+                        <div class="card-body" style="padding-top:5px;">
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-weight: bolder;"><a href="" style="text-decoration: none;">{{$value->tenloai}}</a></p>
+                        </div>
+                  </div>
+                  </div>
+                  @endforeach
             </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
       </div>
     <!-- End KM-->
 
@@ -123,18 +125,15 @@
     <div class="container-fluid mt-1 hinhanh" >
         <h3 class="hinh" style="padding:50px 0 40px 0;">THƯ VIỆN ẢNH</h3>
           <div class="row" style="padding-left:0px;">
-            <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
-                  <img src="img/KS-187.png" >
-              </div>
-              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
-                  <img src="img/KS-187.png" >
-              </div>
-              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
-                  <img src="img/KS-187.png" >
-              </div>
-              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
-                  <img src="img/KS-187.png" >
-              </div>
+          @foreach($s as $k => $a)
+            @if($k == 12)
+              @break;            
+            @endif
+              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 5px 0 0">
+                  <img src="img/thuvien/{{$a}}" height="200" width="300" alt="">
+              </div> 
+              
+          @endforeach             
           </div>
     </div>
         
@@ -144,19 +143,50 @@
     
    
     <div class="container-fluid mt-1 hinhanh">
-      <h2 class="hinh"><a class="p" href="#">DỊCH VỤ</a></h2>
+    <h3 class="hinh" style="padding:50px 0 40px 0;">KHÁM PHÁ NINH THUẬN</h3>
         <div class="row">
-         
+        <div class="col-md-3 col-sm-6 col-12">
+                  <div class="card mb-3">
+                      <a href=""><img src="img/thuvien/2.jpg"  class="card-img-top" alt=""></a>
+                        <div class="card-body" style="padding-top:5px;">
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Quan cảnh thành phố</a></p>
+                        </div>
+                  </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-12">
+                  <div class="card mb-3">
+                      <a href=""><img src="img/thuvien/4.jpg"  class="card-img-top" alt=""></a>
+                        <div class="card-body" style="padding-top:5px;">
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Điểm du lịch nỗi tiếng</a></p>
+                        </div>
+                  </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-12">
+                  <div class="card mb-3">
+                      <a href=""><img src="img/thuvien/3.jpg"  class="card-img-top" alt=""></a>
+                        <div class="card-body" style="padding-top:5px;">
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Phong cảnh đường biển</a></p>
+                        </div>
+                  </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-12">
+                  <div class="card mb-3">
+                      <a href=""><img src="img/thuvien/1.jpg"  class="card-img-top" alt=""></a>
+                        <div class="card-body" style="padding-top:5px;">
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Đặc sản Ninh Thuận</a></p>
+                        </div>
+                  </div>
+        </div>
     </div>
 </div>
 
 <!-- Dia Chi Lien HE -->
 
-<div class="container-fluid mt-2 diachilienhe">
+<div class="container-fluid mt-2 diachilienhe" style="background-color:#000080;">
      <div class="row">
-                        <div class="col-md-6 col-12">
-                                <div class="diachi"><h2 class="dc">Địa Chỉ</h2>
-                                            35 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Thành Phố Hồ Chí Minh  <br>
+                        <div class="col-md-6 col-12 "  >
+                                <div class="diachi" style="background-color:#000080;color:white;"><h2 class="dc">Địa Chỉ</h2>
+                                            35 Nguyễn Văn Bảo, Phường 4, Phước Mỹ, TP.Phan Rang - Tháp Chàm  <br>
 
                                             Gmail: royalhotel@gmail.com
                                             <br>
@@ -164,30 +194,20 @@
                                             <br>
                                             Fax: (+84) 985220501<br>
                                 </div>
+                                <div class="" style="padding: 10px 10px 0 70px;">
+                                      <a href="https://www.facebook.com/vu.leanh.144/" style="color:white;"><i class="fa fa-facebook"></i></a>
+                                      <a href="https://twitter.com/SalaDanangBeach" style="color:white;padding-left:20px;"><i class="fa fa-twitter"></i></a>
+                                      <a href="https://www.youtube.com/" style="color:white;padding-left:20px;"><i class="fa fa-youtube"></i></a>
+                                      <a href="https://business.instagram.com/getting-started?locale=vi_VN" style="color:white;padding-left:20px;"><i class="fa fa-instagram"></i></a>
+                                      <a href="https://www.tripadvisor.com.vn/" style="color:white;padding-left:20px;"><i class="fa fa-tripadvisor"></i></a>
+                                </div>
                         </div> 
       <div class="col-md-6 col-12">
             <div class="lienhe">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1849.4572308026559!2d106.68569919660078!3d10.821758783916268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528e540c65eab%3A0x9906c7cb80ebdcd9!2zMzUgTmd1eeG7hW4gVsSDbiBC4bqjbywgUGjGsOG7nW5nIDQsIEfDsiBW4bqlcCwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1601514304633!5m2!1svi!2s" width="100%" height="300px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15634.002630685518!2d109.02780480202358!3d11.587611047356917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170cf9758f74a37%3A0xbcc94f46b4909c03!2zQsOjaSBiaeG7g24gTmluaCBDaOG7rw!5e0!3m2!1svi!2s!4v1607318853415!5m2!1svi!2s" width="100%" height="250" frameborder="0" style="border:0;padding: 5px 0 0 5px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
     </div>
  </div>
-  <!-- End dia chi lien he -->
-     <script src="js/trangchu.js"></script>
-     <!-- <script>
-$(document).ready(function(){
-      $('.datphong').each(function(index,value){
-          $(this).click(function(){
-            var mota = $('.mota').eq(index).text();
-            var gia = $('.gia').eq(index).text();
-            var ghichu = $('.ghichu').eq(index).text();
-            var img = $('.img').eq(index).attr('src');
-            sessionStorage.setItem('mota', mota);
-            sessionStorage.setItem('gia', gia);
-            sessionStorage.setItem('ghichu',ghichu);
-            sessionStorage.setItem('img',img);
-          })
-      })
-  })
-</script> -->
+ 
 </body>
 </html>

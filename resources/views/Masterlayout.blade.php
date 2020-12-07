@@ -10,6 +10,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet prefetch" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
     <title>Dat Phong</title>
@@ -33,7 +37,7 @@
     </div>
     
   </div>
-<div class="contaier-fluid mt-1 header">
+<div class="contaier-fluid mt-1 header" style="background-color:#000080;">
         <div class="row">
             <div class="col-md-2 col-sm-6 col-12 cl">
               <a class="DanhMucTC" href="TrangChu">Trang Chủ</a>
@@ -90,9 +94,9 @@
     <!-- End Hinh Nen Dong -->
 
     @yield('content') 
-            <div class="contaier mt-5 diachilienhe">
-                <div class="row">
-                        <div class="col-md-6 col-12">
+            <div class="contaier mt-5 diachilienhe" style="background-color:#000080;">
+                <div class="row" style="background-color:#000080;">
+                        <div class="col-md-6 col-12" style="background-color:#000080;">
                                 <div class="diachi"><h2 class="dc">Địa Chỉ</h2>
                                             35 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Thành Phố Hồ Chí Minh  <br>
 
@@ -102,10 +106,17 @@
                                             <br>
                                             Fax: (+84) 985220501<br>
                                 </div>
+                                <div class="" style="padding: 10px 10px 0 70px;">
+                                      <a href="https://www.facebook.com/vu.leanh.144/" style="color:white;"><i class="fa fa-facebook"></i></a>
+                                      <a href="https://twitter.com/SalaDanangBeach" style="color:white;padding-left:20px;"><i class="fa fa-twitter"></i></a>
+                                      <a href="https://www.youtube.com/" style="color:white;padding-left:20px;"><i class="fa fa-youtube"></i></a>
+                                      <a href="https://business.instagram.com/getting-started?locale=vi_VN" style="color:white;padding-left:20px;"><i class="fa fa-instagram"></i></a>
+                                      <a href="https://www.tripadvisor.com.vn/" style="color:white;padding-left:20px;"><i class="fa fa-tripadvisor"></i></a>
+                                </div>
                         </div> 
                 <div class="col-md-6 col-12">
-        <div class="lienhe">
-                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1849.4572308026559!2d106.68569919660078!3d10.821758783916268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528e540c65eab%3A0x9906c7cb80ebdcd9!2zMzUgTmd1eeG7hW4gVsSDbiBC4bqjbywgUGjGsOG7nW5nIDQsIEfDsiBW4bqlcCwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1601514304633!5m2!1svi!2s" width="100%" height="300px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <div class="lienhe" style="padding: 5px 0 5px 0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15634.002630685518!2d109.02780480202358!3d11.587611047356917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170cf9758f74a37%3A0xbcc94f46b4909c03!2zQsOjaSBiaeG7g24gTmluaCBDaOG7rw!5e0!3m2!1svi!2s!4v1607318853415!5m2!1svi!2s" width="600" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
     </div>
  </div>

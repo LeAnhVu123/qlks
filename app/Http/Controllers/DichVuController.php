@@ -78,6 +78,6 @@ class DichVuController extends Controller
     {
 		Helpers::truncateTable(Dichvu::class,$id);
 		// Dichvu::findOrFail($id)->delete();
-		// return redirect(route('dichvu'));
+		return redirect(route('dichvu'));
     }
 }

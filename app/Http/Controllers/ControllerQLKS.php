@@ -25,7 +25,13 @@ class ControllerQLKS extends Controller
     public function index(Loaiphong $data)// return trang chu
     {
       $lp = Loaiphong::All()->take(4);
-      return view('TrangChu',compact('lp'));
+      $a = "img/thuvien";  
+      $file = \scandir($a);
+      unset($file[0]);
+      unset($file[1]);
+      $i = 0;
+      $s = array_reverse($file);//dao nguoc array
+      return view('TrangChu',compact('lp','s','i'));
     }
     public function phongdadat(Loaiphong $data1){
         $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();

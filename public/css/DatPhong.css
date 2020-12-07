@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .header a {
     text-decoration: none;
 }
@@ -12,7 +16,7 @@
     font-weight: bolder;
     padding-left: 40px;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .cl .DanhMuc:hover {
@@ -25,7 +29,7 @@
     padding-left: 80px;
     font-weight: bolder;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .cl .DanhMucTC:hover {
@@ -41,7 +45,7 @@
     padding-left: 60px;
     font-weight: bolder;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .tieude {
@@ -165,20 +169,21 @@ float: left;
 /* Dia Chi Lien He */
 
 .diachilienhe {
-    background-color: beige;
+    background-color: #000080;
 }
 
 .diachi {
+    color: white;
     width: 100%;
-    background-color: beige;
+    background-color: #000080;
     padding-left: 70px;
     padding-top: 50px;
 }
 
 .lienhe {
     width: 100%;
-    background-color: beige;
     padding-right: 0px;
+    float: right;
 }
 
 
