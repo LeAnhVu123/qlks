@@ -60,7 +60,7 @@
                             <a href="{{route('ctdondat')}}"><i class="fa fa-home"></i> QL CT Đơn Đặt</a>
                         </div>  
                         <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> QL Dịch Vụ</a>
+                            <a href="{{route('dichvu')}}"><i class="fa fa-home"></i> QL Dịch Vụ</a>
                         </div>
                         <div class="col-12 mt-1">
                             <a href="#"><i class="fa fa-home"></i> QL Thanh Toán</a>

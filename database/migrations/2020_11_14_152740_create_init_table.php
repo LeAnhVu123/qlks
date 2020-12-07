@@ -101,11 +101,9 @@ class CreateInitTable extends Migration
         });
         Schema::create('dichvus', function (Blueprint $table) {
                 $table->increments('madv'); 
-                $table->unsignedInteger('madon');
                 $table->string('tendv');
                 $table->bigInteger('gia');
-                $table->timestamps();  
-                $table->foreign('madon')->references('madon')->on('dondats');    
+                $table->timestamps();     
             });
       
         Schema::create('chitiets', function (Blueprint $table) {

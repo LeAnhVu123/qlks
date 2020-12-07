@@ -73,12 +73,14 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('AllDonDat','ControllerAdmin@getalldondat')->name('alldondat');
 		Route::get('Chitietdondat','ControllerAdmin@getchitietdd')->name('ctdondat');
 		Route::get('QLTKNV','ControllerAdmin@getviewnv')->name('nv');
+		Route::get('QLDV','DichVuController@index')->name('dichvu');
 		/* Xoa */
 		Route::get('Xoa/{makh}','ControllerAdmin@getxoa')->middleware('checkrole')->name('get-xoatk');
 		Route::get('XoaPhong/{maphong}','ControllerAdmin@xoaphong')->name('get-xoaphong');
 		Route::get('XoaLoaiPhong/{maloai}','ControllerAdmin@xoaloaiphong')->name('get-xoaloaiphong');
 		Route::get('XoaDonDat/{madon}','ControllerAdmin@xoadondat')->name('get-xoadondat');
 		Route::get('XoaChiTiet/{mact}','ControllerAdmin@getxoact')->name('get-xoact');
+		Route::get('XoaDichVu/{madv}','DichVuController@xoadv')->name('get-xoadv');
 			Route::group(['prefix'=>'Them'],function(){
 					// Admin/Them/
 					Route::get('ThemTKKH','ControllerAdmin@getthemtk')->name('get-themtk');
@@ -98,6 +100,9 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 
 					Route::get('ThemTKNV','ControllerAdmin@getviewthemnv')->name('get-themnv');
 					Route::post('ThemTKNV','ControllerAdmin@postthemnv')->name('postthemnv');
+
+					Route::get('ThemDV','DichVuController@getviewthemnv')->name('get-themdv');
+					Route::post('ThemDV','DichVuController@postthemnv')->name('postthemdv');
 					
 				});
 			Route::group(['prefix'=>'Sua'],function(){
@@ -119,8 +124,11 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 						
 				Route::get('SuaTKNV/{manv}','ControllerAdmin@getviewsuanv')->middleware('checkrole')->name('get-suanv');
 				Route::post('SuaTKNV/{manv}','ControllerAdmin@postsuanv')->middleware('checkrole')->name('post-suanv');
+
+				Route::get('SuaDV/{madv}','DichVuController@getviewsuadv')->middleware('checkrole')->name('get-suadv');
+				Route::post('SuaDV/{madv}','DichVuController@postsuadv')->middleware('checkrole')->name('post-suadv');
 			});
-		
+	
 	 
 });
 
