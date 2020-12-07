@@ -69,45 +69,48 @@
 
 
     <!-- Hinh Nen Dong -->
-    <div id="carouselExampleIndicators" class="carousel slide mt-1" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">   
    
-      <div class="carousel-item"> 
-        <img src="img/KS-886.jpg" height="500px" class="w-100" alt="...">
-      </div>
-      
-      <div class="carousel-item"> 
-        <img src="img/KS-329.jpg" height="500px" class="w-100" alt="...">
-      </div>
-      <div class="carousel-item"> 
-        <img src="img/KS-895.jpg" height="500px" class="w-100" alt="...">
-      </div>
-    
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/KS-886.jpg" class="d-block w-100" height="500px" alt="...">
     </div>
- 
+    <div class="carousel-item">
+      <img src="img/KS-329.jpg" class="d-block w-100" height="500px" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/KS-895.jpg" class="d-block w-100"  height="500px" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+ <!--  -->
   </div>
     <!-- End Hinh Nen Dong -->
 
 
     <!-- KM -->
       <div class="container-fluid mt-1 sanpham">
-        <div class="row1"><h3 class="hinhsp"><a class="km" href="#">KHUYẾN MÃI</a></h3></div>
+        <div class="row1"><h3 class="hinhsp" style="padding:50px 0 20px 0;">LOẠI PHÒNG</h3></div>
       
         <div class="row">
-        @foreach($km as $value)
+        @foreach($lp as $value)
           <div class="col-md-3 col-sm-6 col-12">
             <div class="card mb-3">
-              <img src="{{$path}}{{$value->HinhAnh}}"  class="card-img-top" alt="">
-            <div class="card-body">
-                
-              <p class="card-text"><span class="text1">{{$value->MoTa}}</span></p>
-              <p style="color:blue;">Giá : {{$value->Gia}} VND</p>
-              <a href="PhongDaDat" class="btn btn-primary datphong">Đặt Phòng</a>
+              <a href=""><img src="img/{{$value->hinhanh}}"  class="card-img-top" alt=""></a>
+            <div class="card-body" style="padding-top:5px;">
+              <p class="card-text" style="text-align:center;padding-top:20px;"><a href="" style="text-decoration: none;">{{$value->tenloai}}</a></p>
             </div>
             </div>
           </div>
@@ -115,30 +118,25 @@
         </div>
       </div>
     <!-- End KM-->
- 
-    
-      
-      
-    <!-- Phong Vip -->
-    <div class="container-fluid mt-1 hinhanh">
-      <h2 class="hinh"><a class="p" href="#">PHÒNG VIP</a></h2>
-      <div class="row">
-        @foreach($pv as $value)
-      <div class="col-md-3 col-sm-6 col-12">
-            <div class="card mb-3">
-              <img src="{{$path}}{{$value->HinhAnh}}" class="card-img-top" alt="">
-            <div class="card-body">
-              
-              <p class="card-text">{{$value->MoTa}}</p>
-              <p style="color:blue;">Giá : {{$value->Gia}} VND</p>
-              <a href="{{route('phongdadat')}}" class="btn btn-primary">Đặt Phòng</a>
-            </div>
-            </div>
-          </div>
-          @endforeach
 
-</div>
-         </div>
+    <!-- Phong Vip -->
+    <div class="container-fluid mt-1 hinhanh" >
+        <h3 class="hinh" style="padding:50px 0 40px 0;">THƯ VIỆN ẢNH</h3>
+          <div class="row" style="padding-left:0px;">
+            <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
+                  <img src="img/KS-187.png" >
+              </div>
+              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
+                  <img src="img/KS-187.png" >
+              </div>
+              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
+                  <img src="img/KS-187.png" >
+              </div>
+              <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 0 0 0">
+                  <img src="img/KS-187.png" >
+              </div>
+          </div>
+    </div>
         
     <!-- End Phong Vip -->
    
@@ -148,19 +146,7 @@
     <div class="container-fluid mt-1 hinhanh">
       <h2 class="hinh"><a class="p" href="#">DỊCH VỤ</a></h2>
         <div class="row">
-          @foreach($dv as $value)
-            <div class="col-md-3 col-sm-6 col-12">
-                  <div class="card mb-3">
-                    <img src="{{$path}}{{$value->HinhAnh}}" class="card-img-top" alt="">
-                  <div class="card-body">
-                    
-                    <p class="card-text">{{$value->MoTa}}</p>
-                    <p style="color:blue;">Giá : {{$value->Gia}} VND</p>
-                    <a href="PhongDaDat" class="btn btn-primary datphong">Đặt Phòng</a>
-                  </div>
-                  </div>
-        </div>
-      @endforeach
+         
     </div>
 </div>
 

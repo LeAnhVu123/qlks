@@ -24,13 +24,8 @@ class ControllerQLKS extends Controller
     }
     public function index(Loaiphong $data)// return trang chu
     {
-       
-        $data = Loaiphong::select(['HinhAnh','MoTa',])->take(3)->get();
-        $path =  'img\km\\'; 
-        $km = Loaiphong::select(['HinhAnh','MoTa','Gia'])->Where('MaLoai','>',3)->Where('MaLoai','<=',7)->get();
-        $pv = Loaiphong::select(['HinhAnh','MoTa','Gia'])->Where('MaLoai','>',7)->Where('MaLoai','<=',11)->get();
-        $dv = Loaiphong::select(['HinhAnh','MoTa','Gia'])->Where('MaLoai','>',11)->Where('MaLoai','<=',15)->get();
-        return view('TrangChu',compact('data','path','km','pv','dv'));//compact(biến) đưa dữ liệu sang trang html
+      $lp = Loaiphong::All()->take(4);
+      return view('TrangChu',compact('lp'));
     }
     public function phongdadat(Loaiphong $data1){
         $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();

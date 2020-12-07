@@ -340,14 +340,14 @@ class ControllerAdmin extends Controller
 	/* post them loai phong */
 	public function postthemlp(request $reg){
 		$this->validate($reg,[
-			'tenloai' => 'required|regex:/^[a-zA-Z0-9]+$/|min:3|max:100',
+			'tenloai' => 'required|min:3|max:100',
 			'succhua' => 'required|regex:/^[0-9]+$/|min:1|max:10',
 			'gia'=>'required|regex:/^[0-9]+$/|min:1|max:10',
 			'mota'=>'required|min:3|max:50',
 			'hinhanh'=>'required',
 		],[
 			'tenloai.required'=> 'Bạn chưa nhập tên loại',
-			'tenloai.regex'=>'Tên loại sai kiểu',
+			// 'tenloai.regex'=>'Tên loại sai kiểu',
 			'tenloai.min'=>'Tên loại chỉ được nhập 3-100 ký tự',
 			'tenloai.max'=>'Tên loại chỉ được nhập 3-100 ký tự',
 			'succhua.required'=> 'Bạn chưa nhập sức chứa',
