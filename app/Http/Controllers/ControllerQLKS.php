@@ -43,12 +43,8 @@ class ControllerQLKS extends Controller
 
     public function datphong(Loaiphong $data)
     {
-        $data = Loaiphong::select(['HinhAnh','MoTa','MaLoai',])->take(3)->get();
-        $test = Loaiphong::select(['HinhAnh','MoTa','MaLoai'])->take(3)->get();
-        $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();//take gioi han luot xuat cua foreach
-        $data2= Loaiphong::Where('MaLoai','>',3)->Where('MaLoai','<=',9)->get();
-        $path =  'img\km\\';
-        return view('DatPhong',compact('data','path','data1','data2','test'));
+        $p = Loaiphong::all();
+        return view('DatPhong',compact('p'));
     }
     public function click(Request $reg)
     {
