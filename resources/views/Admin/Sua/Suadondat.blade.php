@@ -23,24 +23,46 @@
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Mã khuyến mãi</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="makm" value="{{$dd->makm}}"></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:10px;">Mã thanh toán</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="matt" value="{{$dd->matt}}"></td>
+						<td style="padding-left:50px;padding-top:10px;">
+							<select name="km" id="" style="width:150px;height:30px">
+							<option value="0">none</option>
+							@foreach($km as $value)
+								<option value="{{$value->makm}}">{{$value->tenkm}}</option>
+								@endforeach
+							</select>
+						</td>
                     </tr>
                      <tr>
                         <td style="padding-top:10px;">Ngày lập</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="date" autocomplete="off" name="ngaylap" value="{{$dd->ngaylap}}"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" class="nut" name="ngaylap" value="{{$dd->ngaylap}}"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Tổng tiền</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="tongtien" value="{{$dd->tongtien}}"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Trạng thái</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="trangthai" value="{{$dd->trangthai}}"></td>
-                    </tr>
+						<td style="padding-top:10px;">Trạng thái</td>
+						<td style="padding-left:50px;padding-top:10px;">
+							<select name="trangthai" id="">
+								<option value="0">Chưa</option>
+								<option value="1">Hoàn Thành </option>
+							</select>
+                        </td>
+					</tr>
+					<tr>
+						<td style="padding-top:10px;">Dịch vụ</td>						
+						<td>
+						<div class="row ml-5">
+							@foreach($dv as $value)							
+								<div class="col-6 p-0 m-0 my-2" style="font-size:20px">
+								
+									<input type="checkbox" name="dv{{$value->madv}}" madv="" value="{{$value->madv}}" class="mr-2" @foreach($explode as $madv)  {{$value->madv == $madv ? 'checked' : ''}} @endforeach >{{$value->tendv}}
+									
+								</div>								
+							@endforeach
+							</div>
+						</td>
+					</tr>
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Sửa"></a></td>
                     </tr> 
@@ -61,4 +83,16 @@
             </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+	$('.nut').datepicker({
+			dateFormat: "yy-mm-dd",
+			minDate: new Date(),
+			numberOfMonths: 2,
+			changeMonth: true,
+			stepMonths: 0
+		});
+})
+	
+</script>
 @endsection

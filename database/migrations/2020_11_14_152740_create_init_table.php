@@ -52,17 +52,8 @@ class CreateInitTable extends Migration
             $table->string('hinhanh');
             $table->bigInteger('gia'); 
             $table->timestamps();      
-        });
-        
-        Schema::create('thanhtoans', function (Blueprint $table) {
-            $table->increments('matt'); 
-            $table->date('ngaytt');
-            // $table->bigInteger('tongtien');
-            $table->Integer('thanhtoan');
-            // $table->Integer('conlai');
-         
-            $table->timestamps();  
-    });
+        });        
+       
         Schema::create('khuyenmais', function (Blueprint $table) {
             $table->increments('makm'); 
             $table->string('tenkm');
@@ -70,22 +61,41 @@ class CreateInitTable extends Migration
             $table->date('ngaybd');
             $table->date('ngaykt');
             $table->timestamps();        
-        });
+		});
+
+		Schema::create('dichvus', function (Blueprint $table) {
+			$table->increments('madv'); 
+			$table->string('tendv');
+			$table->bigInteger('gia');
+			$table->timestamps();    
+		});
+
         Schema::create('dondats', function (Blueprint $table) {
             $table->increments('madon'); 
             $table->unsignedInteger('manv');
-            $table->unsignedInteger('makh'); 
-            $table->unsignedInteger('makm')->nullable();
-            $table->unsignedInteger('matt')->nullable();
+            $table->unsignedInteger('makh');
+			$table->unsignedInteger('makm')->nullable();
+			$table->text('madv')->nullable();
             $table->date('ngaylap');
             $table->bigInteger('tongtien'); 
-            $table->string('trangthai');  
+            $table->bigInteger('trangthai')->default(0);
             $table->timestamps();  
             $table->foreign('manv')->references('manv')->on('nhanviens');
             $table->foreign('makh')->references('makh')->on('khachhangs');
             $table->foreign('makm')->references('makm')->on('khuyenmais');
-            $table->foreign('matt')->references('matt')->on('thanhtoans');
-        });
+		});
+		
+		Schema::create('thanhtoans', function (Blueprint $table) {
+            $table->increments('matt'); 
+            $table->date('ngaytt');
+            $table->unsignedInteger('madon');
+            $table->Integer('thanhtoan');
+            // $table->Integer('conlai');
+         
+			$table->timestamps();  
+			$table->foreign('madon')->references('madon')->on('dondats');
+	});
+	
         Schema::create('phongs', function (Blueprint $table) {
             $table->unsignedInteger('maphong'); 
             $table->unsignedInteger('maloai');
@@ -99,12 +109,7 @@ class CreateInitTable extends Migration
             $table->foreign('maloai')->references('maloai')->on('loaiphongs'); 
             $table->foreign('madon')->references('madon')->on('dondats'); 
         });
-        Schema::create('dichvus', function (Blueprint $table) {
-                $table->increments('madv'); 
-                $table->string('tendv');
-                $table->bigInteger('gia');
-                $table->timestamps();     
-            });
+        
       
         Schema::create('chitiets', function (Blueprint $table) {
             $table->increments('mact'); 
@@ -128,14 +133,13 @@ class CreateInitTable extends Migration
      * @return void
      */
     public function down()
-    {
-            
+    {           
+		   Schema::dropIfExists('dondats'); 
            Schema::dropIfExists('khachhangs');
            Schema::dropIfExists('nhanviens');
            Schema::dropIfExists('phongs');
            Schema::dropIfExists('loaiphongs');
-           Schema::dropIfExists('khuyenmais');
-           Schema::dropIfExists('dondats');
+           Schema::dropIfExists('khuyenmais');           
            Schema::dropIfExists('dichvus');
            Schema::dropIfExists('thanhtoans');
            Schema::dropIfExists('chitiets');

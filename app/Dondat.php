@@ -10,7 +10,7 @@ class Dondat extends Model
     public $incrementing = false; 
 	protected $primaryKey = 'madon';
 	protected $fillable =[
-		'madon','makh','manv','makm','matt','ngaylap','tongtien','trangthai'
+		'madon','makh','manv','makm','ngaylap','tongtien','trangthai'
 	];
 	
 	
