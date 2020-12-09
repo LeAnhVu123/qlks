@@ -31,7 +31,10 @@ Route::post('/DatPhong','ControllerQLKS@getid')->name('getid');
 Route::post('/get-val','ControllerQLKS@getval')->name('getval');
 Route::get('/DangNhapADMin','ControllerQLKS@dangnhapadmin')->name('dangnhap');
 Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
-
+Route::get('/GioiThieu','ControllerQLKS@gioithieu')->name('gt');
+Route::get('/HuongDan','ControllerQLKS@huongdan')->name('hd');
+Route::get('/KhuyenMai','ControllerQLKS@khuyenmai')->name('km');
+Route::get('/DichVu','ControllerQLKS@dichvu')->name('dv');
 
 /* Quản Lí ID khách hàng */
 
@@ -58,7 +61,7 @@ Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 
 // Route::post('/DangNhapADMin','ControllerQLKS@ktid')->name('ktid');
 // ---------------------------------
-
+Route::post('countimg','LoginController@countImg')->name('countImg');
 Route::get('Admin/dangnhap','LoginController@dangnhap')->name('dangnhap');
 Route::post('Admin/dangnhap','LoginController@xetdangnhap')->name('xetdangnhap');// ua post get dang nhap la sao m, sao phai them thang post
 Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet prefetch" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-    <title>Dat Phong</title>
+    <!-- <title>ROYAL HOTEL</title> -->
 </head>
 <body>
 <div class="container-fluid mt-1 search ">
@@ -25,7 +25,7 @@
          <h3 class="ro"><a class="ry" href="TrangChu">ROYAL HOTEL</a></h3>
       </div> 
       <div class="col-md-6 col-ms-6 col-12 cot">
-        <a href="" class="gt">Giới Thiệu</a>
+        <a href="{{route('gt')}}" class="gt">Giới Thiệu</a>
         <a href="DatPhong" class="gtd">Đặt Phòng Nhanh</a>
         <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
       </div>
@@ -48,11 +48,11 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Khuyến Mãi</a>
+              <a class="DanhMuc" href="{{route('km')}}">Khuyến Mãi</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Dịch Vụ</a>
+              <a class="DanhMuc" href="{{route('dv')}}">Dịch Vụ</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Hướng Dẫn</a>
+              <a class="DanhMuc" href="{{route('hd')}}">Hướng Dẫn</a>
             </div>
          
          
@@ -72,13 +72,13 @@
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/KS-230.jpg" class="d-block w-100" height="500px" alt="...">
+      <img src="img/KS-230.jpg" class="d-block w-100" height="400px" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/KS-419.jpg" class="d-block w-100" height="500px" alt="...">
+      <img src="img/KS-419.jpg" class="d-block w-100" height="400px" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/KS-802.jpg" class="d-block w-100"  height="500px" alt="...">
+      <img src="img/KS-802.jpg" class="d-block w-100"  height="400px" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

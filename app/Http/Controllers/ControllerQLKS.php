@@ -29,9 +29,8 @@ class ControllerQLKS extends Controller
       $file = \scandir($a);
       unset($file[0]);
       unset($file[1]);
-      $i = 0;
       $s = array_reverse($file);//dao nguoc array
-      return view('TrangChu',compact('lp','s','i'));
+      return view('TrangChu',compact('lp','s'));
     }
     public function phongdadat(Loaiphong $data1){
         $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();
@@ -43,6 +42,7 @@ class ControllerQLKS extends Controller
 
     public function datphong(Loaiphong $data)
     {
+        // $p = Loaiphong::paginate(3);
         $p = Loaiphong::all();
         return view('DatPhong',compact('p'));
     }
@@ -81,10 +81,25 @@ class ControllerQLKS extends Controller
             if($val['MaLoai'] == $value){
             Session::forget('itemCart.'.$key);
         }
-        }
-        //print_r(Session::get('itemCart'));
+        
     }
-    
+}
+    public function gioithieu()
+        {
+            return view('Gioithieu');
+        }
+        public function huongdan()
+        {
+            return view('Huongdan');
+        }
+        public function khuyenmai()
+        {
+            return view('Khuyenmai');
+        }
+        public function dichvu()
+        {
+            return view('Dichvu');
+        }
 
 
 

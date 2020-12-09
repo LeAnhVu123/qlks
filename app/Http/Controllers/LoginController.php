@@ -30,4 +30,10 @@ class LoginController extends Controller
         $forget = Cookie::forget('account');
         return redirect(route('dangnhap'))->withCookie($forget);
     }
+
+
+    public function countImg(Request $reg){
+            $count = $reg['count'];
+            echo($reg['count']);
+    }
 }

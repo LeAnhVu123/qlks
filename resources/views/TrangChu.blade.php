@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Trang Chu</title>
+    <title>Trang Chủ</title>
    
 </head>
 <body>
@@ -23,7 +23,7 @@
          <h3 class="ro"><a class="ry" href="TrangChu">ROYAL HOTEL</a></h3>
       </div> 
       <div class="col-md-6 col-ms-6 col-12 cot">
-        <a href="" class="gt">Giới Thiệu</a>
+        <a href="{{route('gt')}}" class="gt">Giới Thiệu</a>
         <a href="DatPhong" class="gtd">Đặt Phòng Nhanh</a>
         <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
       </div>
@@ -48,11 +48,11 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Khuyến Mãi</a>
+              <a class="DanhMuc" href="{{route('km')}}">Khuyến Mãi</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Dịch Vụ</a>
+              <a class="DanhMuc" href="{{route('dv')}}">Dịch Vụ</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Hướng Dẫn</a>
+              <a class="DanhMuc" href="{{route('hd')}}">Hướng Dẫn</a>
             </div>
          
          
@@ -126,7 +126,7 @@
         <h3 class="hinh" style="padding:50px 0 40px 0;">THƯ VIỆN ẢNH</h3>
           <div class="row" style="padding-left:0px;">
           @foreach($s as $k => $a)
-            @if($k == 12)
+            @if($k == 8)
               @break;            
             @endif
               <div class="col-md-3 col-sm-6 col-12" style="padding: 5px 5px 0 0">
