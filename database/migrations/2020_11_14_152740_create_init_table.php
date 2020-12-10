@@ -53,6 +53,13 @@ class CreateInitTable extends Migration
             $table->bigInteger('gia'); 
             $table->timestamps();      
         });        
+        Schema::create('hinhloaiphongs', function (Blueprint $table) {
+            $table->increments('mahinh');
+            $table->unsignedInteger('maloai');
+            $table->string('tenhinh');
+            $table->timestamps();    
+            $table->foreign('maloai')->references('maloai')->on('loaiphongs');
+        });        
        
         Schema::create('khuyenmais', function (Blueprint $table) {
             $table->increments('makm'); 
@@ -102,7 +109,6 @@ class CreateInitTable extends Migration
             $table->unsignedInteger('madon')->nullable();
             // $table->string('hinhanh');
             $table->string('ghichu');
-            $table->string('trangthai');
             $table->Integer('sotang');
             $table->timestamps();  
             $table->primary('maphong');
@@ -117,8 +123,7 @@ class CreateInitTable extends Migration
             $table->date('ngayden');
             $table->date('ngaydi');
             $table->Integer('slphong');
-            $table->Integer('nguoilon');
-            $table->Integer('treem');
+            $table->Integer('soluong');
             $table->timestamps();  
             $table->foreign('madon')->references('madon')->on('dondats');      
     });
@@ -134,6 +139,7 @@ class CreateInitTable extends Migration
      */
     public function down()
     {           
+            
 		   Schema::dropIfExists('dondats'); 
            Schema::dropIfExists('khachhangs');
            Schema::dropIfExists('nhanviens');
@@ -143,7 +149,9 @@ class CreateInitTable extends Migration
            Schema::dropIfExists('dichvus');
            Schema::dropIfExists('thanhtoans');
            Schema::dropIfExists('chitiets');
+           Schema::dropIfExists('hinhloaiphongs');
            Schema::dropIfExists('roles');
+           
            
     }
 }
