@@ -35,9 +35,9 @@ class ControllerQLKS extends Controller
       return view('TrangChu',compact('lp','s'));
     }
     public function phongdadat(Loaiphong $data1){
-        $data1 = Loaiphong::select(['HinhAnh'])->Where('MaLoai','>',3)->Where('MaLoai','<=',6)->get();
-        $path =  'img\km\\';
-        $itemCart = Session::get('itemCart');
+        $data1 = Loaiphong::select(['hinhanh'])->Where('maloai','>',3)->Where('maloai','<=',6)->get();
+        $path =  'img\\';
+		$itemCart = Session::get('itemCart');
         return view('PhongDaDat',compact('data1','path','itemCart'));
     }
 
@@ -62,12 +62,12 @@ class ControllerQLKS extends Controller
     }
     
     public function getid(Request $reg){
-        $id = $reg['id'];
-        $phong = Phong::where('MaPhong',$id)->first();
-        $session = Session::get('itemCart');
+        $id = $reg['maloai'];
+        $phong = Phong::where('maphong',$id)->first();
+		$session = Session::get('itemCart');
         if($session){
         foreach($session as $value){
-            if($value['MaLoai'] == $id){
+            if($value['maloai'] == $id){
                 return redirect(route('phongdadat'));
             }
         }
@@ -81,7 +81,7 @@ class ControllerQLKS extends Controller
         $value = $reg['val'];
         $getsession = Session::get('itemCart');
         foreach($getsession as $key => $val){
-            if($val['MaLoai'] == $value){
+            if($val['maloai'] == $value){
             Session::forget('itemCart.'.$key);
         }
         

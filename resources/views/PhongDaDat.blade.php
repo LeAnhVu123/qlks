@@ -1,8 +1,7 @@
 @extends('Masterlayout')
 @section('content')
 @if(session('itemCart'))
-@foreach(session('itemCart') as $value)
-
+@foreach($itemCart as $value)
 <div class="abc">
 	<div class="container-fluid mt-2" style="text-align:center;height:50px;width:100%;background-color: lightskyblue;padding-right:0px; border: 0.2px solid;">
 		<div class="row">
@@ -26,28 +25,24 @@
 	<div class="container-fluid" style="height:300px;width:100%;padding-right:0px;padding-top:10px;border-left:0.2px solid;border-bottom:0.2px solid;border-right:0.2px solid;">
 		<div class="row">
 			<div class="col-3">
-				<img src="img\km\{{$value->HinhAnh}}" alt="" class="img" style="height:200px;width:100%;">
-				<p style="padding-top:5px;height:10px">Loai Phong :<span class="loai">{{$value->TenLoai}}</span></p>
+				<img src="{{$path}}\{{$value->hinhanh}}" alt="" class="img" style="height:200px;width:100%;">
+				<p style="padding-top:5px;height:10px">Loai Phong :<span class="loai text-capitalize">{{$value->tenloai}}</span></p>
 
 				<!-- <div>{{$value->MoTa}}</div>  -->
 
-				<p style="padding-top:5px;height:10px">SucChua:<span class="succhua">{{$value->SucChua}}</span></p>
-				<p style="padding-top:5px;height:10px">Gia:<span class="gia">{{$value->Gia}}</span></p>
+				<p style="padding-top:5px;height:10px">SucChua:<span class="succhua">{{$value->succhua}}</span></p>
+				<p style="padding-top:5px;height:10px">Gia:<span class="gia">{{$value->gia}}</span></p>
 
 			</div>
 			<div class="col-3">
 
 				<table>
 					<tr style="">
-						<td style="">- Số phòng</td>
+						<td>- Số phòng</td>
 						<td style="padding-left:20px;"><input type="number" min="1" max="10" style="width:70px;" value="1" class="sophong"></td>
-					</tr>
+					</tr>					
 					<tr>
-						<td>- Người lớn</td>
-						<td style="padding-left:20px;padding-top:5px;"><input type="number" min="1" max="10" style="width:70px;"></td>
-					</tr>
-					<tr>
-						<td>- Trẻ em</td>
+						<td>- Số lượng</td>
 						<td style="padding-left:20px;padding-top:5px;"><input type="number" min="1" max="10" style="width:70px;"></td>
 					</tr>
 					<tr>
@@ -72,7 +67,7 @@
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv4" value='4'><span> Quầy bar</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv5" value='5'><span> Spa</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv6" value='6'><span> Giặt ủi</span></table>
-				<table style="width:100%">Tong<span class="total-priceservice">0</span></table>
+				<table style="width:100%">Tong<span class="total-priceservice"> 0</span></table>
 
 			</div>
 			<div class="col-2" style="text-align:center;">
@@ -87,7 +82,7 @@
 					</button>
 				</a>
 
-				<button type="button" class="btn btn-primary xoass" style="width:110px;padding-top:20px;padding-right:20px;float:right;" value="{{$value['MaLoai']}}">
+				<button type="button" class="btn btn-primary xoass" style="width:110px;padding-top:20px;padding-right:20px;float:right;" value="{{$value['maloai']}}">
 					Hủy Phòng
 				</button>
 
@@ -123,15 +118,19 @@
 			day = '0' + day;
 		}
 		var year = d.getFullYear();
-		var date = month + "/" + day + "/" + year;
+		var date = year + "-" +  month + "-" + day  ;
 		$('.ngayden').val(date);
 		$('.ngaydi').val(date);
-		$('.ngayden').datepicker();
-		$('.ngaydi').datepicker();
+		$('.ngayden, .ngaydi').datepicker({
+			dateFormat: 'yy-mm-dd',
+			minDate : new Date(),
+			numberOfMonths : 2,
+		});
 
 
 		$('.xoass').each(function(index, value) {
-			$(this).click(function() {
+			var alltotal = 0;
+			$(this).click(function() {	
 				var val = $('.xoass').eq(index).val();
 				$.ajax({
 					url: "{{route('getval')}}",
@@ -140,13 +139,17 @@
 						"_token": "{{ csrf_token() }}",
 						'val': val
 					},
-					success: function(result) {
+					success: function(result) {						
 						if (confirm('Ban co muon xoa khong?')) {
 							$('.abc').eq(index).remove();
+							$('.xuatgia').each(function(key) {
+								alltotal += parseInt($('.xuatgia').eq(key).text());					
+							})
+							$('.total').val(alltotal);						
 						}
 					},
-				})
-			})
+				})			
+			})			
 		})
 
 		var dv = [100, 200, 300, 400, 500, 600];
