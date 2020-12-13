@@ -14,9 +14,15 @@ class DonDatController extends Controller
 {
     //
     /* Xem tat ca don dat phong */
-	public function getalldondat(){
-		$dd = Dondat::All();
-		// dd($dd[0]->getNameKM);
+	public function getalldondat(request  $reg){
+		$i = $reg['dd'];
+		if($i == NULL)
+		{
+			$dd = Dondat::All();
+		}else{
+			$dd = Dondat::all()->where('madon',$i);
+		}
+		
 		return view('Admin.Alldondat',compact('dd'));
 	}
 	/* them don dat */

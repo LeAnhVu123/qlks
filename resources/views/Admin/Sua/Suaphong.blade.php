@@ -22,34 +22,19 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="ghichu" value="{{$mp->ghichu}}"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Trạng Thái</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="trangthai" value="{{$mp->trangthai}}"></td>
+                        <td style="padding-top:10px;">Mã Loại</td>
+                        <!-- <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai"></td> -->
+                        <td style="padding-left:50px;padding-top:10px;">
+                                <select name="maloai" id="" >
+                                <option value="{{$mp->maloai}}">{{$ml->tenloai}}</option>
+                                @foreach($lp as $value)
+                                    <option value="{{$value->maloai}}">{{$value->tenloai}}</option>
+                                @endforeach    
+                                </select>
+                        </td>        
                     </tr>
-                    <tr>
-                        <td style="padding-top:10px;">Loại phòng</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai" value="{{$mp->maloai}}"></td>
-                    </tr>
-                    <tr>
-                        <td style="padding-top:10px;">Mã đơn</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="madon" value="{{$mp->madon}}"></td>
-                    </tr>
-                    <!-- <tr>
-                        <td style="padding-top:10px;">Chọn Loại Phòng</td>
-                        <td colspan="2" style="padding-left:50px;padding-top:10px;">
-                            <select name="maloai" id="">
-                            <option value="{{$mp->maloai}}">Loại {{$mp->maloai}}</option>
-                            @foreach($lp as $value)
-                                <option name="maloai" value="{{$value->maloai}}">Loại {{$value->maloai}}</option>
-                                @endforeach
-                            </select>
-                        </td> -->
-                        <!-- <td colspan="2" style="padding-left:50px;padding-top:10px;"><input type="radio" name="maloai" value="1"> Vip
-                        <input type="radio" name="maloai" value="2"> Thường
-                        <input type="radio" name="maloai" value="3"> Trung -->
-
-                        </td>
-                        
-                    </tr>
+                  
+                   
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Sửa"></a></td>
                     </tr> 

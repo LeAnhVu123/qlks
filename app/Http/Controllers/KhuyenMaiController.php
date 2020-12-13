@@ -12,9 +12,16 @@ class KhuyenMaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $reg)
     {
-		$km = Khuyenmai::all();
+      $i = $reg['km'];
+      if($i == NULL)
+      {
+        $km = Khuyenmai::all();
+      }else{
+        $km = Khuyenmai::all()->where('makm',$i);
+      }
+		
         return view('Admin.Allkhuyenmai',compact('km'));
     }
 

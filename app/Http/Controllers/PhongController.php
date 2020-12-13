@@ -6,13 +6,28 @@ use  App\Loaiphong;
 use  App\Dondat;
 use  App\Chitiet;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PhongController extends Controller
 {
     //
     /* View Phong */
-	public function getp(){
-		$p = Phong::All();
+	public function getp(request $reg){
+		$query = "SELECT * FROM phongs WHERE maphong in (";
+		$i = $reg['phong'];
+		$arr = explode(',',$i);
+		$count = count($arr);
+		if($i == NULL)		{
+			$p = Phong::All();	
+		}
+		else{
+			foreach($arr as $index => $val){
+				$query .= "$arr[$index],";
+			}
+			$query = substr($query,0,strlen($query)-1);	
+			$query .= ")";
+			$p = DB::select($query);
+		}
+	
 		return view('Admin.Phong',compact('p'));
 	}
 	/* View them phong */
@@ -25,7 +40,6 @@ class PhongController extends Controller
 			'maphong' => 'required|regex:/^[0-9]+$/|max:10|unique:phongs,maphong',
 			'sotang'=>'required|regex:/^[0-9]+$/|max:10',
 			'ghichu' => 'required|min:2|max:100',
-			'trangthai' => 'required|min:2|max:100',
 			'maloai'=>'required',
 			
 		],
@@ -40,16 +54,12 @@ class PhongController extends Controller
 			'ghichu.required'=> 'Bạn chưa nhập ghi chú',
 			'ghichu.min'=>'Tối thiểu 2 kí tự',
 			'ghichu.max'=>'Tối đa 100 kí tự',
-			'trangthai.required'=> 'Bạn chưa nhập trạng thái',	
-			'trangthai.min'=>'Tối thiểu 2 kí tự',
-			'trangthai.max'=>'Tối đa 100 kí tự',
 			'maloai.required'=>'Chưa chọn mã loại'
 		]);
 		$p = new Phong;
 		$p->maphong = $reg['maphong'];		
 		$p->sotang = $reg['sotang'];
 		$p->ghichu = $reg['ghichu'];
-		$p->trangthai = $reg['trangthai'];
 		$pl = Loaiphong::Where('maloai',$reg['maloai'])->first();
 		if($pl)
 		{
@@ -64,15 +74,16 @@ class PhongController extends Controller
 	/* Sua Phong */
 	public function getsuaphong($maphong){
 		$mp = Phong::find($maphong);
-		$lp = Loaiphong::all();
-		return view('Admin.Sua.Suaphong',compact('mp','lp'));
+		$a = $mp->maloai;
+		$ml = Loaiphong::find($a);
+		$lp = Loaiphong::all()->where('maloai','<>',$a);
+		return view('Admin.Sua.Suaphong',compact('mp','lp','ml'));
 	}
 	public function postsuaphong(request $reg,$maphong){
 		$mp = Phong::find($maphong);
 		
 		$this->validate($reg,[
 			'ghichu' => 'required|min:2|max:100',
-			'trangthai' => 'required|min:2|max:100',
 			'maloai'=>'required',
 		
 			
@@ -81,38 +92,13 @@ class PhongController extends Controller
 			'ghichu.required'=> 'Bạn chưa nhập ghi chú',
 			'ghichu.min'=>'Tối đa 100 kí tự',
 			'ghichu.max'=>'Tối đa 100 kí tự',
-			'trangthai.required'=> 'Bạn chưa nhập trạng thái',	
-			'trangthai.min'=>'Tối đa 100 kí tự',
-			'trangthai.max'=>'Tối đa 100 kí tự',
 			'maloai.required'=>'Chưa chọn tên loại phòng',
 		]);
 		$mp->ghichu = $reg['ghichu'];
-		$mp->trangthai = $reg['trangthai'];
 		$p = Loaiphong::Where('maloai',$reg['maloai'])->first();
-		$a = Dondat::Where('madon',$reg['madon'])->first();
-		if($p)
-		{
-			$mp->maloai = $reg['maloai'];
-				if($reg['madon']==NULL)
-					{
-						$mp->madon = $reg['madon'];
-					}
-				else
-				{
-					if($a)
-					{
-						$mp->madon = $reg['madon'];
-					}
-					else{
-						return redirect('Admin/Sua/Suaphong/'.$maphong)->with('thanhcong','Không tồn tại mã đơn này');
-					}
-				}
-			$mp->save();
-			return redirect(route('phong'))->with('thanhcong','Bạn đã sửa phòng thành công');
-		}
-		else{
-			return redirect('Admin/Sua/Suaphong/'.$maphong)->with('thanhcong','Không tồn tại loại phòng này');
-		}
+		$mp->maloai = $reg['maloai'];	
+		$mp->save();
+		return redirect(route('phong'))->with('thanhcong','Bạn đã sửa phòng thành công');
 	}
 	/* xoa phong */
 	public function xoaphong($maphong)

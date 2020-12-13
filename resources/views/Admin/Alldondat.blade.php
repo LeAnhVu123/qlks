@@ -32,11 +32,47 @@
                    @foreach($dd as $value)
                         <tr>
                             <td>{{$value->madon}}</td>
-                            <td>{{$value->makh}}</td>
-                            <td>{{$value->manv}}</td>
-                            <td>{{$value->maphong}}</td>
-							<td>{{$value->makm}}</td>
-							<td>{{$value->madv}}</td>
+                            <td>
+                                <form action="{{route('qltk')}}" method="get">
+                                @csrf
+                                    <input type="hidden" value="{{$value->makh}}" name="tkkh">
+                                        <div class="aa" style="cursor:pointer;">{{$value->makh}}</div>
+                                    <input type="submit" name="abc" class="abc">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{route('nv')}}" method="get">
+                                @csrf 
+                                    <input type="hidden" name="tknv" value="{{$value->manv}}">
+                                        <div class="bb" style="cursor:pointer;">{{$value->manv}}</div>
+                                    <input type="submit" name="nv" class="tknv">
+                                </form>
+
+                            </td>
+                            <td>
+                                <form action="{{route('phong')}}" method="get">
+                                @csrf 
+                                    <input type="hidden" name="phong" value="{{$value->maphong}}">
+                                        <div class="cc" style="cursor:pointer;">{{$value->maphong}}</div>
+                                    <input type="submit" name="nv" class="phong">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{route('khuyenmai')}}" method="get">
+                                @csrf 
+                                    <input type="hidden" name="km" value="{{$value->makm}}">
+                                        <div class="dd" style="cursor:pointer;">{{$value->makm}}</div>
+                                    <input type="submit" name="gui" class="phong">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{route('dichvu')}}" method="get">
+                                @csrf 
+                                    <input type="hidden" name="dv" value="{{$value->madv}}">
+                                        <div class="ee" style="cursor:pointer;">{{$value->madv}}</div>
+                                    <input type="submit" name="gui" class="phong">
+                                </form>
+                            </td>
 							<td>{{$value->ngaylap}}</td>
                             <td>{{$value->tongtien}}</td>                            
                             <td>{{$value->trangthai == 0 ? 'Chua' : 'Hoan thanh'}}</td>
@@ -49,5 +85,28 @@
                 </div>
             </div>
 		</div> 
-       
+<script>
+$(document).ready(function(){
+    $(".abc").hide();
+    $('.aa').click(function(){
+        $(this).next().click();
+    })
+    $(".tknv").hide();
+    $('.bb').click(function(){
+        $(this).next().click();
+    })
+    $(".phong").hide();
+    $('.cc').click(function(){
+        $(this).next().click();
+    })
+    $(".khuyenmai").hide();
+    $('.dd').click(function(){
+        $(this).next().click();
+    })
+    $(".dichvu").hide();
+    $('.ee').click(function(){
+        $(this).next().click();
+    })
+})
+</script>      
 @endsection

@@ -54,7 +54,7 @@
                 </div>
                 <div class="nv">    
                         <div class="col-12" style="padding-top:10px;">
-                            <a href="{{route('qltk')}}"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
+                            <a href="{{route('qltk')}}" class="qlkh"><i class="fa fa-home"></i> QL Tài Khoản KH</a>
                         </div>
                         <div class="col-12 mt-1">
                             <a href="{{route('phong')}}"><i class="fa fa-home"></i> QL Phòng</a>
@@ -102,10 +102,17 @@
 <!--  -->
 
 
-<script
->$(document).ready(function(){
+<script>
+$(document).ready(function(){
     $('#example').DataTable();
  })
-</script>   
+</script> 
+<script>
+$(document).ready(function(){
+    // $('.qlkh').click(function(){
+    //     $('.qlkh').css("background-color", "yellow");
+    });
+ });
+</script>  
 </body>
 </html>

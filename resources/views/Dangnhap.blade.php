@@ -27,10 +27,13 @@
             <div class="row" style="padding-top:50px;">
                 <div class="col-8"></div>
                 <div class="col-3" style="background-color:white;border-radius:5px;padding-left:15px;">
+                @include('notice')
+                <form action="{{route('post-dn')}}" method="post">
+                        @csrf
                     <div class="row">
                         <div class="col-12" style="padding-top:20px;"><span style="font-size:20px;">Đăng Nhập</span> </div>
-                        <div class="col-12" style="padding-top:30px;"><input class="form-control" autocomplete="off" type="text" placeholder="Email/Số điện thoại/Tên đăng nhập"></div>
-                        <div class="col-12" style="padding-top:30px;"><input class="form-control" autocomplete="off" type="password" placeholder="Mật khẩu"></div>
+                        <div class="col-12" style="padding-top:30px;"><input class="form-control" name="taikhoan" autocomplete="off" type="text" placeholder="Email/Số điện thoại/Tên đăng nhập"></div>
+                        <div class="col-12" style="padding-top:30px;"><input class="form-control" name="matkhau" autocomplete="off" type="password" placeholder="Mật khẩu"></div>
                         <div class="col-12" style="padding-top:30px;"><button class="btn btn-danger" style="width:100%;" type="submit">Đăng Nhập</button></div>
                         <div class="col-6" style="padding-top:10px;"><a href="" style="text-decoration: none;font-size:14px;">Quên mật khẩu</a></div>
                         <div class="col-6" style="padding-top:10px;"><a href="" style="float:right;text-decoration: none;font-size:14px;">Cần trợ giúp.?</a></div>
@@ -41,7 +44,7 @@
                         <div class="col-5" style="padding-top:10px;"><hr></div>
                         <div class="col-12" style="padding-top:10px;padding-bottom:50px;text-align:center;"><span style="opacity: 0.5;">Nếu bạn chưa có tài khoản.?</span>  <span><a href="{{route('dk')}}" style="text-decoration: none;">Đăng Kí</a></span></div>
                         <!-- <div class="col-12" style="padding-top:10px;padding-bottom:50px;"><a href="">Đăng Kí</a></div> -->
-                       
+                        </form>
                         
                     </div>
                 </div>

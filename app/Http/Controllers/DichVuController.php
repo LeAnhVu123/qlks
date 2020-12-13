@@ -5,7 +5,7 @@ use App\Dichvu;
 use App\Http\ulti\Helpers;
 use Helper as GlobalHelper;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class DichVuController extends Controller
 {
     /**
@@ -13,9 +13,25 @@ class DichVuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $reg)
     {	
-		$dv = Dichvu::all();
+      $i = $reg['dv'];
+      $arr = explode(',',$i);
+      $query = "SELECT * From dichvus where madv in (";
+      if($i == NULL)
+      {
+        $dv = Dichvu::all();
+      }else{
+        foreach($arr as $key => $val)
+        {
+          $query .= "$arr[$key],";    
+        }
+        $query = substr($query,0,-1);
+        $query .=")";
+        // echo $query;die;
+        $dv = DB::select($query);
+      }
+     
         return view("Admin.QLDV",compact('dv'));
     }
 

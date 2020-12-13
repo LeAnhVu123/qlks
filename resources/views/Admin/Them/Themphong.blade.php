@@ -8,17 +8,9 @@
             @csrf
                 <table>
                     <tr>
-                        <td style="padding-top:10px;">Mã Phòng</td>
+                        <td style="padding-top:10px;">Số Phòng</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maphong" ></td>
                     </tr>
-                    <!-- <tr>
-                        <td style="padding-top:10px;">Mã Loại</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai"></td>
-                    </tr> -->
-                     <!-- <tr>
-                        <td style="padding-top:10px;">Mã Đơn</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="makh"></td>
-                    </tr> -->
                     <tr>
                         <td style="padding-top:10px;">Số Tầng</td>
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="sotang"></td>
@@ -28,12 +20,15 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="ghichu"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Trạng Thái</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="trangthai"></td>
-                    </tr>
-                    <tr>
                         <td style="padding-top:10px;">Mã Loại</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai"></td>
+                        <!-- <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maloai"></td> -->
+                        <td style="padding-left:50px;padding-top:10px;">
+                                <select name="maloai" id="" >
+                                @foreach($lp as $value)
+                                    <option value="{{$value->maloai}}">{{$value->tenloai}}</option>
+                                @endforeach    
+                                </select>
+                        </td>        
                     </tr>
                    
                   

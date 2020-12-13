@@ -14,11 +14,10 @@
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Mã Phòng </th>
+                            <th>Số Phòng </th>
                             <th>Mã Loại</th>
                             <th>Số Tầng</th>
                             <th>Ghi Chú</th>
-                            <th>Trạng Thái</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -28,10 +27,18 @@
                     @foreach($p as $value)
                         <tr>
                             <td>{{$value->maphong}}</td>
-                            <td>{{$value->maloai}}</td>
+                            
+                                <td>
+                                    <form action="{{route('lphong')}}" method="get">
+                                    @csrf
+                                        <input type="hidden" value="{{$value->maloai}}" name="maloai">
+                                        <div class="aa" style="cursor:pointer;">{{$value->maloai}}</div>
+                                        <input type="submit" name="abc" id="abc" class="abc">
+                                    </form>
+                                </td>
+                            
                             <td>{{$value->sotang}}</td>
                             <td>{{$value->ghichu}}</td>
-                            <td>{{$value->trangthai}}</td>
                             <td><a href="Sua/Suaphong/{{$value->maphong}}"><button class="btn btn-info ml-1" style="width:70px;">Sửa</button></a></td>
                             <td><a href="XoaPhong/{{$value->maphong}}"><button class="btn btn-danger ml-1" style="width:70px;">Xóa</button></a></td>
                         </tr>
@@ -42,5 +49,12 @@
             </div>
 		</div>
        
-       
+    <script>
+    $(document).ready(function(){
+        $(".abc").hide();
+        $('.aa').click(function(){
+            $(this).next().click();
+        })
+    })
+    </script>
 @endsection

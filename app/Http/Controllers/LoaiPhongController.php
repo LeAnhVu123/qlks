@@ -9,9 +9,13 @@ class LoaiPhongController extends Controller
 {
     //
     /* ViewLoaiPhong */
-	public function getlp(){
-		$lp = Loaiphong::All();
-		// dd($lp);die;
+	public function getlp(Request $reg){
+		$id = $reg['maloai'];
+		if($id == null){
+			$lp = Loaiphong::All();
+		}else{
+			$lp = Loaiphong::where('maloai',$id)->get();
+		}
 		return view('Admin.Loaiphong',compact('lp'));
 	}
 	/* Sua loai phong */

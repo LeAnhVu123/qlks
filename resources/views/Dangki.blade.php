@@ -27,26 +27,19 @@
             <div class="row" style="padding-top:20px;">
                 <div class="col-8"></div>
                 <div class="col-3" style="background-color:white;border-radius:5px;padding-left:15px;">
+                @include('notice')
+                    <form action="{{route('post-dk')}}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-12" style="padding-top:20px;"><span style="font-size:20px;">Đăng Kí</span> </div>
-                        <div class="col-12" style="padding-top:20px;"><input class="form-control" autocomplete="off" type="text" placeholder="Email/Tên đăng nhập"></div>
-                        <div class="col-12" style="padding-top:20px;"><input class="form-control" autocomplete="off" type="password" placeholder="Mật khẩu"></div>
-                        <div class="col-12" style="padding-top:20px;"><input class="form-control" autocomplete="off" type="text" placeholder="CMND"></div>
-                        <div class="col-12" style="padding-top:20px;"><input class="form-control" autocomplete="off" type="text" placeholder="Họ Tên"></div>
-                        <div class="col-12" style="padding-top:20px;"><input class="form-control" autocomplete="off" type="text" placeholder="Số điện thoại"></div>
-                        <div class="col-12" style="padding-top:20px;"><input class="form-control" autocomplete="off" type="email" placeholder="Gmail"></div>
+                        <div class="col-12" style="padding-top:20px;"><input class="form-control" name="taikhoan" autocomplete="off" type="text" placeholder="Email/Tên đăng nhập"></div>
+                        <div class="col-12" style="padding-top:20px;"><input class="form-control" name="matkhau" autocomplete="off" type="password" placeholder="Mật khẩu"></div>
+                        <div class="col-12" style="padding-top:20px;"><input class="form-control" name="cmnd" autocomplete="off" type="text" placeholder="CMND"></div>
+                        <div class="col-12" style="padding-top:20px;"><input class="form-control" name="hoten" autocomplete="off" type="text" placeholder="Họ Tên"></div>
+                        <div class="col-12" style="padding-top:20px;"><input class="form-control" name="sdt" autocomplete="off" type="text" placeholder="Số điện thoại"></div>
+                        <div class="col-12" style="padding-top:20px;"><input class="form-control" name="email" autocomplete="off" type="email" placeholder="Gmail"></div>
                         <div class="col-12" style="padding-top:20px;padding-bottom:30px;"><button class="btn btn-danger" style="width:100%;" type="submit">Đăng Kí</button></div>
-                        <!-- <div class="col-6" style="padding-top:10px;"><a href="" style="text-decoration: none;font-size:14px;">Quên mật khẩu</a></div>
-                        <div class="col-6" style="padding-top:10px;"><a href="" style="float:right;text-decoration: none;font-size:14px;">Cần trợ giúp.?</a></div>
-                        <div class="col-6" style="padding-top:10px;" ><button style="width:100%;height:40px;background-color:#0099FF;padding-left:0px;color:#FFFFFF;border: 0;border-radius:5px;"><span>Facebook</span></button></div>
-                        <div class="col-6" style="padding-top:10px;" ><button style="width:100%;height:40px;background-color:#0099FF;padding-left:0px;color:#FFFFFF;border: 0;border-radius:5px;"><span>Gmail</span></button></div>
-                        <div class="col-5" style="padding-top:10px;"><hr></div>
-                        <div class="col-2" style="padding-top:10px;padding-left:5px;opacity: 0.5;">HOẶC</div>
-                        <div class="col-5" style="padding-top:10px;"><hr></div>
-                        <div class="col-12" style="padding-top:10px;padding-bottom:50px;text-align:center;"><span style="opacity: 0.5;">Nếu bạn chưa có tài khoản.?</span>  <span><a href="" style="text-decoration: none;">Đăng Kí</a></span></div> -->
-                        <!-- <div class="col-12" style="padding-top:10px;padding-bottom:50px;"><a href="">Đăng Kí</a></div> -->
-                       
-                        
+                    </form>  
                     </div>
                 </div>
             </div>

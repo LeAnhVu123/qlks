@@ -39,9 +39,12 @@ Route::get('/Search','ControllerQLKS@search')->name('search');
 Route::get('/QuancanhNT','ControllerQLKS@quancanhNT')->name('qcNT');
 Route::get('/DulichNT','ControllerQLKS@dulichNT')->name('dlNT');
 Route::get('/DuongbienNT','ControllerQLKS@venbienNT')->name('dbNT');
+Route::get('/TinTuc','ControllerQLKS@tintuc')->name('tint');
 Route::get('/DacsanNT','ControllerQLKS@dacsanNT')->name('dsNT');
 Route::get('/Dangnhap','ControllerQLKS@dangnhap')->name('dn');
+Route::post('/Dangnhap','DangNhapController@dangnhap')->name('post-dn');
 Route::get('/Dangki','ControllerQLKS@dangki')->name('dk');
+Route::post('/Dangki','DangKiController@postdk')->name('post-dk');
 Route::get('/MasterTimkiem','ControllerQLKS@mastertimkiem')->name('mastertimkiem');
 
 /* Quản Lí ID khách hàng */

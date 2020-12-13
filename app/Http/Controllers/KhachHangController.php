@@ -7,9 +7,16 @@ use  App\Dondat;
 class KhachHangController extends Controller
 {
     //
-    public  function getkh()
+    public  function getkh(request $reg)
 	{
-		$kh = Khachhang::All();
+		$i = $reg['tkkh'];
+		if($i == NULL)
+		{
+			$kh = Khachhang::All();
+		}
+		else{
+			$kh = Khachhang::All()->where('makh',$i);
+		}
 		return view('Admin.QLTKKH', compact('kh'));
 	}
 	/* View them tai khoan */

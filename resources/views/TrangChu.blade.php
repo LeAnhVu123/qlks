@@ -44,7 +44,7 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMucTT" href="#">Tin Tức</a>
+              <a class="DanhMucTT" href="{{route('tint')}}">Tin Tức</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">

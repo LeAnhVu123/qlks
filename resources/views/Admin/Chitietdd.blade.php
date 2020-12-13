@@ -3,7 +3,7 @@
 <div class="col-10" style="height:550px;padding-left:0px;">
             <div class="row">
 				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-left"><span style="font-size: 20px;">Quản Lí Chi Tiết Đơn Đặt Phòng</span> </div>
-				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-right;"><span style="font-size: 20px;">Thêm Chi tiết đơn hàng</span><a href="{{route('get-themct')}}"><button class="btn btn-primary ml-1" style="width:70px;">Thêm</button></a></div>
+				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-right;"><span style="font-size: 20px;">Thêm Chi tiết đơn</span><a href="{{route('get-themct')}}"><button class="btn btn-primary ml-1" style="width:70px;">Thêm</button></a></div>
                 <div class="col-12 mt-1">@if(session('thanhcong'))
                 <div class="alert alert-info">
                     {{session('thanhcong')}}
@@ -29,7 +29,14 @@
                    @foreach($ct as $value)
                         <tr>
                             <td>{{$value->mact}}</td>
-                            <td>{{$value->madon}}</td>
+                            <td>
+                                <form action="{{route('alldondat')}}" method="get">
+                                @csrf
+                                    <input type="hidden" name="dd" value="{{$value->madon}}">
+                                        <div class="aa" style="cursor:pointer;">{{$value->madon}}</div>
+                                    <input type="submit" class="gui">
+                                </form>
+                            </td>
                             <td>{{$value->slphong}}</td>
                             <td>{{$value->soluong}}</td>
                             <td>{{$value->ngayden}}</td>
@@ -43,5 +50,12 @@
                 </div>
             </div>
 		</div> 
-       
+<script>
+    $(document).ready(function(){
+        $('.gui').hide()
+        $('.aa').click(function(){
+            $(this).next().click()
+        })
+    })
+</script>
 @endsection

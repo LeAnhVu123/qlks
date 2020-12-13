@@ -142,6 +142,11 @@ class ControllerQLKS extends Controller
             $zz = Loaiphong::all();
             return view('Dangki',compact('zz'));
         }
+        public function tintuc()
+        {
+            $zz = Loaiphong::all();
+            return view('TinTuc',compact('zz'));
+        }
         public function search(Request $reg)
         {
             $zz = Loaiphong::all();
@@ -199,7 +204,7 @@ class ControllerQLKS extends Controller
             return view('Search',compact('p','zz'));
         }
 
-
+      
     /**
      * Show the form for creating a new resource.
      *

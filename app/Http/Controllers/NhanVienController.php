@@ -10,9 +10,16 @@ class NhanVienController extends Controller
 {
     //
     /* Them nhan vien */
-	public function getviewnv()
+	public function getviewnv(request $reg)
 	{
-		$nv = Nhanvien::all();
+		$i = $reg['tknv'];
+		if($i == NULL)
+		{
+			$nv = Nhanvien::all();
+		}else{
+			$nv = Nhanvien::all()->where('manv',$i);
+		}
+		
 		return view('Admin/QLTKNV',compact('nv'));
 	}
 	/* view  them tai khoan nhan vien*/
