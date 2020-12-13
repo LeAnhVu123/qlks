@@ -60,14 +60,18 @@
             - Ngày đến <input type="date">
             - Ngày đi <input type="date"> -->
 			</div>
-			<div class="col-2 dv" style="padding-left:40px;">
-				<table style="width:100%;"><input type="checkbox" name="" id="" class="dv1" value='1'><span> Thuê xe </span></table>
+			<div class="col-2 dv" style="padding-left:40px;font-size:1.3rem">
+				<!-- <table style="width:100%;"><input type="checkbox" name="" id="" class="dv1" value='1'><span> Thuê xe </span></table>
 				<table style="width:100%;"><input type="checkbox" name="" id="" class="dv2" value='2'><span> Đưa đón</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv3" value='3'><span> Nhà hàng</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv4" value='4'><span> Quầy bar</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv5" value='5'><span> Spa</span></table>
-				<table style="width:100%"><input type="checkbox" name="" id="" class="dv6" value='6'><span> Giặt ủi</span></table>
-				<table style="width:100%">Tong<span class="total-priceservice"> 0</span></table>
+				<table style="width:100%"><input type="checkbox" name="" id="" class="dv6" value='6'><span> Giặt ủi</span></table> -->
+				@foreach($dv as $itemdv)
+					<table style="width:100%"><input type="checkbox" name="" id="" class="dv{{$itemdv->madv}}" itemdv='{{$itemdv->madv}}'><span> {{$itemdv->tendv}}</span></table>
+				@endforeach
+				<hr>
+				<table style="width:100%">Tong<span class="total-priceservice"> 0 </span></table>
 
 			</div>
 			<div class="col-2" style="text-align:center;">
@@ -76,7 +80,7 @@
 				<span class="xuatgia" style="padding-top:0px;width:100px"></span><span>.000 VND</span>
 			</div>
 			<div class="col-2">
-				<a href="" style="padding-top:0px;padding-right:20px;float:right;">
+				<a href="{{route('confirm',$value->maloai)}}" style="padding-top:0px;padding-right:20px;float:right;">
 					<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;">
 						Đặt Phòng
 					</button>
@@ -86,8 +90,7 @@
 					Hủy Phòng
 				</button>
 
-				<a href="DatPhong" style="padding-top:50px;padding-right:20px;float:right;">
-
+				<a href="#" style="padding-top:50px;padding-right:20px;float:right;">
 					Đặt phòng thêm
 
 				</a>
@@ -111,6 +114,7 @@
 </div>
 <script>
 	$(document).ready(function() {
+		var dv = @php echo json_encode($dv) @endphp;	
 		var d = new Date();
 		var month = d.getMonth() + 1;
 		var day = d.getDate();
@@ -145,14 +149,14 @@
 							$('.xuatgia').each(function(key) {
 								alltotal += parseInt($('.xuatgia').eq(key).text());					
 							})
-							$('.total').val(alltotal);						
+							$('.total').val(alltotal + "000 VND");						
 						}
 					},
 				})			
 			})			
 		})
 
-		var dv = [100, 200, 300, 400, 500, 600];
+		// var dv = [100, 200, 300, 400, 500, 600];
 
 		function updatePrice(index) {
 			var total = 0;
@@ -176,7 +180,7 @@
 			$('.xuatgia').each(function(key) {
 				alltotal += parseInt($('.xuatgia').eq(key).text());
 			})
-			$('.total').val(alltotal);
+			$('.total').val(alltotal + ".000 VND");
 		}
 
 		$('.abc').each(function(index, value) {
@@ -194,11 +198,11 @@
 				var gia1 = 0;
 				$('.dv' + i).eq(index).change(function() {
 					if ($(this).is(':checked')) {
-						gia1 += dv[i - 1];
+						gia1 += dv[i - 1].gia;
 						$('.total-priceservice').eq(index).text(gia1);
 						updatePrice(index);
 					} else {
-						gia1 = gia1 - dv[i - 1];
+						gia1 = gia1 - dv[i - 1].gia;
 						$('.total-priceservice').eq(index).text(gia1);
 						updatePrice(index);
 					}
