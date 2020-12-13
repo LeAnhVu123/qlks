@@ -13,7 +13,13 @@
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">role</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="role"></td>
+						<td style="padding-left:50px;padding-top:10px;">
+						<select name="role" id="">
+							@foreach($role as $value)
+								<option value="{{$value->role_id}}">{{$value->name_role}}</option>
+							@endforeach
+						</select>
+						</td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">matkhau</td>

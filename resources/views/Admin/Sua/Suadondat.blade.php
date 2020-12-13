@@ -11,7 +11,7 @@
                 <table>
                     <tr>
                         <td style="padding-top:10px;">Mã đơn</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="madon" placeholder="{{$dd->madon}}" readonly></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="madon" value="{{$dd->madon}}" readonly></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Mã nhân viên</td>
@@ -22,13 +22,16 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="makh" value="{{$dd->makh}}"></td>
                     </tr>
                     <tr>
+                        <td style="padding-top:10px;">Mã phòng</td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maphong" value="{{$dd->maphong}}"></td>
+                    </tr>
+                    <tr>
                         <td style="padding-top:10px;">Mã khuyến mãi</td>
 						<td style="padding-left:50px;padding-top:10px;">
 							<select name="km" id="" style="width:150px;height:30px">
-							<option value="0">none</option>
 							@foreach($km as $value)
 								<option value="{{$value->makm}}">{{$value->tenkm}}</option>
-								@endforeach
+							@endforeach
 							</select>
 						</td>
                     </tr>

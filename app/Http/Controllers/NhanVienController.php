@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use  App\Khachhang;
-use  App\Phong;
-use  App\Loaiphong;
-use  App\Dondat;
-use  App\Thanhtoan;
 use  App\Nhanvien;
-use  App\Khuyenmai;
-use  App\Chitiet;
+use App\Role;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Cookie;
 class NhanVienController extends Controller
@@ -24,7 +18,8 @@ class NhanVienController extends Controller
 	/* view  them tai khoan nhan vien*/
 	public function getviewthemnv()
 	{
-		return view('Admin/Them/ThemTKNV');
+		$role = Role::all();
+		return view('Admin/Them/ThemTKNV',compact('role'));
 	}
 	/* Them tai khoan nhan vien */
 	public function postthemnv(request $reg)
@@ -43,8 +38,9 @@ class NhanVienController extends Controller
 	/* view  sua tai khoan nhan vien*/
 	public function getviewsuanv($manv)
 	{
+		$role = Role::all();
 		$manv = Nhanvien::find($manv);
-		return view('Admin/Sua/SuaTKNV',compact('manv'));
+		return view('Admin/Sua/SuaTKNV',compact('manv','role'));
 	}
 	/* Post sua tai khoan nhan vien  */
 	public function postsuanv(request $reg,$manv)

@@ -17,7 +17,8 @@
                             <th>Mã Đơn</th>
                             <th>Mã KH</th>
                             <th>Mã NV</th>
-							<th>Mã KM</th>
+                            <th>Mã Phong</th>
+							<th>Mã KM</th>
 							<th>Mã DV</th>
                             <th>Ngày Đặt</th>
                             <th>Tổng Tiền</th>
@@ -33,6 +34,7 @@
                             <td>{{$value->madon}}</td>
                             <td>{{$value->makh}}</td>
                             <td>{{$value->manv}}</td>
+                            <td>{{$value->maphong}}</td>
 							<td>{{$value->makm}}</td>
 							<td>{{$value->madv}}</td>
 							<td>{{$value->ngaylap}}</td>

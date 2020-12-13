@@ -22,20 +22,16 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="slphong" value="{{$ct->slphong}}"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Người lớn</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="nguoilon" value="{{$ct->nguoilon}}"></td>
-                    </tr>
-                     <tr>
-                        <td style="padding-top:10px;">Trẻ em</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="treem" value="{{$ct->treem}}"></td>
+                        <td style="padding-top:10px;">Số lượng</td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="soluong" value="{{$ct->soluong}}"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Ngày đến</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="date" autocomplete="off" name="ngayden" value="{{$ct->ngayden}}"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="ngayden" type="text" autocomplete="off" name="ngayden" value="{{$ct->ngayden}}"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Ngày đi</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="date" autocomplete="off" name="ngaydi" value="{{$ct->ngaydi}}"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="ngaydi" type="text" autocomplete="off" name="ngaydi" value="{{$ct->ngaydi}}"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Sửa"></a></td>
@@ -57,4 +53,13 @@
             </div>
     </div>
 </div>
+<script>
+	$(document).ready(function(){
+		$('.ngayden, .ngaydi').datepicker({
+			dateFormat: "yy-mm-dd",
+			numberOfMonths : 2,
+		})
+	})
+
+</script>
 @endsection

@@ -77,6 +77,8 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('Chitietdondat','ChiTietController@getchitietdd')->name('ctdondat');
 		Route::get('QLTKNV','NhanVienController@getviewnv')->name('nv');
 		Route::get('QLDV','DichVuController@index')->name('dichvu');
+		Route::get('QLTT','ThanhToanController@index')->name('thanhtoan');
+		Route::get('QLKM','KhuyenMaiController@index')->name('khuyenmai');
 		/* Xoa */
 		Route::get('Xoa/{makh}','KhachHangController@getxoa')->middleware('checkrole')->name('get-xoatk');
 		Route::get('XoaPhong/{maphong}','PhongController@xoaphong')->name('get-xoaphong');
@@ -84,6 +86,8 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('XoaDonDat/{madon}','DonDatController@xoadondat')->name('get-xoadondat');
 		Route::get('XoaChiTiet/{mact}','ChiTietController@getxoact')->name('get-xoact');
 		Route::get('XoaDichVu/{madv}','DichVuController@xoadv')->name('get-xoadv');
+		Route::get('XoaThanhToan/{matt}','ThanhToanController@xoatt')->name('get-xoatt');
+		Route::get('XoaKhuyenMai/{makm}','KhuyenMaiController@xoakm')->name('get-xoakm');
 			Route::group(['prefix'=>'Them'],function(){
 					// Admin/Them/
 					Route::get('ThemTKKH','KhachHangController@getthemtk')->name('get-themtk');
@@ -104,8 +108,14 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 					Route::get('ThemTKNV','NhanVienController@getviewthemnv')->name('get-themnv');
 					Route::post('ThemTKNV','NhanVienController@postthemnv')->name('postthemnv');
 
-					Route::get('ThemDV','DichVuController@getviewthemnv')->name('get-themdv');
-					Route::post('ThemDV','DichVuController@postthemnv')->name('postthemdv');
+					Route::get('ThemDV','DichVuController@getviewthemdv')->name('get-themdv');
+					Route::post('ThemDV','DichVuController@postthemdv')->name('postthemdv');
+
+					Route::get('Themtt','ThanhToanController@getviewthemtt')->name('get-themtt');
+					Route::post('Themtt','ThanhToanController@postthemtt')->name('postthemtt');
+
+					Route::get('ThemKM','KhuyenMaiController@getviewthemkm')->name('get-themkm');
+					Route::post('ThemKM','KhuyenMaiController@postthemkm')->name('postthemkm');
 					
 				});
 			Route::group(['prefix'=>'Sua'],function(){
@@ -130,6 +140,12 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 
 				Route::get('SuaDV/{madv}','DichVuController@getviewsuadv')->middleware('checkrole')->name('get-suadv');
 				Route::post('SuaDV/{madv}','DichVuController@postsuadv')->middleware('checkrole')->name('post-suadv');
+
+				Route::get('SuaTT/{matt}','ThanhToanController@getviewsuatt')->middleware('checkrole')->name('get-suatt');
+				Route::post('SuaTT/{matt}','ThanhToanController@postsuatt')->middleware('checkrole')->name('post-suatt');
+
+				Route::get('SuaKM/{matt}','KhuyenMaiController@getviewsuakm')->middleware('checkrole')->name('get-suakm');
+				Route::post('SuaKM/{matt}','KhuyenMaiController@postsuakm')->middleware('checkrole')->name('post-suakm');
 			});
 	
 	 

@@ -72,7 +72,7 @@
                             <a href="{{route('dichvu')}}"><i class="fa fa-home"></i> QL Dịch Vụ</a>
                         </div>
                         <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> QL Thanh Toán</a>
+                            <a href="{{route('thanhtoan')}}"><i class="fa fa-home"></i> QL Thanh Toán</a>
                         </div>
                         <div class="col-12 mt-1">
                             <a href="#"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="ql">                 
                         <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> QL Khuyến Mãi</a>
+							<a href="{{route('khuyenmai')}}"><i class="fa fa-home"></i> QL Khuyến Mãi</a>
                         </div>
                         <div class="col-12 mt-1">
                             <a href="{{route('nv')}}"><i class="fa fa-home"></i> QL Tài Khoản NV</a>

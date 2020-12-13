@@ -5,20 +5,18 @@
             <div class="row">
 				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-left"><span style="font-size: 20px;">Quản Lí Tài Khoản Khách Hàng</span> </div>
 				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-right;"><span style="font-size: 20px;">Thêm tài khoản</span><a href="{{route('get-themnv')}}"><button class="btn btn-primary ml-1" style="width:70px;">Thêm</button></a></div>
-                <div class="col-12 mt-1">@if(session('thanhcong'))
-                <div class="alert alert-info">
-                    {{session('thanhcong')}}
-                </div>
-                @endif</div>
                 <div class="col-12" style="padding-left:40px;"><hr></div>
                 <div class="col-12" style="padding-left:40px;">
                 <table id="example" class="display" style="width:100%">
                     <thead>
-                        <tr>
-                            <th>Tai khoan</th>
-                            <th>Role</th>
-                           
-                            
+					<tr>
+                            <th>Mã KH</th>
+                            <th>Tài Khoản</th>
+                            <th>CMND</th>
+                            <th>Số DT</th>
+                            <th>Email</th>
+                            <th>Họ Tên</th>
+                            <th>Role</th>                            
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -27,7 +25,12 @@
                     <tbody>
                     @foreach($nv as $value)
                         <tr>
+                            <td>{{$value->manv}}</td>
                             <td>{{$value->taikhoan}}</td>
+                            <td>{{$value->cmnd}}</td>
+                            <td>{{$value->sdt}}</td>
+                            <td>{{$value->email}}</td>
+                            <td>{{$value->hoten}}</td>
                             <td>{{$value->role}}</td>
                           
                            

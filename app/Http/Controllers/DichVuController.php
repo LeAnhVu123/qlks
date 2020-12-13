@@ -24,7 +24,7 @@ class DichVuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getviewthemnv()
+    public function getviewthemdv()
     {
         return view("Admin.Them.Themdichvu");
     }
@@ -35,7 +35,7 @@ class DichVuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postthemnv(Request $reg)
+    public function postthemdv(Request $reg)
     {
         Dichvu::create([
 			'tendv' => $reg['tendv'],

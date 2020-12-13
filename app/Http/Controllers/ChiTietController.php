@@ -21,8 +21,7 @@ class ChiTietController extends Controller
 	{
 		$this->validate($reg,[
 			'slphong'=>'required|regex:/^[0-9]+$/|min:1|max:3',
-			'nguoilon'=>'required|regex:/^[0-9]+$/|min:1|max:3',
-			'treem'=>'required|regex:/^[0-9]+$/|min:1|max:3',
+			'soluong'=>'required|regex:/^[0-9]+$/|min:1|max:3',
 			'ngayden'=>'required',
 			'ngaydi'=>'required',
 		],[
@@ -30,14 +29,10 @@ class ChiTietController extends Controller
 			'slphong.regex'=>'Số lượng phòng chỉ được nhập số',
 			'slphong.min'=>'SL phòng ít nhất 1 số và nhiều nhất 3 số',
 			'slphong.max'=>'SL phòng ít nhất 1 số và nhiều nhất 3 số',
-			'nguoilon.required'=>'Vui lòng nhập số lượng người lớn',
-			'nguoilon.regex'=>'Số lượng người lớn chỉ được nhập số',
-			'nguoilon.min'=>'SL người lớn nhất 1 số và nhiều nhất 3 số',
-			'nguoilon.max'=>'SL người lớn ít nhất 1 số và nhiều nhất 3 số',
-			'treem.required'=>'Vui lòng nhập số lượng trẻ em',
-			'treem.regex'=>'Số lượng trẻ em chỉ được nhập số',
-			'treem.min'=>'SL trẻ em ít nhất 1 số và nhiều nhất 3 số',
-			'treem.max'=>'SL trẻ em ít nhất 1 số và nhiều nhất 3 số',
+			'soluong.required'=>'Vui lòng nhập số lượng người lớn',
+			'soluong.regex'=>'Số lượng người lớn chỉ được nhập số',
+			'soluong.min'=>'SL người lớn nhất 1 số và nhiều nhất 3 số',
+			'soluong.max'=>'SL người lớn ít nhất 1 số và nhiều nhất 3 số',
 			'ngayden.required'=>'Vui lòng chọn ngày đến',
 			'ngaydi.required'=>'Vui lòng chọn ngày đến',
 		]);
@@ -51,12 +46,11 @@ class ChiTietController extends Controller
 			return redirect('Admin/Them/Themchitiet')->with('thanhcong','Không tồn tại mã đơn này');
 		}
 		$ct->slphong=$reg['slphong'];
-		$ct->nguoilon=$reg['nguoilon'];
-		$ct->treem=$reg['treem'];
+		$ct->soluong=$reg['soluong'];
 		$ct->ngayden=$reg['ngayden'];
 		$ct->ngaydi=$reg['ngaydi'];
 		$ct->save();
-		return redirect('Admin/Them/Themchitiet')->with('thanhcong','Bạn thêm chi tiết đơn đặt phòng thành công');		
+		return redirect(route('chitiet'))->with('thanhcong','Bạn thêm chi tiết đơn đặt phòng thành công');		
 	}
 	/* Sua chi tiet don dat */
 	public function getsuact($mact){
@@ -67,8 +61,7 @@ class ChiTietController extends Controller
 	public function postsuact(request $reg,$mact){
 		$this->validate($reg,[
 			'slphong'=>'required|regex:/^[0-9]+$/|min:1|max:3',
-			'nguoilon'=>'required|regex:/^[0-9]+$/|min:1|max:3',
-			'treem'=>'required|regex:/^[0-9]+$/|min:1|max:3',
+			'soluong'=>'required|regex:/^[0-9]+$/|min:1|max:3',
 			'ngayden'=>'required',
 			'ngaydi'=>'required',
 		],[
@@ -76,14 +69,10 @@ class ChiTietController extends Controller
 			'slphong.regex'=>'Số lượng phòng chỉ được nhập số',
 			'slphong.min'=>'SL phòng ít nhất 1 số và nhiều nhất 3 số',
 			'slphong.max'=>'SL phòng ít nhất 1 số và nhiều nhất 3 số',
-			'nguoilon.required'=>'Vui lòng nhập số lượng người lớn',
-			'nguoilon.regex'=>'Số lượng người lớn chỉ được nhập số',
-			'nguoilon.min'=>'SL người lớn nhất 1 số và nhiều nhất 3 số',
-			'nguoilon.max'=>'SL người lớn ít nhất 1 số và nhiều nhất 3 số',
-			'treem.required'=>'Vui lòng nhập số lượng trẻ em',
-			'treem.regex'=>'Số lượng trẻ em chỉ được nhập số',
-			'treem.min'=>'SL trẻ em ít nhất 1 số và nhiều nhất 3 số',
-			'treem.max'=>'SL trẻ em ít nhất 1 số và nhiều nhất 3 số',
+			'soluong.required'=>'Vui lòng nhập số lượng người lớn',
+			'soluong.regex'=>'Số lượng người lớn chỉ được nhập số',
+			'soluong.min'=>'SL người lớn nhất 1 số và nhiều nhất 3 số',
+			'soluong.max'=>'SL người lớn ít nhất 1 số và nhiều nhất 3 số',
 			'ngayden.required'=>'Vui lòng chọn ngày đến',
 			'ngaydi.required'=>'Vui lòng chọn ngày đến',
 		]);
@@ -97,8 +86,7 @@ class ChiTietController extends Controller
 			return redirect('Admin/Sua/Suachitiet/'.$mact)->with('thanhcong','Không tồn tại mã đơn này');
 		}
 		$ct->slphong=$reg['slphong'];
-		$ct->nguoilon=$reg['nguoilon'];
-		$ct->treem=$reg['treem'];
+		$ct->soluong=$reg['soluong'];
 		$ct->ngayden=$reg['ngayden'];
 		$ct->ngaydi=$reg['ngaydi'];
 		$ct->save();

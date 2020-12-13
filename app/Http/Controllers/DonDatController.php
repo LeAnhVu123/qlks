@@ -16,6 +16,7 @@ class DonDatController extends Controller
     /* Xem tat ca don dat phong */
 	public function getalldondat(){
 		$dd = Dondat::All();
+		// dd($dd[0]->getNameKM);
 		return view('Admin.Alldondat',compact('dd'));
 	}
 	/* them don dat */
@@ -75,7 +76,8 @@ class DonDatController extends Controller
 				{
 				return redirect('Admin/Them/Themdondat')->with('thanhcong','Mã khuyến mãi không tồn tại');
 				}
-			}	
+			}
+		$dd->maphong = $reg['maphong'];
 		$dd->madv = $implode;
 		$dd->ngaylap = $reg['ngaylap'];
 		$dd->tongtien = $reg['tongtien'];
@@ -117,7 +119,7 @@ class DonDatController extends Controller
 		$dd = Dondat::find($madon);
 		$nv = Nhanvien::Where('manv',$reg['manv'])->first();
 		$kh = Khachhang::Where('makh',$reg['makh'])->first();
-		$km = Khuyenmai::Where('makm',$reg['makm'])->first();
+		$km = Khuyenmai::Where('makm',$reg['km'])->first();
 			if($nv)
 			{
 				$dd->manv = $reg['manv'];
@@ -134,11 +136,12 @@ class DonDatController extends Controller
 			{
 				return redirect('Admin/Sua/Suadondat/'.$madon)->with('thanhcong','Mã khách hàng không tồn tại');
 			}
-			if($km == 0){
-				$dd->makm = null;
+			if($km){		
+				$dd->makm = $reg['km'];	
 			}else{
-				$dd->makm = $reg['km'];
+				return redirect('Admin/Sua/Suadondat/'.$madon)->with('thanhcong','Mã khuyễn mãi không tồn tại');
 			}
+		$dd->maphong = $reg['maphong'];
 		$dd->madv = $implode;
 		$dd->ngaylap = $reg['ngaylap'];
 		$dd->tongtien = $reg['tongtien'];

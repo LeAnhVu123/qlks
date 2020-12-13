@@ -11,11 +11,11 @@
                 <table>
                     <tr>
                         <td style="padding-top:10px;">Mã KH</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="cmnd" placeholder="{{$kh->makh}}" readonly></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="cmnd" value="{{$kh->makh}}" readonly></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Tài Khoản</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="taikhoan" placeholder="{{$kh->taikhoan}}"readonly></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="taikhoan" value="{{$kh->taikhoan}}"readonly></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Mật Khẩu</td>

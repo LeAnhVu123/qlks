@@ -2,7 +2,7 @@
 @section('content')  
 <div class="col-9" style="height:550px;">
     <div class="row">
-            <div class="col-12" style="padding-left:180px;padding-top:20px;"> <span style="font-size:20px;font-weight: bolder;">Thêm Loại Phòng</span> </div>   
+            <div class="col-12" style="padding-left:180px;padding-top:20px;"> <span style="font-size:20px;font-weight: bolder;">Thêm Chi tiết</span> </div>   
             <div class="col-12" style="padding-left:100px;font-size:15px;">
             <form action="" method="POST" enctype="multipart/form-data">
             @csrf
@@ -16,20 +16,16 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="slphong"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Người lớn</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="nguoilon"></td>
+                        <td style="padding-top:10px;">Số lượng</td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="soluong"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Trẻ em</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="treem"></td>
-                    </tr> 
-                    <tr>
                         <td style="padding-top:10px;">Ngày đến</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="date" autocomplete="off" name="ngayden"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="ngayden" type="text" autocomplete="off" name="ngayden"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Ngày đi</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input class="nut" type="date" autocomplete="off" name="ngaydi"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="ngaydi" type="text" autocomplete="off" name="ngaydi"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"><input type="submit" value="Thêm"></td>
@@ -53,5 +49,13 @@
             
     </div>
 </div>
- 
+ <script>
+	 $(document).ready(function(){
+		$('.ngaydi, .ngayden').datepicker({
+			dateFormat: "yy-mm-dd",
+			numberOfMonths : 2,
+			minDate : new Date(),
+		})
+	})
+ </script>
 @endsection

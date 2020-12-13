@@ -10,6 +10,6 @@ class Thanhtoan extends Model
     public $incrementing = false; 
 	protected $primaryKey = 'matt';
 	protected $fillable =[
-		'matt','ngaytt','thanhtoan','conlai'
+		'thanhtoan','madon'
 	];
 }

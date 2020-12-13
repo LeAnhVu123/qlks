@@ -15,12 +15,15 @@
 						<td style="padding-top:10px;">Mã khách hàng</td>
 						<td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="makh"></td>
 					</tr>
+					<tr>
+						<td style="padding-top:10px;">Mã phòng</td>
+						<td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="maphong"></td>
+					</tr>
 
 					<tr>
 						<td style="padding-top:10px;">Mã khuyến mãi</td>						
 						<td style="padding-left:50px;padding-top:10px;">
 							<select name="km" id="" style="width:150px;height:30px">
-							<option value="0">none</option>
 							@foreach($km as $value)
 								<option value="{{$value->makm}}">{{$value->tenkm}}</option>
 							@endforeach
