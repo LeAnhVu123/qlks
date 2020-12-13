@@ -24,8 +24,14 @@ $(document).ready(function(){
       var t = "Ngày trả phòng";
       $('.nut1').val(z);
       $('.nut2').val(t);
-      $('.nut1').datepicker({});
-
+      $('.nut1').datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate : new Date(),
+      });
+      $('.nut2').datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate : new Date(),
+      });
     var aa = @php echo json_encode($p) @endphp;
     var count = 3;
     countall(count,aa);
@@ -53,8 +59,8 @@ $(document).ready(function(){
               ' <div class="col-12 mt-4">'+
 			  '<form action="{{route("getid")}}" method="POST">'+
 		 	  ' @csrf ' +
-			  '<input type="hidden" name="maloai" value="'+aa[i].maloai+'"/>"'+
-              '    <button type="submit" class="btn btn-primary">Đặt phòng</button>' +
+			  '<input type="hidden" name="maloai" value="'+aa[i].maloai+'"/>'+
+              '<button type="submit" class="btn btn-primary">Đặt phòng</button>' +
 			  '</form>'+
               ' </div>'+
            '</div>'+
@@ -67,5 +73,3 @@ $(document).ready(function(){
   }
 </script>
 @endsection
-</body>
-</html>

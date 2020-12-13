@@ -9,7 +9,11 @@
             <p><img src="img/hinhnen/i.jpg" style="width:100%;height:500px;" alt="">
             <p style="padding-top:20px;"><span style="font-size:17px;font-weight: bolder;">3. Dịch vụ quầy bar khách sạn</span></p>
             <p><img src="img/hinhnen/j.jpg" style="width:100%;height:500px;" alt="">
-            <p style="padding-top:20px;"><span style="font-size:17px;font-weight: bolder;">n. Dịch vụ thuê xe di chuyển tại khách sạn</span></p>
+            <p style="padding-top:20px;"><span style="font-size:17px;font-weight: bolder;">4. Dịch vụ Spa khách sạn</span></p>
+            <p><img src="img/hinhnen/k.jpg" style="width:100%;height:500px;" alt="">
+            <p style="padding-top:20px;"><span style="font-size:17px;font-weight: bolder;">5. Dịch vụ Giặt Ủi khách sạn</span></p>
+            <p><img src="img/hinhnen/l.jpg" style="width:100%;height:500px;" alt="">
+            <p style="padding-top:20px;"><span style="font-size:17px;font-weight: bolder;">6. Dịch vụ thuê xe di chuyển tại khách sạn</span></p>
             <p><img src="img/hinhnen/h.jpg" style="width:100%;height:500px;" alt="">
 
 

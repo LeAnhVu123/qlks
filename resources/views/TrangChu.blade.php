@@ -28,8 +28,8 @@
         <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
       </div>
       <div class="col-md-3 col-ms-6 col-12">
-      <button class="btn btn-info tki">Đăng Ký</button>
-      <button class="btn btn-info tki">Đăng Nhập</button> 
+      <a href="{{route('dk')}}"><button class="btn btn-info tki">Đăng Ký</button></a>
+      <a href="{{route('dn')}}"><button class="btn btn-info tki">Đăng Nhập</button></a>
       </div>
     </div>
 
@@ -147,33 +147,33 @@
         <div class="row">
         <div class="col-md-3 col-sm-6 col-12">
                   <div class="card mb-3">
-                      <a href=""><img src="img/thuvien/2.jpg"  class="card-img-top" alt=""></a>
+                      <a href="{{route('qcNT')}}"><img src="img/thuvien/2.jpg"  class="card-img-top" alt=""></a>
                         <div class="card-body" style="padding-top:5px;">
-                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Quan cảnh thành phố</a></p>
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="{{route('qcNT')}}" style="text-decoration: none;">Quan cảnh thành phố</a></p>
                         </div>
                   </div>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
                   <div class="card mb-3">
-                      <a href=""><img src="img/thuvien/4.jpg"  class="card-img-top" alt=""></a>
+                      <a href="{{route('dlNT')}}"><img src="img/thuvien/4.jpg"  class="card-img-top" alt=""></a>
                         <div class="card-body" style="padding-top:5px;">
-                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Điểm du lịch nỗi tiếng</a></p>
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="{{route('dlNT')}}" style="text-decoration: none;">Điểm du lịch nỗi tiếng</a></p>
                         </div>
                   </div>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
                   <div class="card mb-3">
-                      <a href=""><img src="img/thuvien/3.jpg"  class="card-img-top" alt=""></a>
+                      <a href="{{route('dbNT')}}"><img src="img/thuvien/3.jpg"  class="card-img-top" alt=""></a>
                         <div class="card-body" style="padding-top:5px;">
-                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Phong cảnh đường biển</a></p>
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="{{route('dbNT')}}" style="text-decoration: none;">Phong cảnh đường biển</a></p>
                         </div>
                   </div>
         </div>
         <div class="col-md-3 col-sm-6 col-12">
                   <div class="card mb-3">
-                      <a href=""><img src="img/thuvien/1.jpg"  class="card-img-top" alt=""></a>
+                      <a href="{{route('dsNT')}}"><img src="img/thuvien/1.jpg"  class="card-img-top" alt=""></a>
                         <div class="card-body" style="padding-top:5px;">
-                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="" style="text-decoration: none;">Đặc sản Ninh Thuận</a></p>
+                          <p class="card-text" style="text-align:center;padding-top:20px;font-size:17px;font-weight: bolder;"><a href="{{route('dsNT')}}" style="text-decoration: none;">Đặc sản Ninh Thuận</a></p>
                         </div>
                   </div>
         </div>
@@ -208,6 +208,6 @@
             </div>
     </div>
  </div>
- 
+
 </body>
 </html>

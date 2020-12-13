@@ -34,7 +34,7 @@ class DonDatController extends Controller
 				array_push($arr,$reg['dv'.$i]);
 			}			
 		}
-		$implode = implode(',',$arr);
+		$implode = implode(',',$arr);//tu array thanh string, explode bien string thanh lai array
 		$this->validate($reg,[
 			'ngaylap'=>'required',
 			'tongtien'=>'required|regex:/^[0-9]+$/',

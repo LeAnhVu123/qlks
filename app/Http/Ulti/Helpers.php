@@ -10,6 +10,14 @@ class Helpers {
 		}
 		return false;
 	}
+
+	public static function splitDate($date,&$year,&$moth,&$day){
+		$split = str_replace('-','',$date);
+		$year = substr($split,0,4);
+		$month = substr($split,4,2);
+		$day = substr($split,6,2);
+		return $split;
+	}
 }
 
 ?>

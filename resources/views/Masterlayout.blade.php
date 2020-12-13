@@ -31,8 +31,8 @@
         <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
       </div>
       <div class="col-md-3 col-ms-6 col-12">
-      <button class="btn btn-info tki">Đăng Ký</button>
-      <button class="btn btn-info tki">Đăng Nhập</button> 
+      <a href="{{route('dk')}}"><button class="btn btn-info tki">Đăng Ký</button></a>
+      <a href="{{route('dn')}}"><button class="btn btn-info tki">Đăng Nhập</button></a>
       </div>
       
     </div>

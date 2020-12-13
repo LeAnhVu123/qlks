@@ -22,11 +22,11 @@ Route::get('/TrangChu','ControllerQLKS@index');//cai nay sao? no in ra luôn tra
 // });
 Route::get('/test','ControllerQLKS@tindex');//post r cai link la /test sao ben kia tindex quen 
 Route::post('test','ControllerQLKS@click');// chu click tro trang dung k? um` day ha thu 
-Route::post('/TrangChu','ControllerQLKS@gui');//dung k ta, thay cai nay sai sai xem thu
+Route::post('/TrangChu','ControllerQLKS@gui')->name('trangchu');//dung k ta, thay cai nay sai sai xem thu
 
 Route::get('/PhongDaDat','ControllerQLKS@phongdadat')->name('phongdadat');
 
-Route::get('/DatPhong','ControllerQLKS@datphong');
+Route::get('/DatPhong','ControllerQLKS@datphong')->name('datphong');
 Route::post('/DatPhong','ControllerQLKS@getid')->name('getid');
 Route::post('/get-val','ControllerQLKS@getval')->name('getval');
 Route::get('/DangNhapADMin','ControllerQLKS@dangnhapadmin')->name('dangnhap');
@@ -35,6 +35,14 @@ Route::get('/GioiThieu','ControllerQLKS@gioithieu')->name('gt');
 Route::get('/HuongDan','ControllerQLKS@huongdan')->name('hd');
 Route::get('/KhuyenMai','ControllerQLKS@khuyenmai')->name('km');
 Route::get('/DichVu','ControllerQLKS@dichvu')->name('dv');
+Route::get('/Search','ControllerQLKS@search')->name('search');
+Route::get('/QuancanhNT','ControllerQLKS@quancanhNT')->name('qcNT');
+Route::get('/DulichNT','ControllerQLKS@dulichNT')->name('dlNT');
+Route::get('/DuongbienNT','ControllerQLKS@venbienNT')->name('dbNT');
+Route::get('/DacsanNT','ControllerQLKS@dacsanNT')->name('dsNT');
+Route::get('/Dangnhap','ControllerQLKS@dangnhap')->name('dn');
+Route::get('/Dangki','ControllerQLKS@dangki')->name('dk');
+Route::get('/MasterTimkiem','ControllerQLKS@mastertimkiem')->name('mastertimkiem');
 
 /* Quản Lí ID khách hàng */
 

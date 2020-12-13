@@ -14,10 +14,24 @@
             <div class="col-3 mt-2" >
                 <div class="row" style="font-size:17px;background:#003366;color:white;margin-left:5px;margin-right:10px;">
                   <div class="col-12" style="font-weight: bolder;text-align:center; font-size:20px; padding-top:20px;">Chọn Tiêu Chí</div>
-                  <div class="col-12" style="padding-top:20px;"><input type="text" class="nut1" style="margin-left:20px;width:205px;" name="" id="" placeholder="Ngày nhận phòng"></div>
-                  <div class="col-12" style="padding-top:20px;"><input type="text" class="nut2" style="margin-left:20px;width:205px;" name="" id="" placeholder="Ngày trả phòng"></div>
-                  <div class="col-12" style="padding-top:20px;"><input type="text" style="margin-left:20px;width:205px;" name="" id="" placeholder="Số lượng người"></div>
-                  <div class="col-12" style="padding-top:20px;padding-bottom:40px;"><button class="btn btn-warning" style="margin-left:20px; width:85%" type="submit">Tìm kiếm</button></div>            
+                  <form action="{{route('search')}}" method="get">
+                  @csrf
+                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control nut1" style="margin-left:20px;width:205px;" name="ngaynhan"  placeholder="Ngày nhận phòng"></div>
+                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control nut2" style="margin-left:20px;width:205px;" name="ngaytra" placeholder="Ngày trả phòng"></div>
+                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control" autocomplete="off" style="margin-left:20px;width:205px;" name="succhua" placeholder="Số lượng người"></div>
+                    <div class="col-12" style="padding-top:20px;">
+                            <div class="input-group mb-3"  style="width:225px;padding-left:20px;">
+                                <select class="custom-select" id="inputGroupSelect01" name="maloai">
+                                  <option selected value="NULL">Loại Phòng</option>
+                                  @foreach($zz as $value)
+                                  <option name="maloai" value="{{$value->maloai}}">{{$value->tenloai}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                    </div>
+                    <!-- <div class="col-12" style="padding-top:20px;"><input type="text" style="margin-left:20px;width:205px;" name="" id="" placeholder="Trẻ em"></div> -->
+                    <div class="col-12" style="padding-top:20px;padding-bottom:40px;"><button class="btn btn-warning" style="margin-left:20px; width:90%" type="submit">Tìm kiếm</button></div>   
+                  </form>         
                 </div>
                 <div class="row mt-4" style="margin-left:0px;margin-right:0px;">
                       <div class="col-3"><hr style="height:2px;"></div>
@@ -25,19 +39,19 @@
                       <div class="col-3" style="padding-left:5px;"><hr style="height:2px;"></div>
                       
                       <div class="col-3" style="padding-top:5px;"><img src="img/thuvien/2.jpg" width="60px;" height="40px;" alt=""></div>
-                      <div class="col-9"><a href="" class="tintuc" style="text-decoration: none;">5 lý do bạn nên chọn Ninh Thuận du lịch</a> </div>
+                      <div class="col-9"><a href="{{route('qcNT')}}" class="tintuc" style="text-decoration: none;">Tại sao Ninh Thuận là điểm du lịch lí tưởng</a> </div>
                       <div class="col-12"><hr></div>
 
                       <div class="col-3" style="padding-top:5px;" style="text-decoration: none;"><img src="img/thuvien/4.jpg" width="60px;" height="40px;" alt=""></div>
-                      <div class="col-9"><a href="" class="tintuc" style="text-decoration: none;">Vùng biễn đẹp - khu du lịch Bình Hưng</a> </div>
+                      <div class="col-9"><a href="{{route('dlNT')}}" class="tintuc" style="text-decoration: none;">Vùng biễn đẹp - khu du lịch Bình Hưng</a> </div>
                       <div class="col-12"><hr></div>
 
                       <div class="col-3" style="padding-top:5px;"><img src="img/thuvien/3.jpg" width="60px;" height="40px;" alt=""></div>
-                      <div class="col-9"><a href="" class="tintuc" style="text-decoration: none;">Quan cảnh đường ven biển du lịch</a></div>
+                      <div class="col-9"><a href="{{route('dbNT')}}" class="tintuc" style="text-decoration: none;">Quan cảnh đường ven biển du lịch</a></div>
                       <div class="col-12"><hr></div>
                       
                       <div class="col-3" style="padding-top:5px;"><img src="img/thuvien/1.jpg" width="60px;" height="40px;" alt=""></div>
-                      <div class="col-9"><a href="" class="tintuc" style="text-decoration: none;">Những món ăn đặc sắc tại Ninh Thuận</a> </div>
+                      <div class="col-9"><a href="{{route('dsNT')}}" class="tintuc" style="text-decoration: none;">Những món ăn đặc sắc tại Ninh Thuận</a> </div>
                       <div class="col-12"><hr></div>
                 </div>
             </div>
@@ -66,8 +80,14 @@ $(document).ready(function(){
       var t = "Ngày trả phòng";
       $('.nut1').val(z);
       $('.nut2').val(t);
-      $('.nut1').datepicker();
-      $('.nut2').datepicker();
+      $('.nut1').datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate : new Date(),
+      });
+      $('.nut2').datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate : new Date(),
+      });
       // if(day.toString().length == 1){
       //   day = '0'+day;
       // }

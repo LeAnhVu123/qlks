@@ -9,6 +9,8 @@ use  App\Loaiphong;
 use  App\Phong;
 use  App\Khachhang;
 use  App\Nhanvien;
+use  App\Chitiet;
+use  App\Http\Ulti\Helpers;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 
@@ -44,7 +46,8 @@ class ControllerQLKS extends Controller
     {
         // $p = Loaiphong::paginate(3);
         $p = Loaiphong::all();
-        return view('DatPhong',compact('p'));
+        $zz = Loaiphong::all();
+        return view('DatPhong',compact('p','zz'));
     }
     public function click(Request $reg)
     {
@@ -86,78 +89,117 @@ class ControllerQLKS extends Controller
 }
     public function gioithieu()
         {
-            return view('Gioithieu');
+            $zz = Loaiphong::all();
+            return view('Gioithieu',compact('zz'));
         }
         public function huongdan()
         {
-            return view('Huongdan');
+            $zz = Loaiphong::all();
+            return view('Huongdan',compact('zz'));
         }
         public function khuyenmai()
         {
-            return view('Khuyenmai');
+            $zz = Loaiphong::all();
+            return view('Khuyenmai',compact('zz'));
         }
         public function dichvu()
         {
-            return view('Dichvu');
+            $zz = Loaiphong::all();
+            return view('Dichvu',compact('zz'));
+        }
+        public function mastertimkiem()
+        {
+            $zz = Loaiphong::all();
+            return view('MasterTimKiem',compact('zz'));
+        }
+        public function quancanhNT()
+        {
+            $zz = Loaiphong::all();
+            return view('QuancanhNT',compact('zz'));
+        }
+        public function dulichNT()
+        {
+            $zz = Loaiphong::all();
+            return view('DulichNT',compact('zz'));
+        }
+        public function venbienNT()
+        {
+            $zz = Loaiphong::all();
+            return view('DuongbienNT',compact('zz'));
+        }
+        public function dacsanNT()
+        {
+            $zz = Loaiphong::all();
+            return view('DacsanNT',compact('zz'));
+        }
+        public function dangnhap()
+        {
+            $zz = Loaiphong::all();
+            return view('Dangnhap',compact('zz'));
+        }
+        public function dangki()
+        {
+            $zz = Loaiphong::all();
+            return view('Dangki',compact('zz'));
+        }
+        public function search(Request $reg)
+        {
+            $zz = Loaiphong::all();
+            $ml = $reg['maloai'];
+            $a = $reg['succhua'];
+            if($a && $ml != "NULL")//chon so luong va loai phong
+            {
+                if($a<=4 && $a>0)
+                {
+                    $p = Loaiphong::Where('succhua','4')->Where('maloai',$ml)->get();
+                }
+                if($a>4 && $a<=6)
+                {
+                    $p = Loaiphong::Where('succhua','6')->Where('maloai',$ml)->get();
+                }
+                if($a>6)
+                {
+                    $p = Loaiphong::Where('succhua','10')->Where('maloai',$ml)->get();
+                }
+            }
+            if($a && $ml == "NULL")//chon so luong ,khong chon loai phong
+            {
+                if($a<=4 && $a>0)
+                {
+                    $p = Loaiphong::Where('succhua','4')->get();
+                }
+                if($a>4 && $a<=6)
+                {
+                    $p = Loaiphong::Where('succhua','6')->get();
+                }
+                if($a>6)
+                {
+                    $p = Loaiphong::Where('succhua','10')->get();
+                }
+            }
+            if(!$a && $ml != "NULL")//chon loai phong k chon so luong
+            {
+                    $p = Loaiphong::Where('maloai',$ml)->get();
+            }
+            // $ngaynhan = $reg['ngaynhan'];
+            // $ngaytra = $reg['ngaytra'];
+            // $splitngaynhan = Helpers::splitDate($ngaynhan,$namnn,$thangnn,$ngaynn);
+            // $splitngaytra = Helpers::splitDate($ngaytra,$namnt,$thangnt,$ngaynt);
+            // Chitiet::select('ngayden','ngaydi')->where()
+            // if($namnn == $namnt && $thangnn == $thangnt){
+            //     $day = $ngaynt - $ngaynn;
+            // }
+            // dd($day);
+            // if()
+            // $p = Loaiphong::Where('succhua',$a)->Where('maloai',$ml)->get();
+            if($ml == "NULL" && $a == NULL)
+            {
+                return back();
+            }
+            return view('Search',compact('p','zz'));
         }
 
 
-
-
-
-    // public function dangnhapadmin(){
-    //     return view('DangNhapADMin');
-    // }
-    // public function quanly(){
-    //     //$data = Khachhang::get();
-    //     return view('quanly');
-    // }
-    // public function ktid(Request $reg)
-    // {
-    //     $message = new MessageBag();
-    //     $id = $reg['id'];
-    //     $pass = $reg['pass'];
-    //     $slid = Nhanvien::select(['MaNV','PassWordNV'])->get();
-    //     foreach($slid as $key => $value){
-    //        $a = $value['MaNV'];
-    //        $b = $value['PassWordNV'];
-    //        if($a == $id)
-    //        {
-    //            if($b == $pass)
-    //            {                
-    //             return redirect(route('quanly'))/*->with('thanhcong','Ban da dang nhap thanh cong')*/;
-    //            }
-    //        }
-    //     }
-    //     $message->add('thatbai','Dang Nhap That Bai');
-    //     return redirect(route('dangnhap'))->withErrors($message);
-    // }
-    // public function idkh(Request $reg)
-    // {
-    //     $id = $reg['id'];
-    //     $pw = $reg['pw'];
-    //     //$sm = $reg['smad'];
-    //     $sm = $reg['xoaid'];
-    //    // Khachhang::create(['MaKh'=>$id,'PassWord'=>$pw]);
-    //     //Khachhang::Where('MaKh',$id)-> update(['PassWord'=>$pw]);
-    //     Khachhang::Where('MaKh',$id)->delete();
-    // }
-    /* public function gui(Request $reg)
-    {
-        $gui = $reg['gui'];//cai nay la click nut gui 
-        $ten = $reg['ten'];
-        $gmail = $reg['gmail'];
-        $vande = $reg['vande'];
-        $noidung = $reg['noidung'];
-       /*  TTLienHe::create(            
-            ['Ten'=>$ten,'Gmail'=>$gmail,'VanDe'=>$vande,'NoiDung'=>$noidung]
-        ); */
-       /*  TTLienHe::where('Ten','Phuoc')-> update(
-            ['Ten'=>$ten]
-        ); */
-            /* TTLienHe::where('Ten',$ten)->delete();     */          
-    /* } */
-   //sao thay m van goi DB ma inser controler
     /**
      * Show the form for creating a new resource.
      *
