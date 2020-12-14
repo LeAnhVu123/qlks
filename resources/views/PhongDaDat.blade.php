@@ -80,13 +80,13 @@
 				<span class="xuatgia" style="padding-top:0px;width:100px"></span><span>.000 VND</span>
 			</div>
 			<div class="col-2">
-				<a href="{{route('confirm',$value->maloai)}}" style="padding-top:0px;padding-right:20px;float:right;">
+				<a href="{{route('ttoan')}}" style="padding-top:0px;padding-right:20px;float:right;">
 					<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;">
 						Đặt Phòng
 					</button>
 				</a>
 
-				<button type="button" class="btn btn-primary xoass" style="width:110px;padding-top:20px;padding-right:20px;float:right;" value="{{$value['maloai']}}">
+				<button type="button" class="btn btn-primary xoass" style="width:110px;margin-top:20px;margin-left:52px;margin-top:30px;" value="{{$value['maloai']}}">
 					Hủy Phòng
 				</button>
 

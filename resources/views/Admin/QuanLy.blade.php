@@ -105,14 +105,8 @@
 <script>
 $(document).ready(function(){
     $('#example').DataTable();
- })
-</script> 
-<script>
-$(document).ready(function(){
-    // $('.qlkh').click(function(){
-    //     $('.qlkh').css("background-color", "yellow");
-    });
  });
-</script>  
+</script> 
+
 </body>
 </html>

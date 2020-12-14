@@ -10,6 +10,7 @@ class LoaiPhongController extends Controller
     //
     /* ViewLoaiPhong */
 	public function getlp(Request $reg){
+		
 		$id = $reg['maloai'];
 		if($id == null){
 			$lp = Loaiphong::All();

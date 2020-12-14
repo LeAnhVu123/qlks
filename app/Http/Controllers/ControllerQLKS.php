@@ -10,6 +10,7 @@ use  App\Phong;
 use  App\Khachhang;
 use  App\Nhanvien;
 use  App\Chitiet;
+use App\Dichvu;
 use  App\Http\Ulti\Helpers;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
@@ -38,7 +39,8 @@ class ControllerQLKS extends Controller
         $data1 = Loaiphong::select(['hinhanh'])->Where('maloai','>',3)->Where('maloai','<=',6)->get();
         $path =  'img\\';
 		$itemCart = Session::get('itemCart');
-        return view('PhongDaDat',compact('data1','path','itemCart'));
+		$dv = Dichvu::all();
+        return view('PhongDaDat',compact('data1','path','itemCart','dv'));
     }
 
 
@@ -87,6 +89,10 @@ class ControllerQLKS extends Controller
         
     }
 }
+    public function thanhtoan()
+    {
+        return view('Thanhtoan');
+    }
     public function gioithieu()
         {
             $zz = Loaiphong::all();
