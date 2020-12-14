@@ -58,7 +58,11 @@ $(document).ready(function(){
               ' <span style="font-size:20px;">Giá :</span> <span style="font-size:20px;padding-left:65px;color:#FFCC33; font-weight: bolder;"> '+aa[i].gia+'đ</span>  '+
               ' </div>'+
               ' <div class="col-12 mt-4">'+
-              '     <button class="btn btn-primary">Đặt phòng</button>'+
+                  '<form action="{{route("getid")}}" method="POST">'+
+                  ' @csrf ' +
+                  '<input type="hidden" name="maloai" value="'+aa[i].maloai+'"/>'+
+                        '<button type="submit" class="btn btn-primary">Đặt phòng</button>' +
+                  '</form>'+
               ' </div>'+
            '</div>'+
         ' </div>'+

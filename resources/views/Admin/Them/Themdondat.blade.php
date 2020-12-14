@@ -23,9 +23,10 @@
 					<tr>
 						<td style="padding-top:10px;">Mã khuyến mãi</td>						
 						<td style="padding-left:50px;padding-top:10px;">
-							<select name="km" id="" style="width:150px;height:30px">
+							<select name="makm" id="" style="width:150px;height:30px">
+							<option name="makm"></option>
 							@foreach($km as $value)
-								<option value="{{$value->makm}}">{{$value->tenkm}}</option>
+								<option name="makm" value="{{$value->makm}}">{{$value->tenkm}}</option>
 							@endforeach
 							</select>
 						</td>

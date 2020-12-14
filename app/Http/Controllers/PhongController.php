@@ -27,7 +27,54 @@ class PhongController extends Controller
 			$query .= ")";
 			$p = DB::select($query);
 		}
-	
+		$t = Phong::all();
+		$dd = Dondat::All();
+		if($reg['gui'] == "1")
+		{	
+			$query = "SELECT * From phongs where maphong in (";
+			foreach($t as $valt)
+			{
+				$vt = $valt->maphong;
+				foreach($dd as $key => $val)
+				{
+					$s = $val->maphong;
+					$c = explode(',',$s);
+					foreach($c as $value)
+					{
+						if($vt == $value)
+						{
+							$query .= "$vt,";
+						}
+					}
+				}
+			}
+			$query = substr($query,0,-1);
+			$query .= ")";
+			$p = DB::select($query);
+		}
+		if($reg['gui'] == "2")
+		{	
+			$query = "SELECT * From phongs where maphong not in (";
+			foreach($t as $valt)
+			{
+				$vt = $valt->maphong;
+				foreach($dd as $key => $val)
+				{
+					$s = $val->maphong;
+					$c = explode(',',$s);
+					foreach($c as $value)
+					{
+						if($vt == $value)
+						{
+							$query .= "$vt,";
+						}
+					}
+				}
+			}
+			$query = substr($query,0,-1);
+			$query .= ")";
+			$p = DB::select($query);
+		}
 		return view('Admin.Phong',compact('p'));
 	}
 	/* View them phong */
@@ -104,6 +151,20 @@ class PhongController extends Controller
 	public function xoaphong($maphong)
 	{
 		$mp = Phong::find($maphong);
+		$u = $mp->maphong;
+		$a = Dondat::all();
+		foreach($a as $key => $val)
+		{
+			$s = $val->maphong;
+			$z = explode(',',$s);
+			foreach($z as $value)
+			{
+				if($u == $value){
+					return redirect(route('phong'))->with('thanhcong','Vẫn còn bên đơn đặt');
+				}
+			}
+		}
+
 		// $ct = Chitiet::Where('maphong',$maphong)->first();
 		// if(!$ct)
 		// {

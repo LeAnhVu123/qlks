@@ -22,7 +22,11 @@ class DonDatController extends Controller
 		}else{
 			$dd = Dondat::all()->where('madon',$i);
 		}
-		
+		$s = $reg['ngay'];
+		if($s)
+		{
+			$dd = Dondat::all()->where('ngaylap',$s);
+		}
 		return view('Admin.Alldondat',compact('dd'));
 	}
 	/* them don dat */

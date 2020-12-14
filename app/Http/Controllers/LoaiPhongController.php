@@ -87,7 +87,8 @@ class LoaiPhongController extends Controller
 	}
 	/* View them loai phong */
 	public function getthemlp(request $reg){
-		return view('Admin.Them.Themloaiphong');
+		$lp = Loaiphong::all();
+		return view('Admin.Them.Themloaiphong',compact('lp'));
 	}
 	/* post them loai phong */
 	public function postthemlp(request $reg){

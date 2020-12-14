@@ -1,8 +1,19 @@
 @extends('Admin.QuanLy')
 @section('content')
-<div class="col-10" style="height:550px;">
+<style>
+body{
+    overflow-x: hidden;
+}
+</style>
+<div class="col-10" style="height:550px;padding-right:0px;padding-left:0px;">
             <div class="row">
 				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-left"><span style="font-size: 20px;">Quản Lí Đơn Đặt Phòng</span> </div>
+                <div class="col-12" style="padding-left:40px;padding-top:5px;">
+                    <form action="{{route('alldondat')}}" method="get">
+                        <input type="text" name="ngay" id="" class="u" autocomplete="off" placeholder="Chọn xem ngày đặt" readonly> 
+                        <input type="submit" name="gui" class="zz" value="Xác Nhận">
+                    </form>
+                </div>
 				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-right;"><span style="font-size: 20px;">Thêm Đơn đặt</span><a href="{{route('get-themdd')}}"><button class="btn btn-primary ml-1" style="width:70px;">Thêm</button></a></div>
                 <div class="col-12 mt-1">@if(session('thanhcong'))
                 <div class="alert alert-info">
@@ -107,6 +118,10 @@ $(document).ready(function(){
     $('.ee').click(function(){
         $(this).next().click();
     })
+    $('.u').datepicker({
+			dateFormat: "yy-mm-dd",
+			numberOfMonths : 2,
+		})
 })
-</script>      
+</script> 
 @endsection

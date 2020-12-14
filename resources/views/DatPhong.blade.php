@@ -48,7 +48,7 @@ $(document).ready(function(){
          '<div class="col-7" style="padding-left:0px;">'+			 
            '<div class="row">'+		   	  
               ' <div class="col-12"> '+
-              ' <h3 style="color:	#0066FF;">'+aa[i].tenloai+'</h3>'+
+              ' <h4 style="color:	#0066FF;">'+aa[i].tenloai+'</h4>'+
               ' </div>'+
               ' <div class="col-12 mt-3">'+
               ' <span style="font-size:20px;">Giới hạn :</span> <span style="font-size:20px;padding-left:20px;" class="succhua">'+aa[i].succhua+' Người</span> '+

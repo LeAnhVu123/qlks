@@ -26,12 +26,10 @@
 		<div class="row">
 			<div class="col-3">
 				<img src="{{$path}}\{{$value->hinhanh}}" alt="" class="img" style="height:200px;width:100%;">
-				<p style="padding-top:5px;height:10px">Loai Phong :<span class="loai text-capitalize">{{$value->tenloai}}</span></p>
+				<p style="padding-top:5px;height:10px;white-space: nowrap">Loai Phong : <span class="loai text-capitalize" style="white-space: nowrap;">{{$value->tenloai}}</span></p>
 
-				<!-- <div>{{$value->MoTa}}</div>  -->
-
-				<p style="padding-top:5px;height:10px">SucChua:<span class="succhua">{{$value->succhua}}</span></p>
-				<p style="padding-top:5px;height:10px">Gia:<span class="gia">{{$value->gia}}</span></p>
+				<p style="padding-top:5px;height:10px">Sức chứa : <span class="succhua">{{$value->succhua}}</span></p>
+				<p style="padding-top:5px;height:10px">Giá : <span class="gia">{{$value->gia}}</span><span>.000 VND</span></p>
 
 			</div>
 			<div class="col-3">
@@ -42,7 +40,7 @@
 						<td style="padding-left:20px;"><input type="number" min="1" max="10" style="width:70px;" value="1" class="sophong"></td>
 					</tr>					
 					<tr>
-						<td>- Số lượng</td>
+						<td>- Số người</td>
 						<td style="padding-left:20px;padding-top:5px;"><input type="number" min="1" max="10" style="width:70px;"></td>
 					</tr>
 					<tr>
@@ -60,7 +58,7 @@
             - Ngày đến <input type="date">
             - Ngày đi <input type="date"> -->
 			</div>
-			<div class="col-2 dv" style="padding-left:40px;font-size:1.3rem">
+			<div class="col-2 dv" style="padding-left:40px;font-size:1.3rem;padding-right:0px;">
 				<!-- <table style="width:100%;"><input type="checkbox" name="" id="" class="dv1" value='1'><span> Thuê xe </span></table>
 				<table style="width:100%;"><input type="checkbox" name="" id="" class="dv2" value='2'><span> Đưa đón</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv3" value='3'><span> Nhà hàng</span></table>
@@ -68,10 +66,10 @@
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv5" value='5'><span> Spa</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv6" value='6'><span> Giặt ủi</span></table> -->
 				@foreach($dv as $itemdv)
-					<table style="width:100%"><input type="checkbox" name="" id="" class="dv{{$itemdv->madv}}" itemdv='{{$itemdv->madv}}'><span> {{$itemdv->tendv}}</span></table>
+					<table style="width:100%"><input type="checkbox" name="" id="" class="dv{{$itemdv->madv}}" itemdv='{{$itemdv->madv}}'><span style="font-size:15px;"> {{$itemdv->tendv}}</span></table>
 				@endforeach
 				<hr>
-				<table style="width:100%">Tong<span class="total-priceservice"> 0 </span></table>
+				<table style="width:100%"><span style="font-size:17px;">Tổng : </span>  <span class="total-priceservice" style="font-size:17px;"> 0</span><span style="font-size:17px;">.000 VND</span></table>
 
 			</div>
 			<div class="col-2" style="text-align:center;">

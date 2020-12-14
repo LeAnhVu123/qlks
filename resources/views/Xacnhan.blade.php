@@ -1,6 +1,6 @@
 @extends('Masterlayout')
 @section('content')
-<head><title>Thanh Toán</title></head>
+<head><title>Xác Nhận</title></head>
 <div class="col-12" style="text-align:center;padding-top:20px;"><h3>Chi tiết đơn đặt phòng</h3></div>
 <div class="col-12"><hr></div>
 <div class="col-12">

@@ -25,11 +25,10 @@
                         <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="gia"></td>
                     </tr>
                     <tr>
-                        <td style="padding-top:10px;">Hình ảnh</td>
+                        <td style="padding-top:0px;">Hình ảnh</td>
                         <td style="padding-left:50px;padding-top:10px;">
-                            <!-- <label for="files" id="label" style="border: 1px solid;width:175px;text-align:center;cursor:pointer;font-size: 15px;">Chọn hình ảnh</label> -->
-                            <input id="files"  type="file" name="hinhanh">
-                            <!-- style="visibility:hidden;" -->
+                            <img src="" class="aa" alt="" style="width:170px;height:100px;"><p>
+                            <input style="padding-top:20px;" id="files" type="file" name="hinhanh" onchange="showImg(event)">
                         </td>
                     </tr>
                     <tr>
@@ -53,4 +52,17 @@
            
     </div>
 </div>
+<script>
+function showImg(input){
+        var file = $("input[type=file]").get(0).files[0];
+        if(file){
+            var reader = new FileReader();
+ 
+            reader.onload = function(){
+                $(".aa").attr("src", reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
 @endsection

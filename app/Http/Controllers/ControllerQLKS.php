@@ -65,7 +65,7 @@ class ControllerQLKS extends Controller
     
     public function getid(Request $reg){
         $id = $reg['maloai'];
-        $phong = Phong::where('maphong',$id)->first();
+        $lp = Loaiphong::where('maloai',$id)->first();
 		$session = Session::get('itemCart');
         if($session){
         foreach($session as $value){
@@ -74,7 +74,7 @@ class ControllerQLKS extends Controller
             }
         }
     }
-        Session::push('itemCart', $phong->pval);       
+        Session::push('itemCart', $lp);
         
 		return redirect(route('phongdadat'));
     }
@@ -91,7 +91,7 @@ class ControllerQLKS extends Controller
 }
     public function thanhtoan()
     {
-        return view('Thanhtoan');
+        return view('Xacnhan');
     }
     public function gioithieu()
         {

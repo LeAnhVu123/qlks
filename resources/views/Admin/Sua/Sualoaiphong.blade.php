@@ -31,8 +31,7 @@
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Hình ảnh</td>
-                        <img src="http://localhost:1975/clone1/public/img/{{$lp->hinhanh}}" alt="abc">
-                        <td style="padding-left:50px;padding-top:10px;">{{$lp->hinhanh}} <input type="file" autocomplete="off" name="hinhanh" value="{{$lp->hinhanh}}" ></td>
+                        <td  style="padding-top:10px;"><input type="file" name="hinhanh" id="" class="hidden" onchange="showImg(event)"><img src="http://localhost:1975/clone1/public/img/{{$lp->hinhanh}}" style="width:220px;height:100px;padding-left:50px;cursor:pointer;" class="aa" ></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Sửa"></a></td>
@@ -54,4 +53,24 @@
             </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('.hidden').hide();
+    $('.aa').click(function(){
+        $(this).prev().click();
+    })
+})
+function showImg(input){
+        var file = $("input[type=file]").get(0).files[0];
+        if(file){
+            var reader = new FileReader();
+ 
+            reader.onload = function(){
+                $(".aa").attr("src", reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+</script>
 @endsection
