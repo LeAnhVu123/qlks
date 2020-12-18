@@ -75,7 +75,7 @@ class DichVuController extends Controller
      */
     public function getviewsuadv($id)
     {
-		$dv = Dichvu::findOrFail($id)->first();
+		$dv = Dichvu::all()->where('madv',$id)->first();
         return view('Admin.Sua.Suadichvu',compact('dv'));
     }
 
@@ -93,7 +93,7 @@ class DichVuController extends Controller
       'gia.required'=>'Bạn chưa nhập giá',
       'gia.regex'=>'Giá vui lòng nhập số thôi',
     ]);
-		// dd(date("Y/m/d h:i:s"));
+    // dd(date("Y/m/d h:i:s"));
 		Dichvu::findOrFail($madv)->update([
 			'tendv' => $reg['tendv'],
 			'gia' => $reg['gia'],
