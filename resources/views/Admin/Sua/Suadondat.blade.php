@@ -58,9 +58,8 @@
 						<td>
 						<div class="row ml-5">
 							@foreach($dv as $value)							
-								<div class="col-6 p-0 m-0 my-2" style="font-size:20px">
-								
-									<input type="checkbox" name="dv{{$value->madv}}" madv="" value="{{$value->madv}}" class="mr-2" @foreach($explode as $madv)  {{$value->madv == $madv ? 'checked' : ''}} @endforeach >{{$value->tendv}}
+								<div class="col-6 p-0 m-0 my-2" style="font-size:20px">								
+									<input type="checkbox" name="dv[{{$value->madv}}]" madv="" value="{{$value->madv}}" class="mr-2" @foreach($explode as $madv)  {{$value->madv == $madv ? 'checked' : ''}} @endforeach >{{$value->tendv}}
 									
 								</div>								
 							@endforeach

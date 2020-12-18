@@ -98,7 +98,8 @@ class ControllerQLKS extends Controller
     public function thanhtoan()
     {
         $o = Cookie::get('dangnhap');
-        return view('Xacnhan','o');
+        $z = json_decode($o);
+        return view('Xacnhan',compact('o','z'));
     }
     public function gioithieu()
         {

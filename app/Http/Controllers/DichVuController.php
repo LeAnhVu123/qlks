@@ -104,8 +104,8 @@ class DichVuController extends Controller
 	
     public function xoadv($id)
     {
-		Helpers::truncateTable(Dichvu::class,$id);
-		// Dichvu::findOrFail($id)->delete();
+		// Helpers::truncateTable(Dichvu::class,$id);
+		Dichvu::findOrFail($id)->delete();
 		return redirect(route('dichvu'))->with('thanhcong','Xóa thành công dịch vụ');
     }
 }

@@ -87,8 +87,14 @@ class ChiTietController extends Controller
 		}
 		$ct->slphong=$reg['slphong'];
 		$ct->soluong=$reg['soluong'];
-		$ct->ngayden=$reg['ngayden'];
-		$ct->ngaydi=$reg['ngaydi'];
+		if($reg['ngaydi'] > $reg['ngayden'])
+		{
+			$ct->ngayden=$reg['ngayden'];
+			$ct->ngaydi=$reg['ngaydi'];
+		}else{
+			return redirect('Admin/Sua/Suachitiet/'.$mact)->with('thanhcong','Ngày đi phải lớn hơn ngày đến');
+		}
+		
 		$ct->save();
 		return redirect('Admin/Chitietdondat')->with('thanhcong','Sửa chi tiết đơn đặt phòng thành công');		
 	}

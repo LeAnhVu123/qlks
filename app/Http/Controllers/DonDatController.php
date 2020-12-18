@@ -52,14 +52,30 @@ class DonDatController extends Controller
 		return view('Admin.Them.Themdondat',compact('km','dv'));
 	}
 	public function postthemdd(request $reg){
-		$dv = Dichvu::all();
+		$dd = new Dondat;
+		$val = $reg->dv;
 		$arr = [];
-		for($i = 1;$i <= count($dv) ;$i++){
-			if($reg['dv'.$i] != null){
-				array_push($arr,$reg['dv'.$i]);
-			}			
+		// $insert ="";
+		if($val)
+		{
+			foreach($val as $key=>$value){
+				array_push($arr,$value);
+				// $insert .= "$value,";
+			}
+			// $insert = substr($insert,0,-1);
+			// echo $insert; die;
+			$dv = Dichvu::all();
+			$implode = implode(',',$arr);//tu array thanh string, explode bien string thanh lai array
+			$dd->madv = $implode;
 		}
-		$implode = implode(',',$arr);//tu array thanh string, explode bien string thanh lai array
+		// foreach($val as $key=>$value){
+		// 	array_push($arr,$value);
+		// 	// $insert .= "$value,";
+		// }
+		// // $insert = substr($insert,0,-1);
+		// // echo $insert; die;
+		// $dv = Dichvu::all();
+		// $implode = implode(',',$arr);//tu array thanh string, explode bien string thanh lai array
 		$this->validate($reg,[
 			'ngaylap'=>'required',
 			'tongtien'=>'required|regex:/^[0-9]+$/',
@@ -70,7 +86,7 @@ class DonDatController extends Controller
 			'tongtien.regex'=>'Tổng tiền phải là số',
 			'trangthai.required'=>'Bạn chưa nhập trạng thái',
 		]);
-		$dd = new Dondat;
+		
 		$nv = Nhanvien::Where('manv',$reg['manv'])->first();
 		$kh = Khachhang::Where('makh',$reg['makh'])->first();
 		// $tt = Thanhtoan::Where('matt',$reg['matt'])->first();
@@ -103,7 +119,7 @@ class DonDatController extends Controller
 				}
 			}
 		$dd->maphong = $reg['maphong'];
-		$dd->madv = $implode;
+		// $dd->madv = $implode;
 		$dd->ngaylap = $reg['ngaylap'];
 		$dd->tongtien = $reg['tongtien'];
 		$dd->trangthai = $reg['trangthai'];		
@@ -123,14 +139,20 @@ class DonDatController extends Controller
 	/* Post Sua don dat */
 	public function postsuadondat(request $reg,$madon)
 	{
-		$dv = Dichvu::all();
+		$dd = Dondat::find($madon);
+		$dd->madv = NULL;
+		$val = $reg->dv;
 		$arr = [];
-		for($i = 1;$i <= count($dv) ;$i++){
-			if($reg['dv'.$i] != null){
-				array_push($arr,$reg['dv'.$i]);
-			}			
+		if($val)
+		{
+			foreach($val as $key=>$value){
+				array_push($arr,$value);
+			}
+			$dv = Dichvu::all();
+			$implode = implode(',',$arr);
+			$dd->madv = $implode;
 		}
-		$implode = implode(',',$arr);
+		
 		$this->validate($reg,[
 			'ngaylap'=>'required',
 			'tongtien'=>'required|regex:/^[0-9]+$/',
@@ -142,7 +164,6 @@ class DonDatController extends Controller
 			'trangthai.required'=>'Bạn chưa nhập trạng thái',
 		]);
 		$km = Khuyenmai::all();
-		$dd = Dondat::find($madon);
 		$nv = Nhanvien::Where('manv',$reg['manv'])->first();
 		$kh = Khachhang::Where('makh',$reg['makh'])->first();
 		$km = Khuyenmai::Where('makm',$reg['km'])->first();
@@ -168,7 +189,7 @@ class DonDatController extends Controller
 				return redirect('Admin/Sua/Suadondat/'.$madon)->with('thanhcong','Mã khuyễn mãi không tồn tại');
 			}
 		$dd->maphong = $reg['maphong'];
-		$dd->madv = $implode;
+		
 		$dd->ngaylap = $reg['ngaylap'];
 		$dd->tongtien = $reg['tongtien'];
 		$dd->trangthai = $reg['trangthai'];

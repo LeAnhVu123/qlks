@@ -50,12 +50,24 @@
     </div>
 </div>
  <script>
-	 $(document).ready(function(){
-		$('.ngaydi, .ngayden').datepicker({
-			dateFormat: "yy-mm-dd",
-			numberOfMonths : 2,
-			minDate : new Date(),
-		})
-	})
+	   var minDate = new Date();
+      $('.ngayden').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          $('.ngaydi').datepicker("option", "minDate",selectedDate);
+        }
+      })
+      $('.ngaydi').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          // $('.nut1').datepicker("option", "minDate",selectedDate);
+        }
+      })
  </script>
 @endsection

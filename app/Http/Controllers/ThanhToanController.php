@@ -33,23 +33,24 @@ class ThanhToanController extends Controller
     public function postthemtt(Request $reg)
     {
 		$this->validate($reg,[
-			'madon' => 'required',
+			'madon' => 'required|unique:thanhtoans,madon',
 		],[
-			'madon.required' => 'Bạn chưa nhập mã đơn',
+      'madon.required' => 'Bạn chưa nhập mã đơn',
+      'madon.unique' => 'Đơn này đã tồn tại trong thanh toán',
     ]);
-    $s = Dondat::all()->where('madon',$reg['madon'])->first();
-    if($s)
-    {
-      $a = $reg['madon'];
-    }
-    else{
-      return redirect(route('get-themtt'))->with('thanhcong','Mã đơn này không tồn tại');
-    }
+      $t = $reg['madon'];
+      $check = Dondat::all()->where('madon',$t)->first();
+      if(!$check)
+      {
+        return back()->with('thanhcong','Đơn đặt không tồn tại');
+      }
+      else{
         Thanhtoan::create([
-			'madon' => $a,
-			'thanhtoan' => $reg['tt'],
-		]);
-		return redirect(route('thanhtoan'))->with('thanhcong','Tạo thanh toán thành công');
+          'madon' => $reg['madon'],
+          'thanhtoan' => $reg['tt'],
+        ]);    
+        return redirect(route('thanhtoan'))->with('thanhcong','Tạo thanh toán thành công');
+      }
     }
     public function getviewsuatt($id)
     {
