@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Thanhtoan;
+use App\Dondat;
 use Illuminate\Http\Request;
 
 class ThanhToanController extends Controller
@@ -12,9 +13,17 @@ class ThanhToanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $reg)
     {
-		$tt = Thanhtoan::all();
+        $tt = Thanhtoan::all();
+       if($reg['gui'] == "1")
+       {
+        $tt = Thanhtoan::all()->where('thanhtoan',1);
+       }
+       if($reg['gui'] == "2")
+       {
+        $tt = Thanhtoan::all()->where('thanhtoan',0);
+       }
         return view('Admin.Allthanhtoan',compact('tt'));
     }
     public function getviewthemtt()
@@ -24,15 +33,23 @@ class ThanhToanController extends Controller
     public function postthemtt(Request $reg)
     {
 		$this->validate($reg,[
-			'madon' => 'required|unique:thanhtoans,madon',
+			'madon' => 'required',
 		],[
-			'madon.unique' => 'Bạn đã có mã đơn trong đây',
-		]);
+			'madon.required' => 'Bạn chưa nhập mã đơn',
+    ]);
+    $s = Dondat::all()->where('madon',$reg['madon'])->first();
+    if($s)
+    {
+      $a = $reg['madon'];
+    }
+    else{
+      return redirect(route('get-themtt'))->with('thanhcong','Mã đơn này không tồn tại');
+    }
         Thanhtoan::create([
-			'madon' => $reg['madon'],
+			'madon' => $a,
 			'thanhtoan' => $reg['tt'],
 		]);
-		return redirect(route('thanhtoan'))->with(['thanhcong','Tạo thanh toán thành công']);
+		return redirect(route('thanhtoan'))->with('thanhcong','Tạo thanh toán thành công');
     }
     public function getviewsuatt($id)
     {
@@ -45,13 +62,13 @@ class ThanhToanController extends Controller
 		$tt->update([
 			'thanhtoan' => $reg['tt'],
 		]);
-		return redirect(route('thanhtoan'));
+		return redirect(route('thanhtoan'))->with('thanhcong','Sửa thanh toán thành công');
     }
 
     public function xoatt(Request $request, $id)
     {
 		$tt = Thanhtoan::findOrFail($id)->delete();
-		return redirect(route('thanhtoan'));
+		return redirect(route('thanhtoan'))->with('thanhcong','Xóa thanh toán thành công');
     }
 
 }

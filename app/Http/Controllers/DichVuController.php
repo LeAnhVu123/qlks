@@ -53,6 +53,12 @@ class DichVuController extends Controller
      */
     public function postthemdv(Request $reg)
     {
+      $this->validate($reg,[
+          'gia'=> 'required|regex:/^[0-9]+$/',
+      ],[
+        'gia.required'=>'Bạn chưa nhập giá',
+        'gia.regex'=>'Giá vui lòng nhập số thôi',
+      ]);
         Dichvu::create([
 			'tendv' => $reg['tendv'],
 			'gia' => $reg['gia'],
@@ -81,19 +87,25 @@ class DichVuController extends Controller
      */
     public function postsuadv(Request $reg,$madv)
     {
+      $this->validate($reg,[
+        'gia'=> 'required|regex:/^[0-9]+$/',
+    ],[
+      'gia.required'=>'Bạn chưa nhập giá',
+      'gia.regex'=>'Giá vui lòng nhập số thôi',
+    ]);
 		// dd(date("Y/m/d h:i:s"));
 		Dichvu::findOrFail($madv)->update([
 			'tendv' => $reg['tendv'],
 			'gia' => $reg['gia'],
 			'updated_at' => date("Y/m/d h:i:s")
 		]);
-		return redirect(route('dichvu'));
+		return redirect(route('dichvu'))->with('thanhcong','Sửa thành công dịch vụ');
 	}
 	
     public function xoadv($id)
     {
 		Helpers::truncateTable(Dichvu::class,$id);
 		// Dichvu::findOrFail($id)->delete();
-		return redirect(route('dichvu'));
+		return redirect(route('dichvu'))->with('thanhcong','Xóa thành công dịch vụ');
     }
 }

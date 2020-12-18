@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Khuyenmai;
+use App\Dondat;
 use Illuminate\Http\Request;
 
 class KhuyenMaiController extends Controller
@@ -43,13 +44,26 @@ class KhuyenMaiController extends Controller
      */
     public function postthemkm(Request $reg)
     {
+      $this->validate($reg,[
+        'tenkm'=>'required|unique:khuyenmais,tenkm',
+        'giagiam'=>'required|regex:/^[0-9]+$/',
+        'ngaybd'=>'required',
+        'ngaykt'=>'required',
+      ],[
+        'tenkm.required'=>'Vui lòng nhập tên khuyến mãi',
+        'tenkm.unique'=>'Tên khuyến mãi bị trùng',
+        'giagiam.regex'=>'Vui lòng nhập số',
+        'giagiam.required'=>'Vui lòng nhập giá giảm',
+        'ngaybd.required'=>'Vui lòng nhập ngày bắt đầu',
+        'ngaykt.required'=>'Vui lòng nhập ngày kết thúc',
+      ]);
         Khuyenmai::create([
 			'tenkm' => $reg['tenkm'],
 			'giagiam' => $reg['giagiam'],
 			'ngaybd' => $reg['ngaybd'],
 			'ngaykt' => $reg['ngaykt'],
 		]);
-		return redirect(route('khuyenmai'));
+		return redirect(route('khuyenmai'))->with('thanhcong','Thêm khuyến mãi thành công'); 
     }
 
     /**
@@ -72,6 +86,18 @@ class KhuyenMaiController extends Controller
      */
     public function postsuakm(Request $reg,$id)
     {
+      $this->validate($reg,[
+        'tenkm'=>'required',
+        'giagiam'=>'required|regex:/^[0-9]+$/',
+        'ngaybd'=>'required',
+        'ngaykt'=>'required',
+      ],[
+        'tenkm.required'=>'Vui lòng nhập tên khuyến mãi',
+        'giagiam.regex'=>'Vui lòng nhập số',
+        'giagiam.required'=>'Vui lòng nhập giá giảm',
+        'ngaybd.required'=>'Vui lòng nhập ngày bắt đầu',
+        'ngaykt.required'=>'Vui lòng nhập ngày kết thúc',
+      ]);
 		$km = Khuyenmai::findOrFail($id);
 		$km->update([
 			'tenkm' => $reg['tenkm'],
@@ -79,12 +105,21 @@ class KhuyenMaiController extends Controller
 			'ngaybd' => $reg['ngaybd'],
 			'ngaykt' => $reg['ngaykt'],
 		]);
-		return redirect(route('khuyenmai'));
+		return redirect(route('khuyenmai'))->with('thanhcong','Sửa khuyến mãi thành công'); 
     }
 
     public function xoakm($id)
     {
-		Khuyenmai::findOrFail($id)->delete();
-		return redirect(route('khuyenmai'));
+    $z = Khuyenmai::find($id);
+    $dd = Dondat::all()->Where('makm',$id)->first();
+    if(!$dd)
+    {
+      $z->delete();
+      return redirect(route('khuyenmai'))->with('thanhcong','Xóa khuyến mãi thành công'); 
+    }
+    else{
+      return redirect(route('khuyenmai'))->with('thanhcong','Vẫn còn tồn tại khuyến mãi ở đơn đặt');
+    }
+		
     }
 }

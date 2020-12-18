@@ -15,23 +15,42 @@
 </style>
 <script>
 $(document).ready(function(){
-	var d = new Date();
-      var day = d.getDate();
-      var month = d.getMonth()+1;
-      var year = d.getFullYear();
-      var date = month + "/" + day + "/" + year;
-      var z = "Ngày nhận phòng";
-      var t = "Ngày trả phòng";
-      $('.nut1').val(z);
-      $('.nut2').val(t);
+  var minDate = new Date();
       $('.nut1').datepicker({
-          dateFormat: "yy-mm-dd",
-          minDate : new Date(),
-      });
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          $('.nut2').datepicker("option", "minDate",selectedDate);
+        }
+      })
       $('.nut2').datepicker({
-          dateFormat: "yy-mm-dd",
-          minDate : new Date(),
-      });
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          // $('.nut1').datepicker("option", "minDate",selectedDate);
+        }
+      })
+	// var d = new Date();
+  //     var day = d.getDate();
+  //     var month = d.getMonth()+1;
+  //     var year = d.getFullYear();
+  //     var date = month + "/" + day + "/" + year;
+  //     var z = "Ngày nhận phòng";
+  //     var t = "Ngày trả phòng";
+  //     $('.nut1').val(z);
+  //     $('.nut2').val(t);
+  //     $('.nut1').datepicker({
+  //         dateFormat: "yy-mm-dd",
+  //         minDate : new Date(),
+  //     });
+  //     $('.nut2').datepicker({
+  //         dateFormat: "yy-mm-dd",
+  //         minDate : new Date(),
+  //     });
     var aa = @php echo json_encode($p) @endphp;
     var count = 3;
     countall(count,aa);
@@ -44,7 +63,7 @@ $(document).ready(function(){
   function countall(count,aa){
     for(var i = 0; i < count ;i++){
        $('.all').append(
-       '<div class="col-5" style="padding-left:0px;">  <img src="img/'+aa[i].hinhanh+'" style="width:300;height:200px;" alt="" class="img">  </div>' +
+       '<div class="col-5" style="padding-left:0px;">  <img src="img/'+aa[i].hinhanh+'" style="width:300px;height:200px;" alt="" class="img">  </div>' +
          '<div class="col-7" style="padding-left:0px;">'+			 
            '<div class="row">'+		   	  
               ' <div class="col-12"> '+
@@ -71,5 +90,6 @@ $(document).ready(function(){
          '</div>  ')
       }
   }
+ 
 </script>
 @endsection

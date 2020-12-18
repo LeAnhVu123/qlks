@@ -9,10 +9,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <title>Document</title>
+    <title>Đăng Nhập Admin</title>
 </head>
 <body>
-@include('notice');sadsadsadsad
+
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -32,6 +32,7 @@
                             </tr>
                     </table>
                 </form>
+                
             </div>
         </div>
     </div>

@@ -30,11 +30,17 @@
         <a href="DatPhong" class="gtd">Đặt Phòng Nhanh</a>
         <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
       </div>
+      @if(!$o)
       <div class="col-md-3 col-ms-6 col-12">
-      <a href="{{route('dk')}}"><button class="btn btn-info tki">Đăng Ký</button></a>
-      <a href="{{route('dn')}}"><button class="btn btn-info tki">Đăng Nhập</button></a>
+          <a href="{{route('dk')}}"><button class="btn btn-info tki">Đăng Ký</button></a>
+          <a href="{{route('dn')}}"><button class="btn btn-info tki">Đăng Nhập</button></a>
       </div>
-      
+      @endif
+      @if($o) 
+      <div class="col-md-3 col-ms-6 col-12">
+        <a href="{{route('dx')}}"><button class="btn btn-info tki">Đăng Xuất</button></a>
+      </div>
+      @endif
     </div>
     
   </div>

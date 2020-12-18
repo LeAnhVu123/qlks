@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Cookie;
 
 class ControllerAdmin extends Controller
 {
-	public function quanly()
-	{		
-		return view('Admin.QuanLy');
+	public function quanly(request $reg)
+	{
+		$cookie = Cookie::get('account');
+		$taikhoan = json_decode($cookie)->taikhoan;
+		return view('Admin.QuanLy',compact('taikhoan'));
+
 	}
 	/* View Show QLKH */
 	// public  function getkh()

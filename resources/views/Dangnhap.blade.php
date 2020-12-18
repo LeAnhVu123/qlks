@@ -25,9 +25,10 @@
         <div class="col-12" style="padding-top:10px;padding-left:70px;"><a href="{{route('trangchu')}}" style="text-decoration: none;"><span style="font-size:30px;font-weight:bolder;" ><span class="fa fa-home"></span> ROYAL HOTEL</span ></a><span style="font-size:20px;padding-left:20px;"> Đăng Nhập</span></div>
         <div class="col-12 mt-3" style="background-image: url('img/hinhnen/e1.jpg');height:530px;width:100%;">
             <div class="row" style="padding-top:50px;">
-                <div class="col-8"></div>
+                <div class="col-5"></div>
+                <div class="col-3">@include('notice')</div>
                 <div class="col-3" style="background-color:white;border-radius:5px;padding-left:15px;">
-                @include('notice')
+                
                 <form action="{{route('post-dn')}}" method="post">
                         @csrf
                     <div class="row">

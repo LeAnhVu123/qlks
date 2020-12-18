@@ -10,7 +10,8 @@ body{
 				<div class="col-12" style="padding-top:20px;padding-left:40px;display:float-left"><span style="font-size: 20px;">Quản Lí Đơn Đặt Phòng</span> </div>
                 <div class="col-12" style="padding-left:40px;padding-top:5px;">
                     <form action="{{route('alldondat')}}" method="get">
-                        <input type="text" name="ngay" id="" class="u" autocomplete="off" placeholder="Chọn xem ngày đặt" readonly> 
+                        <input type="text" name="ngay" id="" class="u" autocomplete="off" placeholder="Từ ngày đặt" readonly> 
+                        <input type="text" name="toingay" id="" class="u" autocomplete="off" placeholder="Tới ngày đặt" readonly> 
                         <input type="submit" name="gui" class="zz" value="Xác Nhận">
                     </form>
                 </div>

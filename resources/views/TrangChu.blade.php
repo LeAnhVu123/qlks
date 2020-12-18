@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/TrangChu.css')}}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="/path/to/jquery.cookie.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -27,10 +31,18 @@
         <a href="DatPhong" class="gtd">Đặt Phòng Nhanh</a>
         <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
       </div>
+      @if(!$b)
       <div class="col-md-3 col-ms-6 col-12">
-      <a href="{{route('dk')}}"><button class="btn btn-info tki">Đăng Ký</button></a>
-      <a href="{{route('dn')}}"><button class="btn btn-info tki">Đăng Nhập</button></a>
+          <a href="{{route('dk')}}"><button class="btn btn-info tki">Đăng Ký</button></a>
+          <a href="{{route('dn')}}"><button class="btn btn-info tki">Đăng Nhập</button></a>
       </div>
+      @endif
+      @if($b) 
+      <div class="col-md-3 col-ms-6 col-12">
+        <!-- <span style="padding-top: 20px;font-size:17px;">Xin Chào : {{$l}}</span> -->
+        <a href="{{route('dx')}}"><button class="btn btn-info tki">Đăng Xuất</button></a>
+      </div>
+      @endif
     </div>
 
   </div>
@@ -208,5 +220,13 @@
             </div>
     </div>
  </div>
+ <script>
+ $(document).ready(function(){
+  
+  // if(a){
+  //   console.log('123123');
+  // }
+ });
+ </script>
 </body>
 </html>

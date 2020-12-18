@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use App\Nhanvien;
 use Closure;
 use Illuminate\Support\Facades\Cookie;
-class CHeckRole
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,13 @@ class CHeckRole
      */
     public function handle($request, Closure $next)
     {
-        $checkrole = Cookie::get('account');
-        $role = json_decode($checkrole)->role;
-        if($role == 1 or $role == 2){
-            return $next($request);// tiep tuc qua controller
-        }else{ 
+        $check = Cookie::get('account');
+        $role = json_decode($check)->role;
+        if($role == 1)
+        {
+            return $next($request);
+        }
+        else{
             return back()->with('thanhcong','không có quyền');
         }
        

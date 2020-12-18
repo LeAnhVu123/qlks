@@ -25,6 +25,7 @@ Route::post('test','ControllerQLKS@click');// chu click tro trang dung k? um` da
 Route::post('/TrangChu','ControllerQLKS@gui')->name('trangchu');//dung k ta, thay cai nay sai sai xem thu
 
 Route::get('/PhongDaDat','ControllerQLKS@phongdadat')->name('phongdadat');
+// Route::get('/master','ControllerQLKS@master')->name('master');
 
 Route::get('/DatPhong','ControllerQLKS@datphong')->name('datphong');
 Route::post('/DatPhong','ControllerQLKS@getid')->name('getid');
@@ -46,6 +47,7 @@ Route::post('/Dangnhap','DangNhapController@dangnhap')->name('post-dn');
 Route::get('/Dangki','ControllerQLKS@dangki')->name('dk');
 Route::get('/Xacnhan','ControllerQLKS@thanhtoan')->name('ttoan');
 Route::post('/Dangki','DangKiController@postdk')->name('post-dk');
+Route::get('/DangXuat','DangNhapController@dangxuat')->name('dx');
 Route::get('/MasterTimkiem','ControllerQLKS@mastertimkiem')->name('mastertimkiem');
 
 /* Quản Lí ID khách hàng */
@@ -92,7 +94,7 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('QLTT','ThanhToanController@index')->name('thanhtoan');
 		Route::get('QLKM','KhuyenMaiController@index')->name('khuyenmai');
 		/* Xoa */
-		Route::get('Xoa/{makh}','KhachHangController@getxoa')->middleware('checkrole')->name('get-xoatk');
+		Route::get('Xoa/{makh}','KhachHangController@getxoa')->middleware('checkadmin')->name('get-xoatk');
 		Route::get('XoaPhong/{maphong}','PhongController@xoaphong')->name('get-xoaphong');
 		Route::get('XoaLoaiPhong/{maloai}','LoaiPhongController@xoaloaiphong')->name('get-xoaloaiphong');
 		Route::get('XoaDonDat/{madon}','DonDatController@xoadondat')->name('get-xoadondat');
@@ -100,6 +102,7 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('XoaDichVu/{madv}','DichVuController@xoadv')->name('get-xoadv');
 		Route::get('XoaThanhToan/{matt}','ThanhToanController@xoatt')->name('get-xoatt');
 		Route::get('XoaKhuyenMai/{makm}','KhuyenMaiController@xoakm')->name('get-xoakm');
+		Route::get('XoaNhanVien/{manv}','NhanVienController@getxoanv')->name('get-xoanv');
 			Route::group(['prefix'=>'Them'],function(){
 					// Admin/Them/
 					Route::get('ThemTKKH','KhachHangController@getthemtk')->name('get-themtk');

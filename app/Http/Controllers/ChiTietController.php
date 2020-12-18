@@ -50,7 +50,7 @@ class ChiTietController extends Controller
 		$ct->ngayden=$reg['ngayden'];
 		$ct->ngaydi=$reg['ngaydi'];
 		$ct->save();
-		return redirect(route('chitiet'))->with('thanhcong','Bạn thêm chi tiết đơn đặt phòng thành công');		
+		return redirect(route('get-themct'))->with('thanhcong','Bạn thêm chi tiết đơn đặt phòng thành công');		
 	}
 	/* Sua chi tiet don dat */
 	public function getsuact($mact){

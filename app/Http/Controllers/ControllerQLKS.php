@@ -14,7 +14,7 @@ use App\Dichvu;
 use  App\Http\Ulti\Helpers;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Cookie;
 class ControllerQLKS extends Controller
 {
     /**
@@ -27,29 +27,35 @@ class ControllerQLKS extends Controller
     }
     public function index(Loaiphong $data)// return trang chu
     {
+        $b = Cookie::get('dangnhap');
+        if($b){
+            $l = json_decode($b)->taikhoan;
+        }
       $lp = Loaiphong::All()->take(4);
       $a = "img/thuvien";  
       $file = \scandir($a);
       unset($file[0]);
       unset($file[1]);
       $s = array_reverse($file);//dao nguoc array
-      return view('TrangChu',compact('lp','s'));
+      return view('TrangChu',compact('lp','s','b','l'));
     }
     public function phongdadat(Loaiphong $data1){
         $data1 = Loaiphong::select(['hinhanh'])->Where('maloai','>',3)->Where('maloai','<=',6)->get();
         $path =  'img\\';
 		$itemCart = Session::get('itemCart');
-		$dv = Dichvu::all();
-        return view('PhongDaDat',compact('data1','path','itemCart','dv'));
+        $dv = Dichvu::all();
+        $o = Cookie::get('dangnhap');
+        return view('PhongDaDat',compact('data1','path','itemCart','dv','o'));
     }
-
+  
 
     public function datphong(Loaiphong $data)
     {
         // $p = Loaiphong::paginate(3);
         $p = Loaiphong::all();
         $zz = Loaiphong::all();
-        return view('DatPhong',compact('p','zz'));
+        $o = Cookie::get('dangnhap');
+        return view('DatPhong',compact('p','zz','o'));
     }
     public function click(Request $reg)
     {
@@ -91,52 +97,62 @@ class ControllerQLKS extends Controller
 }
     public function thanhtoan()
     {
-        return view('Xacnhan');
+        $o = Cookie::get('dangnhap');
+        return view('Xacnhan','o');
     }
     public function gioithieu()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('Gioithieu',compact('zz'));
+            return view('Gioithieu',compact('zz','o'));
         }
         public function huongdan()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('Huongdan',compact('zz'));
+            return view('Huongdan',compact('zz','o'));
         }
         public function khuyenmai()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('Khuyenmai',compact('zz'));
+            return view('Khuyenmai',compact('zz','o'));
         }
         public function dichvu()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('Dichvu',compact('zz'));
+            return view('Dichvu',compact('zz','o'));
         }
         public function mastertimkiem()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('MasterTimKiem',compact('zz'));
+            return view('MasterTimKiem',compact('zz','o'));
         }
         public function quancanhNT()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('QuancanhNT',compact('zz'));
+            return view('QuancanhNT',compact('zz','o'));
         }
         public function dulichNT()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('DulichNT',compact('zz'));
+            return view('DulichNT',compact('zz','o'));
         }
         public function venbienNT()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('DuongbienNT',compact('zz'));
+            return view('DuongbienNT',compact('zz','o'));
         }
         public function dacsanNT()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('DacsanNT',compact('zz'));
+            return view('DacsanNT',compact('zz','o'));
         }
         public function dangnhap()
         {
@@ -150,14 +166,18 @@ class ControllerQLKS extends Controller
         }
         public function tintuc()
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
-            return view('TinTuc',compact('zz'));
+            return view('TinTuc',compact('zz','o'));
         }
         public function search(Request $reg)
         {
+            $o = Cookie::get('dangnhap');
             $zz = Loaiphong::all();
             $ml = $reg['maloai'];
             $a = $reg['succhua'];
+            $nn = $reg['ngaynhan'];
+            $nt = $reg['ngaytra'];
             if($a && $ml != "NULL")//chon so luong va loai phong
             {
                 if($a<=4 && $a>0)
@@ -207,7 +227,7 @@ class ControllerQLKS extends Controller
             {
                 return back();
             }
-            return view('Search',compact('p','zz'));
+            return view('Search',compact('p','zz','o'));
         }
 
       

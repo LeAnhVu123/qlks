@@ -35,11 +35,11 @@
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">sdt</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="email"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="sdt"></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">email</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="sdt"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input type="email" autocomplete="off" name="email"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Thêm"></a></td>

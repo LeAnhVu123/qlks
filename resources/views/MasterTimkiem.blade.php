@@ -16,8 +16,8 @@
                   <div class="col-12" style="font-weight: bolder;text-align:center; font-size:20px; padding-top:20px;">Chọn Tiêu Chí</div>
                   <form action="{{route('search')}}" method="get">
                   @csrf
-                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control nut1" style="margin-left:20px;width:205px;" name="ngaynhan"  placeholder="Ngày nhận phòng"></div>
-                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control nut2" style="margin-left:20px;width:205px;" name="ngaytra" placeholder="Ngày trả phòng"></div>
+                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control nut1" style="margin-left:20px;width:205px;" name="ngaynhan"  placeholder="Ngày nhận phòng" readonly></div>
+                    <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control nut2" style="margin-left:20px;width:205px;" name="ngaytra" placeholder="Ngày trả phòng" readonly></div>
                     <div class="col-12" style="padding-top:20px;"><input type="text" class="form-control" autocomplete="off" style="margin-left:20px;width:205px;" name="succhua" placeholder="Số lượng người"></div>
                     <div class="col-12" style="padding-top:20px;">
                             <div class="input-group mb-3"  style="width:225px;padding-left:20px;">
@@ -76,18 +76,21 @@ $(document).ready(function(){
       // var month = d.getMonth()+1;
       // var year = d.getFullYear();
       // var date = month + "/" + day + "/" + year;
-      var z = "Ngày nhận phòng";
-      var t = "Ngày trả phòng";
-      $('.nut1').val(z);
-      $('.nut2').val(t);
-      $('.nut1').datepicker({
-          dateFormat: "yy-mm-dd",
-          minDate : new Date(),
-      });
-      $('.nut2').datepicker({
-          dateFormat: "yy-mm-dd",
-          minDate : new Date(),
-      });
+      /*  */
+      // var z = "Ngày nhận phòng";
+      // var t = "Ngày trả phòng";
+      // $('.nut1').val(z);
+      // $('.nut2').val(t);
+      // $('.nut1').datepicker({
+      //     dateFormat: "yy-mm-dd",
+      //     minDate : new Date(),
+      // });
+      // $('.nut2').datepicker({
+      //     dateFormat: "yy-mm-dd",
+      //     minDate : new Date(),
+      // });
+     /*  */
+
       // if(day.toString().length == 1){
       //   day = '0'+day;
       // }
@@ -95,6 +98,25 @@ $(document).ready(function(){
       // var date = month + "/" + day + "/" + year;
       // $('.nut').val(date);
       // $('.nut').datepicker();
+      var minDate = new Date();
+      $('.nut1').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          $('.nut2').datepicker("option", "minDate",selectedDate);
+        }
+      })
+      $('.nut2').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          // $('.nut1').datepicker("option", "minDate",selectedDate);
+        }
+      })
   });
 </script>
 @endsection

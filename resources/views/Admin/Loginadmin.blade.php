@@ -19,7 +19,7 @@
 		vertical-align: middle;
 		justify-content: center; */
 	body {
-		min-height: 700px;
+		min-height: 500px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -38,21 +38,24 @@
 
 <body>
 
-	@include('notice')
+	
 	<div class="container login">
-		<h3 class="text-center my-4">Form Login</h3>
+		<h3 class="text-center my-4">Login</h3>
 		<form action="{{Route('xetdangnhap')}}" method="POST">
 			@csrf
 			<div class="row p-4">				
-				<div class="col-3 mt-1 mb-3">Tai khoan</div>
-				<div class="col-8 mb-3"> <input type="text" name="ttk" id="" class="form-control"> </div>
-				<div class="col-3 mt-1 mb-3">Mat khau</div>
-				<div class="col-8 mb-3"> <input type="password" name="matkhau" id="" class="form-control"> </div>				
+				<div class="col-3 mt-1 mb-3">Tài Khoản</div>
+				<div class="col-8 mb-3"> <input type="text" name="ttk" id="" class="form-control" autocomplete="off"> </div>
+				<div class="col-3 mt-1 mb-3">Mật Khẩu</div>
+				<div class="col-8 mb-3"> <input type="password" name="matkhau" id="" class="form-control" autocomplete="off"> </div>				
 				<div class="col-12 mt-4 text-center">
-					<button type="submit" class="btn btn-success">DangNhap</button>					
+					<button type="submit" class="btn btn-success">Đăng Nhập</button>					
 				</div>
+				<div class="col-12" style="text-align:center;">@include('notice')</div>
+				
 			</div>
 		</form>
+		
 		<!-- <div class="row px-4">
 			<div class="col-12">Nếu không có tài khoản hãy <a href="#">Đăng ký</a>/Quên mật khẩu hãy <a href="#">Click vào đây</a></div>
 			<div class="col-12 text-center"><h4>Đăng nhập bằng</h4></div>

@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <title>Quan Ly</title>
 </head>
 <body>
@@ -40,12 +40,15 @@
             .del:hover{
                 color:red;
             }
+body{
+    /* overflow-x: hidden; */
+}
 </style>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12" style="background-color: #EEEEEE;height:50px;border-bottom: 1px solid #ddd;border-top: 1px solid #ddd;">
-        <h3 style="padding-top:7px;float:left">Admin - Anh Vũ</h3>
-        <a href="{{route('dangxuat')}}"><button class="btn btn-success float-right">Logout</button></a>
+        <h3 style="padding-top:7px;float:left">Admin - Royal Hotel</h3>
+        <a href="{{route('dangxuat')}}"><button class="btn btn-secondary float-right" style="margin-top:5px;">Đăng Xuất</button></a>
         </div>
         <div class="col-2" style="background-color: #EEEEEE;height:585px;border-right: 1px solid #ddd;border-bottom: 1px solid #ddd;">
             <div class="row">
@@ -74,9 +77,6 @@
                         <div class="col-12 mt-1">
                             <a href="{{route('thanhtoan')}}"><i class="fa fa-home"></i> QL Thanh Toán</a>
                         </div>
-                        <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
-                        </div>
                 </div>
                 <div class="ql">                 
                         <div class="col-12 mt-1">
@@ -87,6 +87,9 @@
                         </div>
                         <div class="col-12 mt-1">
                             <a href="#"><i class="fa fa-home"></i> QL Lương NV</a>
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="#"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
                         </div>
                 </div>   
             </div>

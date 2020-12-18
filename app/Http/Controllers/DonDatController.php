@@ -9,7 +9,9 @@ use  App\Khuyenmai;
 use  App\Chitiet;
 use  App\Dichvu;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
+use DateTime;
+use Illuminate\Support\Facades\DB;
 class DonDatController extends Controller
 {
     //
@@ -23,9 +25,22 @@ class DonDatController extends Controller
 			$dd = Dondat::all()->where('madon',$i);
 		}
 		$s = $reg['ngay'];
-		if($s)
+		$z = $reg['toingay'];
+		// $today = new DateTime($s);
+		// $expireDate = new DateTime($z); //from database
+		if($s && $z)
 		{
-			$dd = Dondat::all()->where('ngaylap',$s);
+			if($s < $z) { 
+				$dd = Dondat::all()->where('ngaylap','>=',$s)->where('ngaylap','<=',$z);
+			}
+			else{
+				return redirect(route('alldondat'))->with('thanhcong','Bạn nhập sai (Từ ngày < Tới ngày)');
+			}
+		}
+		if($reg['dua'])
+		{
+			$r = $reg['dua'];
+			$dd = Dondat::all()->where('madon',$r);
 		}
 		return view('Admin.Alldondat',compact('dd'));
 	}
@@ -96,15 +111,16 @@ class DonDatController extends Controller
 		return redirect('Admin/Them/Themdondat')->with('thanhcong','Bạn đã thêm đơn đặt phòng thành công');
 	}
 	/* Sua Don Dat  */
-	public function getsuadondat($madon)
+	public function getsuadondat(request $reg,$madon)
 	{
-
 		$dv = Dichvu::all();
-		$km = Khuyenmai::all();
 		$dd = Dondat::find($madon);
 		$explode = explode(',',$dd->madv);
-		return view('Admin.Sua.Suadondat',compact('dd','km','dv','explode'));
+		$z = Khuyenmai::all()->where('makm',$dd->makm)->first();
+		$km = Khuyenmai::all()->where('makm','<>',$dd->makm);
+		return view('Admin.Sua.Suadondat',compact('dd','z','km','dv','explode'));
 	}
+	/* Post Sua don dat */
 	public function postsuadondat(request $reg,$madon)
 	{
 		$dv = Dichvu::all();
@@ -165,14 +181,20 @@ class DonDatController extends Controller
 	{
 		$dd = Dondat::find($madon);
 		$ct = Chitiet::Where('madon',$madon)->first();
-		if(!$ct)
+		$tt = Thanhtoan::all()->where('madon',$madon)->first();
+		if(!$tt)
 		{
-			$dd->delete();
-			return redirect('Admin/AllDonDat')->with('thanhcong','Bạn đã xóa đơn đặt phòng thành công');
+			if(!$ct)
+			{
+				$dd->delete();
+				return redirect('Admin/AllDonDat')->with('thanhcong','Bạn đã xóa đơn đặt phòng thành công');
+			}
+			else{
+				return redirect('Admin/AllDonDat')->with('thanhcong','Vẫn còn tồn tại chi tiết của đơn đặt');
+			}
 		}
 		else{
-			return redirect('Admin/AllDonDat')->with('thanhcong','Vẫn còn tồn tại chi tiết của đơn đặt');
+			return redirect('Admin/AllDonDat')->with('thanhcong','Đơn này đã thanh toán');
 		}
-		
 	}
 }

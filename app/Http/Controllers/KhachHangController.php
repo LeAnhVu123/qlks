@@ -30,8 +30,8 @@ class KhachHangController extends Controller
 		$this->validate($reg,
 		[
 			'taikhoan'=> 'required|regex:/^[a-zA-Z0-9]+$/|unique:khachhangs,taikhoan|min:3|max:100',
-			'matkhau' => 'regex:/^[a-zA-Z0-9]+$/|min:3|max:100',
-			// 'makh' => 'required|regex:/^[0-9]+$/|unique:khachhangs,makh|min:3|max:9',
+			'matkhau' => 'required|min:3|max:100',
+			// 'makh' => 'required|regex:/^[0-9]+$/|unique:khachhangs,makh|min:3|max:9',regex:/^[a-zA-Z0-9]+$/|
 			'hoten' => 'required|min:3|max:100',
 			'sdt' => 'required|regex:/^[0-9]+$/|min:3|max:12',
 			'cmnd'=> 'required|regex:/^[0-9]+$/|min:9|max:10',
@@ -43,7 +43,7 @@ class KhachHangController extends Controller
 			'taikhoan.min'=>'Độ dài tài khoản từ 3-100 ký tự',
 			'taikhoan.max'=>'Độ dài tài khoản từ 3-100 ký tự',
 			'matkhau.required'=>'Chưa nhập mật khẩu khách hàng',
-			'matkhau.regex'=>'Mật khẩu sai font',	
+			// 'matkhau.regex'=>'Mật khẩu sai font',	
 			'matkhau.min'=>'Độ dài mật khẩu từ 3-100 ký tự',
 			'matkhau.max'=>'Độ dài mật khẩu từ 3-100 ký tự',
 			// 'makh.required'=>'Chưa nhập mã khách hàng',

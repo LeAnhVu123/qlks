@@ -35,7 +35,7 @@
                           
                            
                             <td><a href="Sua/SuaTKNV/{{$value->manv}}"><button class="btn btn-info ml-1" style="width:70px;">Sửa</button></a></td>
-                            <td><a href="Xoa/{{$value->manv}}"><button class="btn btn-danger ml-1" style="width:70px;">Xóa</button></a></td>
+                            <td><a href="XoaNhanVien/{{$value->manv}}"><button class="btn btn-danger ml-1" style="width:70px;">Xóa</button></a></td>
                         </tr>
                     @endforeach  
                     </tbody>

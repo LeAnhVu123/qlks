@@ -45,7 +45,7 @@ $(document).ready(function(){
   function countall(count,aa){
     for(var i = 0; i < count ;i++){
        $('.all').append(
-       '<div class="col-5" style="padding-left:0px;">  <img src="img/'+aa[i].hinhanh+'" style="width:300;height:200px;" alt="" class="img">  </div>' +
+       '<div class="col-5" style="padding-left:0px;">  <img src="img/'+aa[i].hinhanh+'" style="width:300px;height:200px;" alt="" class="img">  </div>' +
          '<div class="col-7" style="padding-left:0px;">'+
            '<div class="row">'+
               ' <div class="col-12"> '+

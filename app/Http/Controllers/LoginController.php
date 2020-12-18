@@ -13,7 +13,9 @@ class LoginController extends Controller
         if($ttk){
             $cookie = cookie('account',$ttk,42300);
             return redirect(route('quanly'))->withCookie($cookie);
-
+        }
+        else{
+            return redirect(route('dangnhap'))->with('thanhcong','Nhập sai mật khẩu rồi bạn ơi');
         }
     }
     /* Neu ton tai cookie thi qua quan ly, chua thi o trang dang nhap */

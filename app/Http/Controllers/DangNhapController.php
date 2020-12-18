@@ -18,7 +18,11 @@ class DangNhapController extends Controller
         }
         else
         {
-            return redirect(route('dn'))->with('thanhcong','dang nhap that bai');
+            return redirect(route('dn'))->with('thanhcong','Đăng nhập thất bại');
         }
+    }
+    public function dangxuat(){
+        Cookie::queue(Cookie::forget('dangnhap'));
+        return redirect(route('trangchu'));
     }
 }

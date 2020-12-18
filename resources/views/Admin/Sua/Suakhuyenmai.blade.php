@@ -17,11 +17,11 @@
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Ngày BD</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="ngaybd" value="{{$km->ngaybd}}"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="ngaybd" type="text" autocomplete="off" name="ngaybd" value="{{$km->ngaybd}}" readonly></td>
                     </tr>
                     <tr>
                         <td style="padding-top:10px;">Ngày KT</td>
-                        <td style="padding-left:50px;padding-top:10px;"> <input type="text" autocomplete="off" name="ngaykt" value="{{$km->ngaykt}}"></td>
+                        <td style="padding-left:50px;padding-top:10px;"> <input class="ngaykt" type="text" autocomplete="off" name="ngaykt" value="{{$km->ngaykt}}" readonly></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="padding-left:175px;padding-top:10px;"> <a href=""> <input type="submit" value="Sửa"></a></td>
@@ -33,14 +33,25 @@
     </div>
 </div>
 <script>
-$(document).ready(function(){
-	$(document).ready(function(){
-		$('.ngaybd, .ngaykt').datepicker({
-			dateFormat: "yy-mm-dd",
-			numberOfMonths : 2,
-		})
-	})
-})
+	var minDate = new Date();
+      $('.ngaybd').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          $('.ngaykt').datepicker("option", "minDate",selectedDate);
+        }
+      })
+      $('.ngaykt').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          // $('.nut1').datepicker("option", "minDate",selectedDate);
+        }
+      })
 
 </script>
 @endsection

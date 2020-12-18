@@ -2,7 +2,7 @@
 @section('content')  
 <div class="col-9" style="height:550px;">
     <div class="row">
-            <div class="col-12" style="padding-left:180px;padding-top:20px;"> <span style="font-size:20px;font-weight: bolder;">Sửa Phòng</span></div>   
+            <div class="col-12" style="padding-left:180px;padding-top:20px;"> <span style="font-size:20px;font-weight: bolder;">Sửa Đơn Đặt</span></div>   
             <div class="col-12" style="padding-left:100px;font-size:15px;">
             <form action="" method="POST" enctype="multipart/form-data">
             <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
@@ -29,7 +29,7 @@
                         <td style="padding-top:10px;">Mã khuyến mãi</td>
 						<td style="padding-left:50px;padding-top:10px;">
 							<select name="km" id="" style="width:150px;height:30px">
-                            <!-- <option name="km" value="{{$dd->makm}}">{{$dd->tenkm}}</option> -->
+                            <option name="km" value="{{$z->makm}}">{{$z->tenkm}}</option>
 							@foreach($km as $value)
 								<option name="km" value="{{$value->makm}}">{{$value->tenkm}}</option>
 							@endforeach
