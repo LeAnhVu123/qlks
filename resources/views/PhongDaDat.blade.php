@@ -99,7 +99,7 @@
 </div>
 @endforeach
 @endif
-<div class="container-fluid">
+<!-- <div class="container-fluid">
 	<div class="row">
 		<div class="offset-2"></div>
 		<div class="col-6" style="padding-top:10px;font-weight: bolder;">
@@ -109,7 +109,7 @@
 	</div>
 </div>
 <div>
-</div>
+</div> -->
 <script>
 	$(document).ready(function() {
 		var dv = @php echo json_encode($dv) @endphp;	
@@ -209,4 +209,25 @@
 		})
 	})
 </script>
+<script>
+	   var minDate = new Date();
+      $('.ngayden').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          $('.ngaydi').datepicker("option", "minDate",selectedDate);
+        }
+      })
+      $('.ngaydi').datepicker({
+        showAmin: 'drop',
+        numberOfmonth: 1,
+        minDate: minDate,
+        dateFormat: 'yy/mm/dd',
+        onClose: function(selectedDate){
+          // $('.nut1').datepicker("option", "minDate",selectedDate);
+        }
+      })
+ </script>
 @endsection

@@ -39,10 +39,10 @@ class Helpers {
 		// return false;
 	}
 
-	public static function splitDate($date,&$year,&$moth,&$day){
-		$split = str_replace('-','',$date);
+	public static function splitDate($date,$type,&$year,&$month,&$day){
+		$split = str_replace($type,'',$date);
 		$year = substr($split,0,4);
-		$month = substr($split,4,2);
+		$month = substr($split,0,4);
 		$day = substr($split,6,2);
 		return $split;
 	}

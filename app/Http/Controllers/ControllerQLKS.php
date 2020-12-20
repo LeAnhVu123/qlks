@@ -98,7 +98,13 @@ class ControllerQLKS extends Controller
     public function thanhtoan()
     {
         $o = Cookie::get('dangnhap');
-        $z = json_decode($o);
+        if($o)
+        {
+            $z = json_decode($o);
+        }
+        else{
+            return back();
+        }
         return view('Xacnhan',compact('o','z'));
     }
     public function gioithieu()
@@ -179,6 +185,73 @@ class ControllerQLKS extends Controller
             $a = $reg['succhua'];
             $nn = $reg['ngaynhan'];
             $nt = $reg['ngaytra'];
+            $ngaynhan = Helpers::splitDate($nn,'/',$yearnn,$monthnn,$daynn);
+            $ngaytra = Helpers::splitDate($nt,'/',$yearnt,$monthnt,$daynt);
+            // $monthnn = date('m',strtotime($monthnn));
+            // $monthnt = date('m',strtotime($monthnn));
+            // $alldaynn = cal_days_in_month(CAL_GREGORIAN,$monthnn,$yearnn);
+            // $alldaynt = cal_days_in_month(CAL_GREGORIAN,$monthnt,$yearnt);
+            // $abc='';
+            // for($i = $daynn;$i <= $daynt;$i++){
+            //     $abc .= $i;
+            // }  
+            // $ngaynn = '';  
+            // $ngaynt = '';
+            // $ngaynhan = strtotime($nn);
+            // $ngaytra = strtotime($nt);
+            // $datenn =  date('Y-m-d',$ngaynhan);
+            // $datent =  date('Y-m-d',$ngaytra);
+            $yearnd='';
+            $monthnd ='';
+            $daynd = '';
+            $yearndi='';
+            $monthndi ='';
+            $dayndi = '';
+            $allday = '';
+            $chitiet = Chitiet::select('ngayden','ngaydi')->get();
+            foreach($chitiet as $value){
+                $ngayden = Helpers::splitDate($value['ngayden'],'-',$yearnd,$monthnd,$daynd);
+                $ngaydi = Helpers::splitDate($value['ngaydi'],'-',$yearndi,$monthndi,$dayndi);
+                // dd($aa);
+                // dd($monthdb);
+                if($monthnd == $monthnn && $monthnd ==$monthnt &&$monthndi == $monthnn && $monthndi ==$monthnt  ){                       
+                    for($i = $daynd ; $i <= $dayndi ; $i++){                       
+                        if($i > $daynn && $i < $daynt){
+                            $allday .= $i.',';
+                       } 
+                    }
+                }             
+            }
+            $explode = explode(',',$allday);
+            array_pop($explode);
+            $explode = array_map("unserialize", array_unique(array_map("serialize", $explode))); // cai nay chua tim hiu voi gg ra
+            $test = '';
+            // dd($explode[1]);g
+            for($i = $daynn; $i < $explode[0];$i++){
+                $test .= $i.',';
+            }
+            for($i = $explode[count($explode)-1] + 1; $i <= $daynt;$i++){
+                $test .= $i.',';
+            }
+            dd($test);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if($a && $ml != "NULL")//chon so luong va loai phong
             {
                 if($a<=4 && $a>0)

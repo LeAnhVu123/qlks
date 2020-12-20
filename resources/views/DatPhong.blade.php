@@ -15,8 +15,9 @@
 </style>
 <script>
 $(document).ready(function(){
+  //  datepicker
   var minDate = new Date();
-      $('.nut1').datepicker({
+      $('.nut1, .nut2').datepicker({
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,
@@ -25,32 +26,8 @@ $(document).ready(function(){
           $('.nut2').datepicker("option", "minDate",selectedDate);
         }
       })
-      $('.nut2').datepicker({
-        showAmin: 'drop',
-        numberOfmonth: 1,
-        minDate: minDate,
-        dateFormat: 'yy/mm/dd',
-        onClose: function(selectedDate){
-          // $('.nut1').datepicker("option", "minDate",selectedDate);
-        }
-      })
-	// var d = new Date();
-  //     var day = d.getDate();
-  //     var month = d.getMonth()+1;
-  //     var year = d.getFullYear();
-  //     var date = month + "/" + day + "/" + year;
-  //     var z = "Ngày nhận phòng";
-  //     var t = "Ngày trả phòng";
-  //     $('.nut1').val(z);
-  //     $('.nut2').val(t);
-  //     $('.nut1').datepicker({
-  //         dateFormat: "yy-mm-dd",
-  //         minDate : new Date(),
-  //     });
-  //     $('.nut2').datepicker({
-  //         dateFormat: "yy-mm-dd",
-  //         minDate : new Date(),
-  //     });
+  // end datepicker
+  // add item
     var aa = @php echo json_encode($p) @endphp;
     var count = 3;
     countall(count,aa);
@@ -89,6 +66,7 @@ $(document).ready(function(){
           '   <hr>'+
          '</div>  ')
       }
+  // end additem
   }
  
 </script>
