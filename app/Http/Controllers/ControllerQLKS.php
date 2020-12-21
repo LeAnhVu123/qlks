@@ -11,6 +11,7 @@ use  App\Khachhang;
 use  App\Nhanvien;
 use  App\Chitiet;
 use App\Dichvu;
+use App\Lienhe;
 use  App\Http\Ulti\Helpers;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
@@ -30,6 +31,8 @@ class ControllerQLKS extends Controller
         $b = Cookie::get('dangnhap');
         if($b){
             $l = json_decode($b)->taikhoan;
+        }else{
+            $l ='';
         }
       $lp = Loaiphong::All()->take(4);
       $a = "img/thuvien";  
@@ -177,6 +180,34 @@ class ControllerQLKS extends Controller
             $zz = Loaiphong::all();
             return view('TinTuc',compact('zz','o'));
         }
+        public function lienhe()
+        {
+            $o = Cookie::get('dangnhap');
+            $zz = Loaiphong::all();
+            return view('Lienhe',compact('zz','o'));
+        }
+        public function guilienhe(request $reg)
+        {
+            $this->validate($reg,[
+                'sdt'=>'regex:/^[0-9]+$/|min:3|max:12',
+                'noidung'=>'required',
+                'hoten'=>'required',
+                
+            ],[
+                'noidung.required'=>'Vui lòng nhập nội dung',
+                'hoten.required'=>'Vui lòng nhập họ tên',
+                'sdt.regex'=>'SDT chỉ được là số',
+                'sdt.min'=>'Độ dài sdt từ 3-12 ký tự',
+                'sdt.max'=>'Độ dài sdt từ 3-12 ký tự',
+            ]);
+            $lh = new Lienhe;
+            $lh->hoten = $reg['hoten'];
+            $lh->email = $reg['email'];
+            $lh->sdt = $reg['sdt'];
+            $lh->noidung = $reg['w3review'];
+            $lh->save();
+            return redirect(route('lienhe'))->with('thanhcong','Bạn đã gửi hỗ trợ thành công, sẽ có nhân viên gọi điện thoại hoặc trả lời bạn qua email.');
+        }
         public function search(Request $reg)
         {
             $o = Cookie::get('dangnhap');
@@ -185,8 +216,8 @@ class ControllerQLKS extends Controller
             $a = $reg['succhua'];
             $nn = $reg['ngaynhan'];
             $nt = $reg['ngaytra'];
-            $ngaynhan = Helpers::splitDate($nn,'/',$yearnn,$monthnn,$daynn);
-            $ngaytra = Helpers::splitDate($nt,'/',$yearnt,$monthnt,$daynt);
+            // $ngaynhan = Helpers::splitDate($nn,'/',$yearnn,$monthnn,$daynn);
+            // $ngaytra = Helpers::splitDate($nt,'/',$yearnt,$monthnt,$daynt);
             // $monthnn = date('m',strtotime($monthnn));
             // $monthnt = date('m',strtotime($monthnn));
             // $alldaynn = cal_days_in_month(CAL_GREGORIAN,$monthnn,$yearnn);
@@ -201,39 +232,39 @@ class ControllerQLKS extends Controller
             // $ngaytra = strtotime($nt);
             // $datenn =  date('Y-m-d',$ngaynhan);
             // $datent =  date('Y-m-d',$ngaytra);
-            $yearnd='';
-            $monthnd ='';
-            $daynd = '';
-            $yearndi='';
-            $monthndi ='';
-            $dayndi = '';
-            $allday = '';
-            $chitiet = Chitiet::select('ngayden','ngaydi')->get();
-            foreach($chitiet as $value){
-                $ngayden = Helpers::splitDate($value['ngayden'],'-',$yearnd,$monthnd,$daynd);
-                $ngaydi = Helpers::splitDate($value['ngaydi'],'-',$yearndi,$monthndi,$dayndi);
-                // dd($aa);
-                // dd($monthdb);
-                if($monthnd == $monthnn && $monthnd ==$monthnt &&$monthndi == $monthnn && $monthndi ==$monthnt  ){                       
-                    for($i = $daynd ; $i <= $dayndi ; $i++){                       
-                        if($i > $daynn && $i < $daynt){
-                            $allday .= $i.',';
-                       } 
-                    }
-                }             
-            }
-            $explode = explode(',',$allday);
-            array_pop($explode);
-            $explode = array_map("unserialize", array_unique(array_map("serialize", $explode))); // cai nay chua tim hiu voi gg ra
-            $test = '';
-            // dd($explode[1]);g
-            for($i = $daynn; $i < $explode[0];$i++){
-                $test .= $i.',';
-            }
-            for($i = $explode[count($explode)-1] + 1; $i <= $daynt;$i++){
-                $test .= $i.',';
-            }
-            dd($test);
+            // $yearnd='';
+            // $monthnd ='';
+            // $daynd = '';
+            // $yearndi='';
+            // $monthndi ='';
+            // $dayndi = '';
+            // $allday = '';
+            // $chitiet = Chitiet::select('ngayden','ngaydi')->get();
+            // foreach($chitiet as $value){
+            //     $ngayden = Helpers::splitDate($value['ngayden'],'-',$yearnd,$monthnd,$daynd);
+            //     $ngaydi = Helpers::splitDate($value['ngaydi'],'-',$yearndi,$monthndi,$dayndi);
+            //     // dd($aa);
+            //     // dd($monthdb);
+            //     if($monthnd == $monthnn && $monthnd ==$monthnt &&$monthndi == $monthnn && $monthndi ==$monthnt  ){                       
+            //         for($i = $daynd ; $i <= $dayndi ; $i++){                       
+            //             if($i > $daynn && $i < $daynt){
+            //                 $allday .= $i.',';
+            //            } 
+            //         }
+            //     }             
+            // }
+            // $explode = explode(',',$allday);
+            // array_pop($explode);
+            // $explode = array_map("unserialize", array_unique(array_map("serialize", $explode))); // cai nay chua tim hiu voi gg ra
+            // $test = '';
+            // // dd($explode[1]);g
+            // for($i = $daynn; $i < $explode[0];$i++){
+            //     $test .= $i.',';
+            // }
+            // for($i = $explode[count($explode)-1] + 1; $i <= $daynt;$i++){
+            //     $test .= $i.',';
+            // }
+            // dd($test);
 
 
 

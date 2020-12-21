@@ -63,7 +63,7 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Liên Hệ</a>
+              <a class="DanhMuc" href="{{route('lienhe')}}">Liên Hệ</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
@@ -105,7 +105,7 @@
                 <div class="row" style="background-color:#000080;">
                         <div class="col-md-6 col-12" style="background-color:#000080;">
                                 <div class="diachi"><h2 class="dc">Địa Chỉ</h2>
-                                            35 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Thành Phố Hồ Chí Minh  <br>
+                                35 Nguyễn Văn Bảo, Phường 4, Phước Mỹ, TP.Phan Rang - Tháp Chàm  <br>
 
                                             Gmail: royalhotel@gmail.com
                                             <br>

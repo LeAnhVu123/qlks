@@ -1,7 +1,9 @@
 @extends('Masterlayout')
+<head><title>Phòng Đã Đặt</title></head>
 @section('content')
 @if(session('itemCart'))
 @foreach($itemCart as $value)
+
 <div class="abc">
 	<div class="container-fluid mt-2" style="text-align:center;height:50px;width:100%;background-color: lightskyblue;padding-right:0px; border: 0.2px solid;">
 		<div class="row">

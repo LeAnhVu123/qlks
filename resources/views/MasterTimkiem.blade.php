@@ -72,7 +72,7 @@
 <script>
 $(document).ready(function(){
       var minDate = new Date();
-      $('.nut1, nut2').datepicker({
+      $('.nut1, .nut2').datepicker({
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,

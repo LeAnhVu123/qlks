@@ -127,6 +127,16 @@ class CreateInitTable extends Migration
             $table->timestamps();  
             $table->foreign('madon')->references('madon')->on('dondats');      
     });
+    Schema::create('lienhes', function (Blueprint $table) {
+        $table->increments('malh'); 
+        $table->unsignedInteger('manv')->nullable();
+        $table->String('hoten');
+        $table->String('email');
+        $table->String('sdt');
+        $table->String('noidung');
+        $table->timestamps();  
+        $table->foreign('manv')->references('manv')->on('nhanviens');      
+});
 
         
 
@@ -139,7 +149,7 @@ class CreateInitTable extends Migration
      */
     public function down()
     {           
-            
+        Schema::dropIfExists('lienhes'); 
 		   Schema::dropIfExists('dondats'); 
            Schema::dropIfExists('khachhangs');
            Schema::dropIfExists('nhanviens');

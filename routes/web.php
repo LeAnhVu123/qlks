@@ -41,6 +41,8 @@ Route::get('/QuancanhNT','ControllerQLKS@quancanhNT')->name('qcNT');
 Route::get('/DulichNT','ControllerQLKS@dulichNT')->name('dlNT');
 Route::get('/DuongbienNT','ControllerQLKS@venbienNT')->name('dbNT');
 Route::get('/TinTuc','ControllerQLKS@tintuc')->name('tint');
+Route::get('/LienHe','ControllerQLKS@lienhe')->name('lienhe');
+Route::post('/LienHe','ControllerQLKS@guilienhe')->name('guilienhe');
 Route::get('/DacsanNT','ControllerQLKS@dacsanNT')->name('dsNT');
 Route::get('/Dangnhap','ControllerQLKS@dangnhap')->name('dn');
 Route::post('/Dangnhap','DangNhapController@dangnhap')->name('post-dn');

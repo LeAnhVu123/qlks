@@ -2,7 +2,7 @@
 @section('content')  
 <div class="col-10" style="height:550px;">
     <div class="row">
-            <div class="col-12" style="padding-left:180px;padding-top:20px;"> <span style="font-size:20px;font-weight: bolder;">Sua Tài Khoản NV</span> </div>   
+            <div class="col-12" style="padding-left:180px;padding-top:20px;"> <span style="font-size:20px;font-weight: bolder;padding-left:43px;">Sửa thanh toán</span> </div>   
             <div class="col-12" style="padding-left:100px;font-size:15px;">
             <form action="{{route('post-suatt',$tt->matt)}}" method="POST">
 				@csrf

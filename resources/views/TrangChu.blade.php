@@ -39,7 +39,6 @@
       @endif
       @if($b) 
       <div class="col-md-3 col-ms-6 col-12">
-        <!-- <span style="padding-top: 20px;font-size:17px;">Xin Chào : {{$l}}</span> -->
         <a href="{{route('dx')}}"><button class="btn btn-info tki">Đăng Xuất</button></a>
       </div>
       @endif
@@ -68,7 +67,7 @@
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">
-              <a class="DanhMuc" href="#">Liên Hệ</a>
+              <a class="DanhMuc" href="{{route('lienhe')}}">Liên Hệ</a>
             </div>
 
             <div class="col-md-2 col-sm-6 col-12 cl">

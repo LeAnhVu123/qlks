@@ -86,9 +86,6 @@ body{
                             <a href="{{route('nv')}}"><i class="fa fa-home"></i> QL Tài Khoản NV</a>
                         </div>
                         <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> QL Lương NV</a>
-                        </div>
-                        <div class="col-12 mt-1">
                             <a href="#"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
                         </div>
                 </div>   
