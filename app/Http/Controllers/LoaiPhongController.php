@@ -32,7 +32,7 @@ class LoaiPhongController extends Controller
 			'tenloai' => 'required|min:3|max:100',
 			'succhua' => 'required|regex:/^[0-9]+$/|min:1|max:10',
 			'gia'=>'required|regex:/^[0-9]+$/|min:1|max:10',
-			'mota'=>'required|min:3|max:50',
+			'mota'=>'required|min:3|max:100',
 		],[
 			'tenloai.required'=> 'Bạn chưa nhập tên loại',
 			'tenloai.min'=>'Sức chứa chỉ được nhập 3-100 ký tự',
@@ -46,8 +46,8 @@ class LoaiPhongController extends Controller
 			'gia.min'=>'Giá chỉ được nhập 1-10 ký tự',
 			'gia.max'=>'Giá chỉ được nhập 1-10 ký tự',
 			'mota.required'=> 'Bạn chưa nhập mô tả',
-			'mota.min'=>'Mô tả nhập từ 3-50 kí tự',
-			'mota.max'=>'Mô tả nhập từ 3-50 kí tự',
+			'mota.min'=>'Mô tả nhập từ 3-100 kí tự',
+			'mota.max'=>'Mô tả nhập từ 3-100 kí tự',
 		]);
 		$lp->tenloai = $reg['tenloai'];
 		$lp->succhua = $reg['succhua'];
@@ -96,7 +96,7 @@ class LoaiPhongController extends Controller
 			'tenloai' => 'required|min:3|max:100',
 			'succhua' => 'required|regex:/^[0-9]+$/|min:1|max:10',
 			'gia'=>'required|regex:/^[0-9]+$/|min:1|max:10',
-			'mota'=>'required|min:3|max:50',
+			'mota'=>'required|min:3|max:100',
 			'hinhanh'=>'required',
 		],[
 			'tenloai.required'=> 'Bạn chưa nhập tên loại',
@@ -112,8 +112,8 @@ class LoaiPhongController extends Controller
 			'gia.min'=>'Giá chỉ được nhập 1-10 ký tự',
 			'gia.max'=>'Giá chỉ được nhập 1-10 ký tự',
 			'mota.required'=> 'Bạn chưa nhập mô tả',
-			'mota.min'=>'Mô tả nhập từ 3-50 kí tự',
-			'mota.max'=>'Mô tả nhập từ 3-50 kí tự',
+			'mota.min'=>'Mô tả nhập từ 3-100 kí tự',
+			'mota.max'=>'Mô tả nhập từ 3-100 kí tự',
 			'hinhanh.required'=> 'Bạn chưa chọn hình ảnh',
 		]);
 		$lp = new Loaiphong;

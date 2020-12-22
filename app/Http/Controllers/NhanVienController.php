@@ -20,7 +20,6 @@ class NhanVienController extends Controller
 		}else{
 			$nv = Nhanvien::all()->where('manv',$i);
 		}
-		
 		return view('Admin/QLTKNV',compact('nv'));
 	}
 	/* view  them tai khoan nhan vien*/

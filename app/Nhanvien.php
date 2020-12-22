@@ -12,4 +12,8 @@ class Nhanvien extends Model
 	protected $fillable =[
 		'manv','taikhoan','matkhau','hoten','sdt','email','role','cmnd'
 	];
+	public function nvrole()
+    {
+        return $this->hasOne('App\Role', 'role_id','role');
+    }
 }

@@ -50,6 +50,7 @@ Route::get('/Dangki','ControllerQLKS@dangki')->name('dk');
 Route::get('/XacNhan','ControllerQLKS@thanhtoan')->name('ttoan');
 Route::post('/Dangki','DangKiController@postdk')->name('post-dk');
 Route::get('/DangXuat','DangNhapController@dangxuat')->name('dx');
+Route::get('/SuiteGaDinh','ControllerQLKS@suitegd')->name('suitegd');
 Route::get('/MasterTimkiem','ControllerQLKS@mastertimkiem')->name('mastertimkiem');
 
 /* Quản Lí ID khách hàng */
@@ -95,6 +96,8 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('QLDV','DichVuController@index')->name('dichvu');
 		Route::get('QLTT','ThanhToanController@index')->name('thanhtoan');
 		Route::get('QLKM','KhuyenMaiController@index')->name('khuyenmai');
+		Route::get('/TheoPhong','ThongKeController@viewchon')->name('viewchon');
+		Route::get('/DoanhThu','DoanhThuController@doanhthu')->name('doanhthu');
 		/* Xoa */
 		Route::get('Xoa/{makh}','KhachHangController@getxoa')->middleware('checkadmin')->name('get-xoatk');
 		Route::get('XoaPhong/{maphong}','PhongController@xoaphong')->name('get-xoaphong');

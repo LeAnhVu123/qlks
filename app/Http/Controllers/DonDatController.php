@@ -37,6 +37,9 @@ class DonDatController extends Controller
 				return redirect(route('alldondat'))->with('thanhcong','Bạn nhập sai (Từ ngày < Tới ngày)');
 			}
 		}
+		elseif($s && !$z){
+			$dd = Dondat::all()->where('ngaylap',$s);
+		}
 		if($reg['dua'])
 		{
 			$r = $reg['dua'];

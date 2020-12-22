@@ -121,7 +121,7 @@
                 @foreach($lp as $value)
                   <div class="col-md-3 col-sm-6 col-12">
                     <div class="card mb-3">
-                      <a href=""><img src="img/{{$value->hinhanh}}"  class="card-img-top" alt=""></a>
+                      <a href="{{route('suitegd')}}"><img src="img/{{$value->hinhanh}}"  class="card-img-top" alt=""></a>
                         <div class="card-body" style="padding-top:5px;">
                           <p class="card-text" style="text-align:center;padding-top:20px;font-weight: bolder;"><a href="" style="text-decoration: none;">{{$value->tenloai}}</a></p>
                         </div>

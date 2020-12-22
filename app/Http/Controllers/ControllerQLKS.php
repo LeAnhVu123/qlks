@@ -180,6 +180,13 @@ class ControllerQLKS extends Controller
             $zz = Loaiphong::all();
             return view('TinTuc',compact('zz','o'));
         }
+        public function suitegd()
+        {
+            $lp = Loaiphong::select('mota')->where('maloai',1)->first();
+            $o = Cookie::get('dangnhap');
+            $zz = Loaiphong::all();
+            return view('SuiteGD',compact('zz','o','lp'));
+        }
         public function lienhe()
         {
             $o = Cookie::get('dangnhap');

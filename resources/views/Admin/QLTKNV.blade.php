@@ -31,7 +31,7 @@
                             <td>{{$value->sdt}}</td>
                             <td>{{$value->email}}</td>
                             <td>{{$value->hoten}}</td>
-                            <td>{{$value->role}}</td>
+                            <td>{{$value->nvrole['name_role']}}</td>
                           
                            
                             <td><a href="Sua/SuaTKNV/{{$value->manv}}"><button class="btn btn-info ml-1" style="width:70px;">Sửa</button></a></td>

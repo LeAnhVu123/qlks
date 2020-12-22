@@ -86,7 +86,19 @@ body{
                             <a href="{{route('nv')}}"><i class="fa fa-home"></i> QL Tài Khoản NV</a>
                         </div>
                         <div class="col-12 mt-1">
-                            <a href="#"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
+                            <a class="ff" style="cursor:pointer;"><i class="fa fa-home"></i> Thống Kê Báo Cáo</a>
+                        </div>
+                        <!-- <div class="col-12 mt-1 hide" style="padding-left:40px;padding-top:0px;">
+                            <a href="">1. Phòng</a>
+                        </div>
+                        <div class="col-12 mt-1 hide" style="padding-left:40px;padding-top:0px;">
+                            <a href="">2. Thời gian</a>
+                        </div> -->
+                        <div class="col-12 mt-1 hide" style="padding-left:40px;padding-top:0px;">
+                            <a href="{{route('doanhthu')}}">1. Doanh thu</a>
+                        </div>
+                        <div class="col-12 mt-1 hide" style="padding-left:40px;padding-top:0px;">
+                            <a href="{{route('viewchon')}}">2. Khách hàng</a>
                         </div>
                 </div>   
             </div>
@@ -105,6 +117,10 @@ body{
 <script>
 $(document).ready(function(){
     $('#example').DataTable();
+    $('.hide').hide();
+    $('.ff').click(function(){
+        $('.hide').show();
+    })
  });
 </script> 
 

@@ -29,11 +29,11 @@ $(document).ready(function(){
   // end datepicker
   // add item
     var aa = @php echo json_encode($p) @endphp;
-    var count = 3;
+    var count = 4;
     countall(count,aa);
     $('.xemthem').click(function(){
       $('.all').html('');
-      count = count + 3;
+      count = count + 4;
       countall(count,aa);
     })
   })
@@ -50,7 +50,7 @@ $(document).ready(function(){
               ' <span style="font-size:20px;">Giới hạn :</span> <span style="font-size:20px;padding-left:20px;" class="succhua">'+aa[i].succhua+' Người</span> '+
               ' </div>'+
               ' <div class="col-12 mt-3">'+
-              ' <span style="font-size:20px;">Giá :</span> <span style="font-size:20px;padding-left:65px;color:#FFCC33; font-weight: bolder;"> '+aa[i].gia+'đ</span>  '+
+              ' <span style="font-size:20px;">Giá :</span> <span style="font-size:20px;padding-left:65px;color:#FFCC33; font-weight: bolder;"> '+aa[i].gia+'.000 VND</span>  '+
               ' </div>'+
               ' <div class="col-12 mt-4">'+
 			  '<form action="{{route("getid")}}" method="POST">'+
