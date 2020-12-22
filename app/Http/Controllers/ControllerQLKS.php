@@ -195,17 +195,18 @@ class ControllerQLKS extends Controller
         }
         public function guilienhe(request $reg)
         {
+            // echo $reg['noidung'];die;
             $this->validate($reg,[
                 'sdt'=>'regex:/^[0-9]+$/|min:3|max:12',
-                'noidung'=>'required',
+                'w3review'=>'required',
                 'hoten'=>'required',
                 
             ],[
-                'noidung.required'=>'Vui lòng nhập nội dung',
-                'hoten.required'=>'Vui lòng nhập họ tên',
                 'sdt.regex'=>'SDT chỉ được là số',
                 'sdt.min'=>'Độ dài sdt từ 3-12 ký tự',
                 'sdt.max'=>'Độ dài sdt từ 3-12 ký tự',
+                'w3review.required'=>'Vui lòng nhập nội dung',
+                'hoten.required'=>'Vui lòng nhập họ tên',
             ]);
             $lh = new Lienhe;
             $lh->hoten = $reg['hoten'];

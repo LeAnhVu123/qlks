@@ -20,7 +20,7 @@ class CHeckRole
         if($role == 1 or $role == 2){
             return $next($request);// tiep tuc qua controller
         }else{ 
-            return back()->with('thanhcong','không có quyền');
+            return back()->with('thanhcong','không có quyền thực hiện tác vụ này');
         }
        
     }

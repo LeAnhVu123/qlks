@@ -16,9 +16,9 @@ class NhanVienController extends Controller
 		$i = $reg['tknv'];
 		if($i == NULL)
 		{
-			$nv = Nhanvien::all();
+			$nv = Nhanvien::all()->where('manv','<>',1);
 		}else{
-			$nv = Nhanvien::all()->where('manv',$i);
+			$nv = Nhanvien::all()->where('manv',$i)->where('manv','<>',1);
 		}
 		return view('Admin/QLTKNV',compact('nv'));
 	}
@@ -77,6 +77,12 @@ class NhanVienController extends Controller
 	{
 		$role = Role::all()->where('role_id','<>',1);
 		$manv = Nhanvien::find($manv);
+		$ck = Cookie::get('account');
+		$json = \json_decode($ck)->role;
+		if($json == $manv->role)
+			{
+				return back()->with('thanhcong','Bạn không có quyền sửa');	
+			}
 		return view('Admin/Sua/SuaTKNV',compact('manv','role'));
 	}
 	/* Post sua tai khoan nhan vien  */

@@ -22,7 +22,7 @@ class CheckNV
             return $next($request);
         }
         else{
-            return back()->with('thanhcong','không có quyền');
+            return back()->with('thanhcong','không có quyền thực hiện tác vụ này');
         }
        
     }

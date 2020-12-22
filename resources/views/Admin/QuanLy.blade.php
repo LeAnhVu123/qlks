@@ -77,6 +77,9 @@ body{
                         <div class="col-12 mt-1">
                             <a href="{{route('thanhtoan')}}"><i class="fa fa-home"></i> QL Thanh Toán</a>
                         </div>
+                        <div class="col-12 mt-1">
+                            <a href="{{route('lienhenv')}}"><i class="fa fa-home"></i> Liên Hệ</a>
+                        </div>
                 </div>
                 <div class="ql">                 
                         <div class="col-12 mt-1">
@@ -104,9 +107,9 @@ body{
             </div>
         </div>
         @yield('content') 
-       
+        <!-- <div class="col-10">@include('notice')</div> -->
     </div>
-   
+    
 </div>
 
 
