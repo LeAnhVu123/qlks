@@ -106,7 +106,7 @@ class ControllerQLKS extends Controller
             $z = json_decode($o);
         }
         else{
-            return back();
+            return back()->with('thanhcong','Vui lòng đăng nhập để có thể đặt phòng.');
         }
         return view('Xacnhan',compact('o','z'));
     }

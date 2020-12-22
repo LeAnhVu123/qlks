@@ -3,7 +3,7 @@
 @section('content')
 @if(session('itemCart'))
 @foreach($itemCart as $value)
-
+<div class="col-12 mt-2" style="text-align:center;font-size:20px;padding: 0px 0px 0px 0px;">@include('notice')</div>
 <div class="abc">
 	<div class="container-fluid mt-2" style="text-align:center;height:50px;width:100%;background-color: lightskyblue;padding-right:0px; border: 0.2px solid;">
 		<div class="row">
@@ -112,6 +112,8 @@
 </div>
 <div>
 </div> -->
+
+
 <script>
 	$(document).ready(function() {
 		var dv = @php echo json_encode($dv) @endphp;	
@@ -217,7 +219,7 @@
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         onClose: function(selectedDate){
           $('.ngaydi').datepicker("option", "minDate",selectedDate);
         }
@@ -226,7 +228,7 @@
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         onClose: function(selectedDate){
           // $('.nut1').datepicker("option", "minDate",selectedDate);
         }

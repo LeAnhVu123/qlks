@@ -55,7 +55,7 @@
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         onClose: function(selectedDate){
           $('.ngaydi').datepicker("option", "minDate",selectedDate);
         }
@@ -64,7 +64,7 @@
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         onClose: function(selectedDate){
           // $('.nut1').datepicker("option", "minDate",selectedDate);
         }

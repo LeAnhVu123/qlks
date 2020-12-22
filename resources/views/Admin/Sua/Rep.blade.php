@@ -4,7 +4,7 @@
 <form action="" method="post">
         @csrf
     <div class="row">
-        <div class="col-12">Hỗ trợ khách hàng</div>
+        <div class="col-12"><h4 style="padding:5px 0px 0px 300px;">Hỗ trợ khách hàng</h4></div>
             <div class="col-3 mt-2"><span style="padding-left:150px">Họ tên </span></div>
             <div class="col-9 mt-2"><input type="text" style="width:385px;" name="hoten" value="{{$a->hoten}}" readonly></div>
             <div class="col-3 mt-2"><span style="padding-left:150px">SDT </span></div>

@@ -24,6 +24,10 @@ class ThanhToanController extends Controller
        {
         $tt = Thanhtoan::all()->where('thanhtoan',0);
        }
+       if($reg['day'])
+       {
+         $tt = Thanhtoan::all()->where('matt',$reg['day']);
+       }
         return view('Admin.Allthanhtoan',compact('tt'));
     }
     public function getviewthemtt()

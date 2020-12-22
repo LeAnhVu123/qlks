@@ -11,21 +11,7 @@ span{
 <form action="{{route('guilienhe')}}" method="post">
 @csrf
         <div class="row">
-            <div class="col-12" style="padding-top:10px;"><span>Khách hàng có thể liên hệ trực tiếp tại địa chỉ 35 Nguyễn Văn Bảo, Phường 4, Phước Mỹ, TP.Phan Rang - Tháp Chàm</span></div>
-            <div class="col-12" style="padding-top:10px;"><span>Số điện thoại: (+84) 985220501</span></div>
-            <div class="col-12" style="padding-top:10px;"><span>Gmail: royalhotel@gmail.com</span></div>
-            <div class="col-12" style="padding-top:10px;"><span>Fax: (+84) 985220501</span></div>
-            <div class="col-12" style="padding-top:10px;">
-                                <div class="" style="padding: 10px 10px 0 0px;font-size:20px;">
-                                      <a href="https://www.facebook.com/vu.leanh.144/" style="color:blue;"><i class="fa fa-facebook"></i></a>
-                                      <a href="https://twitter.com/SalaDanangBeach" style="color:blue;padding-left:20px;"><i class="fa fa-twitter"></i></a>
-                                      <a href="https://www.youtube.com/" style="color:blue;padding-left:20px;"><i class="fa fa-youtube"></i></a>
-                                      <a href="https://business.instagram.com/getting-started?locale=vi_VN" style="color:blue;padding-left:20px;"><i class="fa fa-instagram"></i></a>
-                                      <a href="https://www.tripadvisor.com.vn/" style="color:blue;padding-left:20px;"><i class="fa fa-tripadvisor"></i></a>
-                                </div>
-            </div>
-            <div class="col-12"><hr></div>
-            <div class="col-12" style="padding-left:400px;font-weight:bolder;font-size:20px;padding-top:20px;">Hỗ trợ khách hàng</div>
+            <div class="col-12" style="padding-left:400px;font-weight:bolder;font-size:20px;padding-top:20px;color:blue;">Hỗ trợ khách hàng</div>
                     <div class="col-4 mt-4" style="padding-left:200px;">
                         Họ Tên
                     </div>
@@ -62,9 +48,25 @@ span{
 			</div>
 			@endif
 			@if(session('thanhcong'))
-			<div class="alert alert-info mt-2">
+			<div class="alert alert-info mt-2" style="text-align:center;">
 				{{session('thanhcong')}}
 			</div>
 			@endif 
+            <div class="col-12 mt-5"><hr></div>
+            <div class="col-12 mt-5" style="padding-top:10px;"><span style="color:blue;font-size:20px;">Khách hàng có thể liên hệ trực tiếp tại địa chỉ </span></div>
+            <div class="col-12" style="padding-top:10px;"><span>35 Nguyễn Văn Bảo, Phường 4, Phước Mỹ, TP.Phan Rang - Tháp Chàm</span></div>
+            <div class="col-12" style="padding-top:10px;"><span>Số điện thoại: (+84) 985220501</span></div>
+            <div class="col-12" style="padding-top:10px;"><span>Gmail: royalhotel@gmail.com</span></div>
+            <div class="col-12" style="padding-top:10px;"><span>Fax: (+84) 985220501</span></div>
+            <div class="col-12" style="padding-top:10px;">
+                                <div class="" style="padding: 10px 10px 0 0px;font-size:20px;">
+                                      <a href="https://www.facebook.com/vu.leanh.144/" style="color:blue;"><i class="fa fa-facebook"></i></a>
+                                      <a href="https://twitter.com/SalaDanangBeach" style="color:blue;padding-left:20px;"><i class="fa fa-twitter"></i></a>
+                                      <a href="https://www.youtube.com/" style="color:blue;padding-left:20px;"><i class="fa fa-youtube"></i></a>
+                                      <a href="https://business.instagram.com/getting-started?locale=vi_VN" style="color:blue;padding-left:20px;"><i class="fa fa-instagram"></i></a>
+                                      <a href="https://www.tripadvisor.com.vn/" style="color:blue;padding-left:20px;"><i class="fa fa-tripadvisor"></i></a>
+                                </div>
+            </div>
+           
 </div> 
 @endsection

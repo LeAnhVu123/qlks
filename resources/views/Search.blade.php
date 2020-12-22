@@ -55,7 +55,7 @@ $(document).ready(function(){
               ' <span style="font-size:20px;">Giới hạn :</span> <span style="font-size:20px;padding-left:20px;" class="succhua">'+aa[i].succhua+' Người</span> '+
               ' </div>'+
               ' <div class="col-12 mt-3">'+
-              ' <span style="font-size:20px;">Giá :</span> <span style="font-size:20px;padding-left:65px;color:#FFCC33; font-weight: bolder;"> '+aa[i].gia+'đ</span>  '+
+              ' <span style="font-size:20px;">Giá :</span> <span style="font-size:20px;padding-left:65px;color:#FFCC33; font-weight: bolder;"> '+aa[i].gia+'.000VND</span>  '+
               ' </div>'+
               ' <div class="col-12 mt-4">'+
                   '<form action="{{route("getid")}}" method="POST">'+

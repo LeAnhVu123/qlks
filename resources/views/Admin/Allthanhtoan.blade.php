@@ -17,6 +17,7 @@
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
+                            <th>Mã TT</th> 
                             <th>Mã Đơn</th>                            
 							<th>Thanh toán</th>    
 							<th>Ngày TT</th>                      
@@ -29,6 +30,7 @@
                     <tbody>
                    @foreach($tt as $value)
                         <tr>
+                            <td>{{$value->matt}}</td>
                             <td>
                                 <form action="{{route('alldondat')}}" method="get">
                                 @csrf 

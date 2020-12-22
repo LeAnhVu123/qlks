@@ -91,10 +91,10 @@
       <img src="img/KS-886.jpg" class="d-block w-100" height="500px" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/KS-329.jpg" class="d-block w-100" height="500px" alt="...">
+      <img src="img/hinhnen/a.jpg" class="d-block w-100" height="500px" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/KS-895.jpg" class="d-block w-100"  height="500px" alt="...">
+      <img src="img/KS-329.jpg" class="d-block w-100"  height="500px" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

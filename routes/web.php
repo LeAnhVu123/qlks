@@ -109,6 +109,7 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('XoaThanhToan/{matt}','ThanhToanController@xoatt')->middleware('checkadmin')->name('get-xoatt');
 		Route::get('XoaKhuyenMai/{makm}','KhuyenMaiController@xoakm')->middleware('checkadmin')->name('get-xoakm');
 		Route::get('XoaNhanVien/{manv}','NhanVienController@getxoanv')->middleware('checkadmin')->name('get-xoanv');
+		Route::get('XoaRep/{malh}','LienHeController@getxoalh')->middleware('checkadmin')->name('del-lh');
 			Route::group(['prefix'=>'Them'],function(){
 					// Admin/Them/
 					Route::get('ThemTKKH','KhachHangController@getthemtk')->name('get-themtk');

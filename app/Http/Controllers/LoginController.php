@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     /* Dang nhap thanh cong thi khoi tao cookie */
     public function xetdangnhap(Request $reg){
-        $ttk = Nhanvien::select('taikhoan','role')->where('taikhoan',$reg['ttk'])->where('matkhau',$reg['matkhau'])->first();
+        $ttk = Nhanvien::select('taikhoan','role','manv')->where('taikhoan',$reg['ttk'])->where('matkhau',$reg['matkhau'])->first();
         if($ttk){
             $cookie = cookie('account',$ttk,42300);
             return redirect(route('quanly'))->withCookie($cookie);

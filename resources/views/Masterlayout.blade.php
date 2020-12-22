@@ -76,16 +76,16 @@
 
     </div>
     <!-- Hinh Nen Dong -->
-  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/KS-230.jpg" class="d-block w-100" height="400px" alt="...">
+      <img src="img/KS-230.jpg" class="d-block w-100" height="420px" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/KS-419.jpg" class="d-block w-100" height="400px" alt="...">
+      <img src="img/KS-419.jpg" class="d-block w-100" height="420px" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="img/KS-802.jpg" class="d-block w-100"  height="400px" alt="...">
+      <img src="img/KS-833.jpg" class="d-block w-100"  height="420px" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -96,7 +96,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> -->
 
     <!-- End Hinh Nen Dong -->
 

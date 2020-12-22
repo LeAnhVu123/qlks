@@ -76,7 +76,7 @@ $(document).ready(function(){
         showAmin: 'drop',
         numberOfmonth: 1,
         minDate: minDate,
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         onClose: function(selectedDate){
           $('.nut2').datepicker("option", "minDate",selectedDate);
         }

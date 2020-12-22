@@ -15,10 +15,11 @@
                         <tr>
                             <th>Mã NV</th>
                             <th>Họ Tên</th>
-                            <th>Email</th>
                             <th>SDT</th>
+                            <th>Email</th>
                             <th>Nội Dung</th>
                             <th>Trả Lời</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                 
@@ -31,6 +32,7 @@
                             <td>{{$val->email}}</td>
                             <td>{{$val->noidung}}</td>
                             <td><a href="Sua/Rep/{{$val->malh}}"><button class="btn btn-info ml-1" style="width:70px;">Rep</button></a></td>
+                            <td><a href="XoaRep/{{$val->malh}}"><button class="btn btn-danger ml-1" style="width:70px;">Xóa</button></a></td>
                         </tr>
                     @endforeach
                     </tbody>

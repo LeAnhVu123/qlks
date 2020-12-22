@@ -40,7 +40,14 @@
                  @foreach($dd as $val)
                         <tr>
                            <td>{{$i++}}</td>
-                            <td>{{$val->madon}}</td>
+                           <td>
+                                <form action="{{route('alldondat')}}" method="get">
+                                @csrf 
+                                    <input type="hidden" name="dua" id="" value="{{$val->madon}}">
+                                    <div class="md" style="cursor:pointer;">{{$val->madon}}</div>
+                                    <input type="submit" value="gui" class="hd">
+                                </form>
+                            </td>
                             <td>{{$val->ngaylap}}</td>
                             <td>{{$val->donvachitiet['ngayden']}}</td>
                             <td>{{$val->donvachitiet['ngaydi']}}</td>
@@ -54,6 +61,13 @@
             </div>
             
 		</div>
-       
+  <script>
+  $(document).ready(function(){
+    $('.hd').hide();
+        $('.md').click(function(){
+            $(this).next().click();
+        });
+  });
+  </script>     
        
 @endsection
