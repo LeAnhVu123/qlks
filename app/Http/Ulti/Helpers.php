@@ -1,42 +1,20 @@
 <?php 
 namespace App\Http\Ulti;
+
+use App\Dichvu;
 use Illuminate\Support\Facades\DB;
 class Helpers {
-	public static function  truncateTable($model,$id){
-		// $getAll = $model::all()->toSql();
-		// dd($getAll);
-		// $bindings = $select->getBindings();
-		/**
-		 * now go down to the "Network Layer"
-		 * and do a hard coded select, Laravel is a little
-		 * stupid here
-		 */
-		// $select = "select * from dichvus";
-		// dd($select);
-		$truncate = $model::truncate();
-		$select = "select madv,tendv,gia from dichvus where madv = 1";
-		$insertQuery = "INSERT into dichvus (madv,tendv,gia,created_at,updated_at) select madv,tendv,gia,created_at,updated_at from dichvus where madv = 1";
-		$aa = DB::select($select);
-		dd($aa);
-		die;
-		$truncate = $model::truncate();
-		if($truncate){
-			
-			return true;
-		}else{
-			return false;
+	public static function truncateTable($model,$id){
+		$model::findOrFail($id)->delete();
+		$allRow = $model::all();
+		$model::truncate();
+		foreach($allRow as $row){			
+			Dichvu::create([
+				'tendv' => $row['tendv'],
+				'gia' => $row['gia'],
+			]);
 		}
-						
-
-		
-
-		// $model::findOrFail($id)->delete();
-		// $row = $model::all();
-		// if(count($row) == 0){
-		// 	$bb = $model::truncate();
-		// 	return $bb;
-		// }
-		// return false;
+		return true;
 	}
 
 	public static function splitDate($date,$type,&$year,&$month,&$day){
