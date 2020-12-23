@@ -141,7 +141,7 @@ class ControllerQLKS extends Controller
         else{
 			$z='';
 			return view('Xacnhan',compact('o','z'));
-		}		
+		}	
 		$dd = Session::get('datphong');
 		$tongtien = $dd[0]['tongtien'];
 		$sophong = $dd[0]['sophong'];
@@ -150,6 +150,11 @@ class ControllerQLKS extends Controller
 		$maphong = $dd[0]['maphong'];
 		$arrMaDV = explode(',',$madv);
 		$arrMaP = explode(',',$maphong);
+		// dd(session::all());
+		$arrUni = array_unique($arrMaP);
+		if(count($arrMaP) > count($arrUni)){
+			return redirect(route('phongdadat'))->with('thanhcong','Ban khong dc chon ma phong');
+		}
 		$ngayden = $dd[0]['ngayden'];
 		$ngaydi = $dd[0]['ngaydi'];
 		array_pop($arrMaDV);
@@ -158,11 +163,13 @@ class ControllerQLKS extends Controller
 		$km = Khuyenmai::all();
 		foreach($km as $value){
 			if($ngayden >= $value['ngaybd'] && $ngayden <= $value['ngaykt']){
-				$km = $value;
+				$makm = $value;
 			}
 		}
-		// dd($km);
-        return view('Xacnhan',compact('o','z','dd','dv','arrMaP','ngayden','ngaydi','tongtien','km','sophong','songuoi'));
+		if(!isset($makm)){
+			$makm = '';
+		}
+        return view('Xacnhan',compact('o','z','dd','dv','arrMaP','ngayden','ngaydi','tongtien','makm','sophong','songuoi'));
 	}
 	
 	public function addDD(){
@@ -171,8 +178,10 @@ class ControllerQLKS extends Controller
 		Session::forget('itemCart.'.$dd[0]['key']);
 		$all = Session::get('itemCart');
 		Session::forget('itemCart');
-		foreach($all as $item){
-			Session::push('itemCart',$item);
+		if(!empty($all)){
+			foreach($all as $item){
+				Session::push('itemCart',$item);
+			}
 		}
 		$kh = Cookie::get('dangnhap');
 		$json = json_decode($kh);
@@ -180,21 +189,22 @@ class ControllerQLKS extends Controller
 		$substrMP = substr($dd[0]['maphong'],0,strlen($dd[0]['maphong']) -1);
 		$km = Khuyenmai::all();
 		foreach($km as $value){
-			// dd($value['ngaybd']);
 			if($dd[0]['ngayden'] >= $value['ngaybd'] && $dd[0]['ngayden']  <= $value['ngaykt']){
-				$makm = $value['makm'];
+				$makm = $value;
 			}		
 		}
-		if(!isset($makm)){
-			$makm = null;
-		}
+		// if(!isset($makm)){
+		// 	$makm = null;
+		// }
+		$giagiam =  isset($makm) ? $makm['giagiam'] : 1 ;
+		$tongtien = $dd[0]['tongtien'] / $giagiam;
 		Dondat::create([
 			'makh' => $json->makh,
 			'maphong' => $substrMP,
 			'manv' => 1,
-			'makm' => $makm,
+			'makm' => isset($makm) ? $makm['makm'] : null,
 			'madv' =>$substrDV,
-			'tongtien' => $dd[0]['tongtien'],
+			'tongtien' => $tongtien,
 			'ngaylap' => date("Y/n/d"),
 		]);
 		$madon = Dondat::latest()->first()->madon;

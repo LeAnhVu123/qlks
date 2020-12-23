@@ -41,7 +41,9 @@
 				<div class="col-12">Ngày đi : {{$ngaydi}}</div>
 				<div class="col-12">Số phòng : {{$sophong}}</div>
 				<div class="col-12">Số người : {{$songuoi}}</div>				
-                <div class="col-12">Khuyến mãi :{{$km[0]->tenkm}} ( {{$km[0]->giagiam}} )</div>
+				@if(!empty($makm))
+                <div class="col-12">Khuyến mãi :{{$makm->tenkm}} ( {{$makm->giagiam}} )</div>
+				@endif
                 <div class="col-12">Tổng tiền : <span>{{$tongtien}}</span><span>.000VND</span></div>
                 
             </div>

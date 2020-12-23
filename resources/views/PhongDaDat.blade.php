@@ -123,6 +123,9 @@
 @endif
 <script>
 	$(document).ready(function() {
+		if("{{session('thanhcong')}}"){
+			alert("{{session('thanhcong')}}");
+		}
 		$('.datphong').click(function(){
 			var key = $(this).attr('data-key');
 			var maloai = $('.maloai').eq(key).val();			
@@ -240,6 +243,9 @@
 			$('.xuatgia').eq(index).text(xuatgia);
 			
 			$('.ngaydi').change(function() {
+				updatePrice(index);
+			})
+			$('.ngayden').change(function() {
 				updatePrice(index);
 			})
 			//lấy dữ liệu dịch vụ
