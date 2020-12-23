@@ -22,5 +22,9 @@ class Dondat extends Model
 	}
 	public function ddvatt(){
         return $this->belongsTo('App\Thanhtoan', 'madon','madon');
-    }
+	}
+	public function ddvakm(){
+        return $this->hasOne('App\Khuyenmai', 'makm','makm');
+	}
+
 }

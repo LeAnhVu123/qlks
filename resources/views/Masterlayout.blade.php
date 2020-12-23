@@ -19,7 +19,18 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- <title>ROYAL HOTEL</title> -->
 </head>
+
 <body>
+<style>
+.ii .gtd {
+  text-decoration: none;
+  font-weight: bolder;
+  color: royalblue;
+}
+.ii .gtd:hover{
+  color: blue;
+}
+</style>
 <div class="container-fluid mt-1 search ">
     <div class="row">
       <div class="col-md-3 col-ms-6 col-12">
@@ -28,7 +39,7 @@
       <div class="col-md-6 col-ms-6 col-12 cot">
         <a href="{{route('gt')}}" class="gt">Giới Thiệu</a>
         <a href="DatPhong" class="gtd">Đặt Phòng Nhanh</a>
-        <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
+        <a href="PhongDaDat" class="gtd">Đặt Phòng</a>
       </div>
       @if(!$o)
       <div class="col-md-3 col-ms-6 col-12">
@@ -37,8 +48,9 @@
       </div>
       @endif
       @if($o) 
-      <div class="col-md-3 col-ms-6 col-12">
-        <a href="{{route('dx')}}"><button class="btn btn-info tki">Đăng Xuất</button></a>
+      <div class="col-md-3 col-ms-6 col-12 mt-2 ii">
+        <a href="{{route('xemdon')}}" class="gtd">Xem Đơn</a>
+        <a href="{{route('dx')}}"><button class="btn btn-info tki" style="margin-top:0px;">Đăng Xuất</button></a>
       </div>
       @endif
     </div>
@@ -101,8 +113,8 @@
     <!-- End Hinh Nen Dong -->
 
     @yield('content') 
-            <div class="contaier mt-5 diachilienhe" style="background-color:#000080;">
-                <div class="row" style="background-color:#000080;">
+            <div class="contaier mt-5 diachilienhe" style="background-color:#000080;padding-bottom:0px;">
+                <div class="row" style="background-color:#000080;padding-bottom:0px;">
                         <div class="col-md-6 col-12" style="background-color:#000080;">
                                 <div class="diachi"><h2 class="dc">Địa Chỉ</h2>
                                 35 Nguyễn Văn Bảo, Phường 4, Phước Mỹ, TP.Phan Rang - Tháp Chàm  <br>

@@ -14,9 +14,10 @@
             <div class="col-3 mt-2"></div style="padding-left:150px">
             <div class="col-9 mt-2"><textarea style="width:385px;" id="w3review" name="w3review" rows="4" cols="50" required autocomplete="off" readonly>{{$a->noidung}}</textarea></div>
             <div class="col-3 mt-2"></div style="padding-left:150px">
-            <div class="col-9 mt-2"><textarea style="width:385px;" id="w3review" name="traloi" rows="4" cols="50" required autocomplete="off" placeholder="Nội dung trả lời"></textarea></div>
+            <div class="col-9 mt-2"><textarea style="width:385px;" id="w3review" name="traloi" rows="4" cols="50" autocomplete="off" placeholder="Nội dung trả lời"></textarea></div>
             <div class="col-3 mt-2"></div style="padding-left:150px">
-            <div class="col-9 mt-2"><input type="submit" value="Trả Lời"></div>
+            <div class="col-9 mt-2"><input type="submit" value="Gửi email"></div>
+            
         
     @if(count($errors) > 0)
                 <div class="alert alert-danger">

@@ -14,5 +14,6 @@ class Phong extends Model
 	protected $primaryKey = 'maphong';
 	public function pval(){
         return $this->belongsTo('App\Loaiphong', 'maloai','maloai');
-    }
+	}
+	
 }

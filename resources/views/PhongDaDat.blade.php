@@ -1,9 +1,9 @@
 @extends('Masterlayout')
-<head><title>Phòng Đã Đặt</title></head>
+<head><title>Đặt Phòng</title></head>
 @section('content')
+<div class="col-12 mt-2" style="text-align:center;font-size:20px;padding: 0px 0px 0px 0px;">@include('notice')</div>
 @if(session('itemCart'))
 @foreach($itemCart as $key=>$value)
-<!-- <div class="col-12 mt-2" style="text-align:center;font-size:20px;padding: 0px 0px 0px 0px;">@include('notice')</div> -->
 <div class="abc">
 	<div class="container-fluid mt-2" style="text-align:center;height:50px;width:100%;background-color: lightskyblue;padding-right:0px; border: 0.2px solid;">
 		<div class="row">
@@ -24,15 +24,15 @@
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid" style="height:300px;width:100%;padding-right:0px;padding-top:10px;border-left:0.2px solid;border-bottom:0.2px solid;border-right:0.2px solid;">
+	<div class="container-fluid" style="height:270px;width:100%;padding-right:0px;padding-top:10px;border-left:0.2px solid;border-bottom:0.2px solid;border-right:0.2px solid;">
 		<div class="row">
 			<div class="col-3">
-				<img src="{{$path}}\{{$value->hinhanh}}" alt="" class="img" style="height:200px;width:100%;">
-				<p style="padding-top:5px;height:10px;white-space: nowrap">Loai Phong : <span class="loai text-capitalize" style="white-space: nowrap;">{{$value->tenloai}}</span></p>
-
-				<p style="padding-top:5px;height:10px">Sức chứa : <span class="succhua">{{$value->succhua}}</span></p>
-				<p style="padding-top:5px;height:10px">Giá : <span class="gia">{{$value->gia}}</span><span>.000 VND</span></p>
-
+				<div class="row">
+					<div class="col-12" style="padding-left:0px;"><img src="{{$path}}\{{$value->hinhanh}}" alt="" class="img" style="height:200px;width:100%;"></div>		
+					<div class="col-12" style="padding-left:0px;"><span class="loai text-capitalize" style="white-space: nowrap;">{{$value->tenloai}}</span></div>		
+					<div class="col-12" style="padding-left:0px;">Sức chứa : <span class="succhua">{{$value->succhua}}</span> <span style="float:right;">.000VND</span> </span><span class="gia" style="float:right;">{{$value->gia}}</span><span style="float:right;">Giá : </div>
+							
+				</div>
 			</div>
 			<div class="col-3">
 
@@ -89,30 +89,29 @@
 				<table style="width:100%"><span style="font-size:17px;">Tổng : </span> <span class="total-priceservice" style="font-size:17px;"> 0</span><span style="font-size:17px;">.000 VND</span></table>
 
 			</div>
-			<div class="col-2" style="text-align:center;">
-
+			<div class="col-2" style="text-align:center;">	
 				<!-- <input style="padding-top:0px;width:100px" type="text" class="xuatgia" value="0" readonly="true" placeholder="....Gia..."><span>.000 VND</span> -->
 				<span class="xuatgia" style="padding-top:0px;width:100px"></span><span>.000 VND</span>
 			</div>
-			<div class="col-2">
+			<div class="col-2" style="padding-top:150px;">
 				<!-- <a href="{{route('ttoan')}}" style="padding-top:0px;padding-right:20px;float:right;">
 					<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;">
 						Đặt Phòng
 					</button>
 				</a> -->
 				<input type="hidden" value="{{$value->maloai}}" class="maloai">
-					<button type="button" class="btn btn-primary datphong" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;" data-key="{{$key}}">
+					<button type="button" class="btn btn-primary datphong" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;float:right;margin-right:20px;" data-key="{{$key}}">
 						Đặt Phòng
 					</button>
 
-				<button type="button" class="btn btn-primary xoass" style="width:110px;margin-top:20px;margin-left:52px;margin-top:30px;" value="{{$value['maloai']}}">
+				<button type="button" class="btn btn-primary xoass" style="width:110px;margin-top:20px;margin-left:52px;margin-right:20px;float:right;" value="{{$value['maloai']}}">
 					Hủy Phòng
 				</button>
 
-				<a href="#" style="padding-top:50px;padding-right:20px;float:right;">
+				<!-- <a href="#" style="padding-top:50px;padding-right:20px;float:right;">
 					Đặt phòng thêm
 
-				</a>
+				</a> -->
 
 			</div>
 		</div>

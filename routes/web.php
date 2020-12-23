@@ -42,6 +42,7 @@ Route::get('/DulichNT','ControllerQLKS@dulichNT')->name('dlNT');
 Route::get('/DuongbienNT','ControllerQLKS@venbienNT')->name('dbNT');
 Route::get('/TinTuc','ControllerQLKS@tintuc')->name('tint');
 Route::get('/LienHe','ControllerQLKS@lienhe')->name('lienhe');
+Route::get('/XemDon','ControllerQLKS@xemdon')->name('xemdon');
 Route::post('/LienHe','ControllerQLKS@guilienhe')->name('guilienhe');
 Route::get('/DacsanNT','ControllerQLKS@dacsanNT')->name('dsNT');
 Route::get('/Dangnhap','ControllerQLKS@dangnhap')->name('dn');
@@ -113,6 +114,7 @@ Route::group(['middleware' => ['checkaccount'],'prefix'=>'Admin'],function(){
 		Route::get('XoaKhuyenMai/{makm}','KhuyenMaiController@xoakm')->middleware('checkadmin')->name('get-xoakm');
 		Route::get('XoaNhanVien/{manv}','NhanVienController@getxoanv')->middleware('checkadmin')->name('get-xoanv');
 		Route::get('XoaRep/{malh}','LienHeController@getxoalh')->middleware('checkadmin')->name('del-lh');
+		Route::get('RepDT/{malh}','LienHeController@goidt')->name('goidt');
 			Route::group(['prefix'=>'Them'],function(){
 					// Admin/Them/
 					Route::get('ThemTKKH','KhachHangController@getthemtk')->name('get-themtk');

@@ -19,6 +19,16 @@
     <title>Trang Chủ</title>
    
 </head>
+<style>
+.ii .gtd {
+  text-decoration: none;
+  font-weight: bolder;
+  color: royalblue;
+}
+.ii .gtd:hover{
+  color: blue;
+}
+</style>
 <body>
 
 <div class="container-fluid mt-1 search ">
@@ -29,7 +39,7 @@
       <div class="col-md-6 col-ms-6 col-12 cot">
         <a href="{{route('gt')}}" class="gt">Giới Thiệu</a>
         <a href="DatPhong" class="gtd">Đặt Phòng Nhanh</a>
-        <a href="PhongDaDat" class="gtd">Phòng Đã Đặt</a>
+        <a href="PhongDaDat" class="gtd">Đặt Phòng</a>
       </div>
       @if(!$b)
       <div class="col-md-3 col-ms-6 col-12">
@@ -38,8 +48,9 @@
       </div>
       @endif
       @if($b) 
-      <div class="col-md-3 col-ms-6 col-12">
-        <a href="{{route('dx')}}"><button class="btn btn-info tki">Đăng Xuất</button></a>
+      <div class="col-md-3 col-ms-6 col-12 mt-2 ii">
+        <a href="{{route('xemdon')}}" class="gtd">Xem Đơn</a>
+        <a href="{{route('dx')}}"><button class="btn btn-info tki" style="margin-top:0px;">Đăng Xuất</button></a>
       </div>
       @endif
     </div>

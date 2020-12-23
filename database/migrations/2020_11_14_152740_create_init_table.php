@@ -134,6 +134,7 @@ class CreateInitTable extends Migration
         $table->String('email');
         $table->String('sdt');
         $table->String('noidung');
+        $table->String('traloi')->nullable();
         $table->timestamps();  
         $table->foreign('manv')->references('manv')->on('nhanviens');      
 });

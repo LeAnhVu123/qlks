@@ -18,7 +18,13 @@ class LienHeController extends Controller
     public function getviewlh(request $reg,$malh)
     {
         $a = Lienhe::find($malh);
-        return view('Admin.Sua.Rep',compact('a'));
+        if($a->manv == NULL)
+        {
+            return view('Admin.Sua.Rep',compact('a'));
+        }
+        else{
+            return back()->with('thanhcong','Hỗ trợ này đã được xử lí');
+        }
     }
     public function postviewlh(request $reg,$malh)
     {
@@ -26,8 +32,8 @@ class LienHeController extends Controller
         $json = json_decode($ck)->manv;
         $lh = Lienhe::find($malh);
         $lh->manv = $json;
+        $lh->traloi = $reg['traloi'];
         $lh->save();
-        
         $z = $reg['email'];
         $ht = $reg['hoten'];
         $nd = $reg['traloi'];
@@ -40,7 +46,7 @@ class LienHeController extends Controller
         //         $message->to($z,$ht);
         //         $message->subject('Hỗ trợ khách hàng');
         // });
-        return back()->with('thanhcong','Gửi gmail thành công');
+        return redirect(route('lienhenv'))->with('thanhcong','Gửi gmail thành công');
     }
     public function getxoalh($malh)
     {
@@ -51,6 +57,22 @@ class LienHeController extends Controller
         }
         $lh->delete();
         return back()->with('thanhcong','Xóa liên hệ thành công');
+    }
+    public function goidt($malh)
+    {
+        $ck = Cookie::get('account');
+        $json = json_decode($ck)->manv;
+        $lh = Lienhe::find($malh);
+        if($lh->manv == NULL)
+        {
+            $lh->manv = $json;
+            $lh->save();
+            return redirect(route('lienhenv'))->with('thanhcong','Xác nhận thành công đã gọi điện thoại trả lời khách hàng');
+        }
+        else{
+            return redirect(route('lienhenv'))->with('thanhcong','Đã hỗ trợ khách hàng này rồi');
+        }
+       
     }
 
 }
