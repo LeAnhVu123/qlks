@@ -52,7 +52,10 @@ Route::post('/Dangki','DangKiController@postdk')->name('post-dk');
 Route::get('/DangXuat','DangNhapController@dangxuat')->name('dx');
 Route::get('/SuiteGaDinh','ControllerQLKS@suitegd')->name('suitegd');
 Route::get('/MasterTimkiem','ControllerQLKS@mastertimkiem')->name('mastertimkiem');
-
+// Route::get('/showphong','ControllerQLKS@showphong')->name('showphong');
+Route::get('/showall','ControllerQLKS@showall')->name('showall');
+Route::get('/addDD','ControllerQLKS@addDD')->name('addDD');
+// Route::get('/showall','ControllerQLKS@showall')->name('showall');
 /* Quản Lí ID khách hàng */
 
 // Route::group(['prefix'=>'Admin'],function(){

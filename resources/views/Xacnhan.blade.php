@@ -5,37 +5,45 @@
 <div class="col-12"><hr></div>
 <div class="col-12">
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
             <div class="row" style="">
                 <div class="col-12" style="font-weight:bolder;">Thông Tin KH</div>
-                <div class="col-3">Tài khoản : </div><div class="col-9">{{$z->taikhoan}}</div>
-                <div class="col-3">SDT : </div><div class="col-9">{{$z->sdt}}</div>
-                <div class="col-3">Số CMND : </div><div class="col-9">{{$z->cmnd}}</div>
-                <div class="col-3">Email : </div><div class="col-9">{{$z->email}}</div>
+                <div class="col-4">Tài khoản : </div><div class="col-8">{{$z->taikhoan}}</div>
+                <div class="col-4">SDT : </div><div class="col-8">{{$z->sdt}}</div>
+                <div class="col-4">Số CMND : </div><div class="col-8">{{$z->cmnd}}</div>
+                <div class="col-4">Email : </div><div class="col-8">{{$z->email}}</div>
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-2">
             <div class="row">
                 <div class="col-12" style="font-weight:bolder;">Thông Tin Dịch Vụ</div>
-                <div class="col-12">Dịch Vụ massage</div>
-                <div class="col-12">Dịch Vụ massage</div>
-                <div class="col-12">Dịch Vụ massage</div>
-                <div class="col-12">Dịch Vụ massage</div>
-                <div class="col-12">Dịch Vụ massage</div>
-                <div class="col-12">Dịch Vụ massage</div>
-                <div class="col-12">Dịch Vụ massage</div>
-               
+				@foreach($dv as $valueDV)
+                <div class="col-12">Dichvu : {{$valueDV->tendv}}</div>
+				@endforeach
+            </div>
+		</div>
+		
+        <div class="col-2">
+            <div class="row">
+                <div class="col-12" style="font-weight:bolder;">Mã phòng đã đặt</div>
+				@foreach($arrMaP as $maphong)
+                	<div class="col-12">Mã Phòng : {{$maphong}}</div>
+				@endforeach
             </div>
         </div>
 
 
-        <div class="col-3">
+        <div class="offset-1 col-3">
             <div class="row">
                 <div class="col-12" style="font-weight:bolder;">Thông Tin Đơn Đặt</div>
-                <div class="col-12">Ngày đặt</div>
-                <div class="col-12">Khuyến mãi : ...</div>
-                <div class="col-12">Tổng tiền : ...</div>
+                <div class="col-12">Ngày đến: {{$ngayden}}</div>
+				<div class="col-12">Ngày đi : {{$ngaydi}}</div>
+				<div class="col-12">Số phòng : {{$sophong}}</div>
+				<div class="col-12">Số người : {{$songuoi}}</div>				
+                <div class="col-12">Khuyến mãi :{{$km[0]->tenkm}} ( {{$km[0]->giagiam}} )</div>
+                <div class="col-12">Tổng tiền : <span>{{$tongtien}}</span><span>.000VND</span></div>
+                
             </div>
         </div>
         <div class="col-12"><hr></div>
@@ -44,13 +52,9 @@
         <div class="col-6"></div>
         <div class="col-6"><input type="radio" name="tt" id=""> Thanh toán trực tiếp</div>
         <div class="col-6"></div>
-        <div class="col-6"><input type="submit" value="Thanh Toán"></div>
-<!-- 
-        <div class="col-2">
-            <div class="row" style="float:right;">
-                <div class="col-12"><button class="btn btn-primary">Thanh Toán</button></div>
-            </div>
-        </div> -->
+        <div class="col-6">
+			<a href="{{route('addDD')}}"><button class="btn btn-success">Thanh toan</button></a>
+		</div>
     </div>
 </div>
 	

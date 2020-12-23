@@ -12,6 +12,8 @@ use  App\Nhanvien;
 use  App\Chitiet;
 use App\Dichvu;
 use App\Lienhe;
+use App\Khuyenmai;
+use App\Dondat;
 use  App\Http\Ulti\Helpers;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
@@ -32,8 +34,8 @@ class ControllerQLKS extends Controller
         if($b){
             $l = json_decode($b)->taikhoan;
         }else{
-            $l ='';
-        }
+			$l = '';
+		}
       $lp = Loaiphong::All()->take(4);
       $a = "img/thuvien";  
       $file = \scandir($a);
@@ -46,11 +48,41 @@ class ControllerQLKS extends Controller
         $data1 = Loaiphong::select(['hinhanh'])->Where('maloai','>',3)->Where('maloai','<=',6)->get();
         $path =  'img\\';
 		$itemCart = Session::get('itemCart');
+		$arr = [];
+		// foreach($itemCart as $value){
+		// 	// dd($value)."<br>";
+		// 	$abc = Loaiphong::where('maloai',$value['maloai'])->first();
+		// 	dd($abc->lvap);
+		// }
         $dv = Dichvu::all();
         $o = Cookie::get('dangnhap');
         return view('PhongDaDat',compact('data1','path','itemCart','dv','o'));
     }
   
+	public function showall(Request $reg){
+		$dvs = json_decode($reg['madichvu']);
+		$mps = json_decode($reg['maphong']);
+		$ml = $reg['ml'];
+		$stringDV = '';
+		$stringMP ='';
+		foreach($dvs as $dv){
+			$stringDV .= $dv.',';
+		}
+		foreach($mps as $mp){
+			$stringMP .= $mp.',';
+		}
+		$arr['sophong'] =$reg['sophong'];
+		$arr['songuoi'] =$reg['songuoi'];
+		$arr['maphong'] = $stringMP;
+		$arr['madv'] = $stringDV;
+		$arr['ml'] = $ml;
+		$arr['ngayden'] = $reg['ngayden'];
+		$arr['ngaydi'] = $reg['ngaydi'];
+		$arr['tongtien'] = $reg['tongtien'];
+		$arr['key'] = $reg['key'];
+		Session::forget('datphong');
+		Session::push('datphong',$arr);
+	}
 
     public function datphong(Loaiphong $data)
     {
@@ -100,16 +132,76 @@ class ControllerQLKS extends Controller
 }
     public function thanhtoan()
     {
-        $o = Cookie::get('dangnhap');
+		// dd('123');
+		$o = Cookie::get('dangnhap');
         if($o)
         {
             $z = json_decode($o);
         }
         else{
-            return back()->with('thanhcong','Vui lòng đăng nhập để có thể đặt phòng.');
-        }
-        return view('Xacnhan',compact('o','z'));
-    }
+			$z='';
+			return view('Xacnhan',compact('o','z'));
+		}		
+		$dd = Session::get('datphong');
+		$tongtien = $dd[0]['tongtien'];
+		$sophong = $dd[0]['sophong'];
+		$songuoi = $dd[0]['songuoi'];
+		$madv = $dd[0]['madv'];
+		$maphong = $dd[0]['maphong'];
+		$arrMaDV = explode(',',$madv);
+		$arrMaP = explode(',',$maphong);
+		$ngayden = $dd[0]['ngayden'];
+		$ngaydi = $dd[0]['ngaydi'];
+		array_pop($arrMaDV);
+		array_pop($arrMaP);
+		$dv = Dichvu::whereIn('madv',$arrMaDV)->get();
+		$km = Khuyenmai::all();
+		foreach($km as $value){
+			if($ngayden >= $value['ngaybd'] && $ngayden <= $value['ngaykt']){
+				$km = $value;
+			}
+		}
+		// dd($km);
+        return view('Xacnhan',compact('o','z','dd','dv','arrMaP','ngayden','ngaydi','tongtien','km','sophong','songuoi'));
+	}
+	
+	public function addDD(){
+		$dd = Session::get('datphong');
+		// Session::forget('itemCart.'.$dd[0]['key']);
+		$kh = Cookie::get('dangnhap');
+		$json = json_decode($kh);
+		$substrDV = substr($dd[0]['madv'],0,strlen($dd[0]['madv']) -1);
+		$substrMP = substr($dd[0]['maphong'],0,strlen($dd[0]['maphong']) -1);
+		$km = Khuyenmai::all();
+		foreach($km as $value){
+			// dd($value['ngaybd']);
+			if($dd[0]['ngayden'] >= $value['ngaybd'] && $dd[0]['ngayden']  <= $value['ngaykt']){
+				$makm = $value['makm'];
+			}		
+		}
+		if(!isset($makm)){
+			$makm = null;
+		}
+		Dondat::create([
+			'makh' => $json->makh,
+			'maphong' => $substrMP,
+			'manv' => 1,
+			'makm' => $makm,
+			'madv' =>$substrDV,
+			'tongtien' => $dd[0]['tongtien'],
+			'ngaylap' => date("Y/n/d"),
+		]);
+		$madon = Dondat::latest()->first()->madon;
+		Chitiet::create([
+			'madon' => $madon,
+			'ngayden' => $dd[0]['ngayden'],
+			'ngaydi' =>  $dd[0]['ngaydi'],
+			'slphong' => $dd[0]['sophong'],
+			'soluong' => $dd[0]['songuoi'],
+		]);
+		
+		return redirect(route('phongdadat'));
+	}
     public function gioithieu()
         {
             $o = Cookie::get('dangnhap');
@@ -240,39 +332,40 @@ class ControllerQLKS extends Controller
             // $ngaytra = strtotime($nt);
             // $datenn =  date('Y-m-d',$ngaynhan);
             // $datent =  date('Y-m-d',$ngaytra);
-            // $yearnd='';
-            // $monthnd ='';
-            // $daynd = '';
-            // $yearndi='';
-            // $monthndi ='';
-            // $dayndi = '';
-            // $allday = '';
-            // $chitiet = Chitiet::select('ngayden','ngaydi')->get();
-            // foreach($chitiet as $value){
-            //     $ngayden = Helpers::splitDate($value['ngayden'],'-',$yearnd,$monthnd,$daynd);
-            //     $ngaydi = Helpers::splitDate($value['ngaydi'],'-',$yearndi,$monthndi,$dayndi);
-            //     // dd($aa);
-            //     // dd($monthdb);
-            //     if($monthnd == $monthnn && $monthnd ==$monthnt &&$monthndi == $monthnn && $monthndi ==$monthnt  ){                       
-            //         for($i = $daynd ; $i <= $dayndi ; $i++){                       
-            //             if($i > $daynn && $i < $daynt){
-            //                 $allday .= $i.',';
-            //            } 
-            //         }
-            //     }             
-            // }
-            // $explode = explode(',',$allday);
-            // array_pop($explode);
-            // $explode = array_map("unserialize", array_unique(array_map("serialize", $explode))); // cai nay chua tim hiu voi gg ra
-            // $test = '';
-            // // dd($explode[1]);g
-            // for($i = $daynn; $i < $explode[0];$i++){
-            //     $test .= $i.',';
-            // }
-            // for($i = $explode[count($explode)-1] + 1; $i <= $daynt;$i++){
-            //     $test .= $i.',';
-            // }
-            // dd($test);
+            $yearnd='';
+            $monthnd ='';
+            $daynd = '';
+            $yearndi='';
+            $monthndi ='';
+            $dayndi = '';
+            $allday = '';
+            $chitiet = Chitiet::select('ngayden','ngaydi')->get();
+            foreach($chitiet as $value){
+                $ngayden = Helpers::splitDate($value['ngayden'],'-',$yearnd,$monthnd,$daynd);
+                $ngaydi = Helpers::splitDate($value['ngaydi'],'-',$yearndi,$monthndi,$dayndi);
+                // dd($aa);
+                // dd($monthdb);
+                if($monthnd == $monthnn && $monthnd ==$monthnt &&$monthndi == $monthnn && $monthndi ==$monthnt  ){                       
+                    for($i = $daynd ; $i <= $dayndi ; $i++){                       
+                        if($i > $daynn && $i < $daynt){
+                            $allday .= $i.',';
+                       } 
+                    }
+                }             
+            }
+            $explode = explode(',',$allday);
+            array_pop($explode);
+            $explode = array_map("unserialize", array_unique(array_map("serialize", $explode))); // cai nay chua tim hiu voi gg ra
+            $test = '';
+            // dd($explode[1]);g
+            for($i = $daynn; $i < $explode[0];$i++){
+                $test .= $i.',';
+            }
+            for($i = $explode[count($explode)-1]+1; $i <= $daynt;$i++){
+                $test .= $i.',';
+            }
+			
+			
 
 
 

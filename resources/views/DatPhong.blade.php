@@ -53,7 +53,7 @@ $(document).ready(function(){
               ' <span style="font-size:20px;">Giá :</span> <span style="font-size:20px;padding-left:65px;color:#FFCC33; font-weight: bolder;"> '+aa[i].gia+'.000 VND</span>  '+
               ' </div>'+
               ' <div class="col-12 mt-4">'+
-			  '<form action="{{route("getid")}}" method="POST">'+
+			  '<form action="{{route("getid")}}" method="post">'+
 		 	  ' @csrf ' +
 			  '<input type="hidden" name="maloai" value="'+aa[i].maloai+'"/>'+
               '<button type="submit" class="btn btn-primary">Đặt phòng</button>' +

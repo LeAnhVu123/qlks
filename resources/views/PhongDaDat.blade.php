@@ -2,8 +2,8 @@
 <head><title>Phòng Đã Đặt</title></head>
 @section('content')
 @if(session('itemCart'))
-@foreach($itemCart as $value)
-<div class="col-12 mt-2" style="text-align:center;font-size:20px;padding: 0px 0px 0px 0px;">@include('notice')</div>
+@foreach($itemCart as $key=>$value)
+<!-- <div class="col-12 mt-2" style="text-align:center;font-size:20px;padding: 0px 0px 0px 0px;">@include('notice')</div> -->
 <div class="abc">
 	<div class="container-fluid mt-2" style="text-align:center;height:50px;width:100%;background-color: lightskyblue;padding-right:0px; border: 0.2px solid;">
 		<div class="row">
@@ -39,11 +39,26 @@
 				<table>
 					<tr style="">
 						<td>- Số phòng</td>
-						<td style="padding-left:20px;"><input type="number" min="1" max="10" style="width:70px;" value="1" class="sophong"></td>
-					</tr>					
+						<td style="padding-left:20px;"><input type="number" min="1" max="5" style="width:70px;" value="1" class="sophong" data-key="{{$key}}"></td>
+					</tr>
+					<tr>
+						<td>- Mã phòng</td>						
+						<td style="padding-left:20px;" class="aabb">						
+							<select name="maphong" class="maphong">
+								@foreach($value->lvap as $option)
+								<option value="{{$option->maphong}}">{{$option->maphong}}</option>
+								@endforeach
+							</select>						
+							<!-- <select name="maphong[]" class="maphong">
+								@foreach($value->lvap as $option)
+								<option value="{{$option->maphong}}">{{$option->maphong}}</option>
+								@endforeach
+							</select>						 -->
+						</td>
+					</tr>
 					<tr>
 						<td>- Số người</td>
-						<td style="padding-left:20px;padding-top:5px;"><input type="number" min="1" max="10" style="width:70px;"></td>
+						<td style="padding-left:20px;padding-top:5px;"><input type="number" min="1" max="5" style="width:70px;" class="songuoi" value="1"></td>
 					</tr>
 					<tr>
 						<td>- Ngày đến</td>
@@ -68,10 +83,10 @@
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv5" value='5'><span> Spa</span></table>
 				<table style="width:100%"><input type="checkbox" name="" id="" class="dv6" value='6'><span> Giặt ủi</span></table> -->
 				@foreach($dv as $itemdv)
-					<table style="width:100%"><input type="checkbox" name="" id="" class="dv{{$itemdv->madv}}" itemdv='{{$itemdv->madv}}'><span style="font-size:15px;"> {{$itemdv->tendv}}</span></table>
+				<table style="width:100%"><input type="checkbox" name="dichvu" id="" class="dv{{$itemdv->madv}}" itemdv='{{$itemdv->madv}}' value="{{$itemdv->madv}}"><span style="font-size:15px;"> {{$itemdv->tendv}}</span></table>
 				@endforeach
 				<hr>
-				<table style="width:100%"><span style="font-size:17px;">Tổng : </span>  <span class="total-priceservice" style="font-size:17px;"> 0</span><span style="font-size:17px;">.000 VND</span></table>
+				<table style="width:100%"><span style="font-size:17px;">Tổng : </span> <span class="total-priceservice" style="font-size:17px;"> 0</span><span style="font-size:17px;">.000 VND</span></table>
 
 			</div>
 			<div class="col-2" style="text-align:center;">
@@ -80,11 +95,15 @@
 				<span class="xuatgia" style="padding-top:0px;width:100px"></span><span>.000 VND</span>
 			</div>
 			<div class="col-2">
-				<a href="{{route('ttoan')}}" style="padding-top:0px;padding-right:20px;float:right;">
+				<!-- <a href="{{route('ttoan')}}" style="padding-top:0px;padding-right:20px;float:right;">
 					<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;">
 						Đặt Phòng
 					</button>
-				</a>
+				</a> -->
+				<input type="hidden" value="{{$value->maloai}}" class="maloai">
+					<button type="button" class="btn btn-primary datphong" data-toggle="button" aria-pressed="false" autocomplete="off" style="width:110px;" data-key="{{$key}}">
+						Đặt Phòng
+					</button>
 
 				<button type="button" class="btn btn-primary xoass" style="width:110px;margin-top:20px;margin-left:52px;margin-top:30px;" value="{{$value['maloai']}}">
 					Hủy Phòng
@@ -97,26 +116,56 @@
 
 			</div>
 		</div>
+	</form>
 	</div>
 </div>
 @endforeach
 @endif
-<!-- <div class="container-fluid">
-	<div class="row">
-		<div class="offset-2"></div>
-		<div class="col-6" style="padding-top:10px;font-weight: bolder;">
-			<p style=""> Tổng Tiền : <input type="text" readonly="False" class="total"><input type="submit" value="Thanh Toán" style="margin-left:10px;"></p>
-		</div>
-		<div class="offset-4"></div>
-	</div>
-</div>
-<div>
-</div> -->
-
-
 <script>
 	$(document).ready(function() {
-		var dv = @php echo json_encode($dv) @endphp;	
+		$('.datphong').click(function(){
+			var key = $(this).attr('data-key');
+			var maloai = $('.maloai').eq(key).val();			
+			var aabb = $('.aabb').eq(key);
+			var select = aabb.find('.maphong');
+			var ngayden = $('.ngayden').eq(key).val();
+			var ngaydi = $('.ngaydi').eq(key).val();
+			var tongtien = $('.xuatgia').eq(key).text();
+			var sophong = $('.sophong').eq(key).val();
+			var songuoi = $('.songuoi').eq(key).val();
+			var arr = [];
+			var dv =[];
+			var dichvu = $('.dv').eq(key).find('input:checkbox[name="dichvu"]:checked');
+			dichvu.each( function () {
+				dv.push($(this).val());
+			});
+			select.each(function(k,val){
+				var bbaa = aabb.find('.maphong').eq(k).val();
+				arr.push(bbaa);
+			})
+			var stringMP = JSON.stringify(arr);
+			var stringDV = JSON.stringify(dv);
+			$.ajax({
+				type: "get",
+				url: "{{route('showall')}}",
+				data: {
+					maphong : stringMP,
+					madichvu : stringDV,
+					ml : maloai,
+					ngayden : ngayden,
+					ngaydi :ngaydi,
+					tongtien : tongtien,
+					sophong : sophong,
+					songuoi : songuoi,
+					key : key,
+				}, 
+				success: function(result){
+					window.location.href = "{{route('ttoan')}}"
+				}
+    });
+
+		})
+		var dv = @php echo json_encode($dv) @endphp;
 		var d = new Date();
 		var month = d.getMonth() + 1;
 		var day = d.getDate();
@@ -124,19 +173,19 @@
 			day = '0' + day;
 		}
 		var year = d.getFullYear();
-		var date = year + "-" +  month + "-" + day  ;
+		var date = year + "-" + month + "-" + day;
 		$('.ngayden').val(date);
 		$('.ngaydi').val(date);
 		$('.ngayden, .ngaydi').datepicker({
 			dateFormat: 'yy-mm-dd',
-			minDate : new Date(),
-			numberOfMonths : 2,
+			minDate: new Date(),
+			numberOfMonths: 2,
 		});
 
 
 		$('.xoass').each(function(index, value) {
 			var alltotal = 0;
-			$(this).click(function() {	
+			$(this).click(function() {
 				var val = $('.xoass').eq(index).val();
 				$.ajax({
 					url: "{{route('getval')}}",
@@ -145,17 +194,17 @@
 						"_token": "{{ csrf_token() }}",
 						'val': val
 					},
-					success: function(result) {						
+					success: function(result) {
 						if (confirm('Ban co muon xoa khong?')) {
 							$('.abc').eq(index).remove();
 							$('.xuatgia').each(function(key) {
-								alltotal += parseInt($('.xuatgia').eq(key).text());					
+								alltotal += parseInt($('.xuatgia').eq(key).text());
 							})
-							$('.total').val(alltotal + "000 VND");						
+							$('.total').val(alltotal + "000 VND");
 						}
 					},
-				})			
-			})			
+				})
+			})
 		})
 
 		// var dv = [100, 200, 300, 400, 500, 600];
@@ -179,8 +228,8 @@
 			}
 			total = gia * sophong * ngayo + totalPriceService;
 			$('.xuatgia').eq(index).text(total);
-			$('.xuatgia').each(function(key) {
-				alltotal += parseInt($('.xuatgia').eq(key).text());
+			$('.xuatgia').each(function(index) {
+				alltotal += parseInt($('.xuatgia').eq(index).text());
 			})
 			$('.total').val(alltotal + ".000 VND");
 		}
@@ -189,9 +238,7 @@
 			var gia = $('.gia').eq(index).text();
 			var xuatgia = gia;
 			$('.xuatgia').eq(index).text(xuatgia);
-			$('.sophong').change(function() {
-				updatePrice(index);
-			})
+			
 			$('.ngaydi').change(function() {
 				updatePrice(index);
 			})
@@ -211,27 +258,42 @@
 				})
 			}
 		})
+
+		$('.sophong').change(function() {
+				var valSP = parseInt($(this).val());
+				var key = parseInt($(this).attr('data-key'));
+				var eParent = $('.aabb').eq(key);
+				var fSelect = eParent.children().eq(0);
+				if(eParent.children().length > 1){
+					eParent.find('.auto').remove();
+				}
+				for(var i=1;i<valSP;i++){
+					var sAuto = fSelect.clone(true).addClass('auto');					
+					eParent.append(sAuto);
+					updatePrice(key);
+				}				
+			})
+	})
+
+
+	var minDate = new Date();
+	$('.ngayden').datepicker({
+		showAmin: 'drop',
+		numberOfmonth: 1,
+		minDate: minDate,
+		dateFormat: 'yy-mm-dd',
+		onClose: function(selectedDate) {
+			$('.ngaydi').datepicker("option", "minDate", selectedDate);
+		}
+	})
+	$('.ngaydi').datepicker({
+		showAmin: 'drop',
+		numberOfmonth: 1,
+		minDate: minDate,
+		dateFormat: 'yy-mm-dd',
+		onClose: function(selectedDate) {
+			// $('.nut1').datepicker("option", "minDate",selectedDate);
+		}
 	})
 </script>
-<script>
-	   var minDate = new Date();
-      $('.ngayden').datepicker({
-        showAmin: 'drop',
-        numberOfmonth: 1,
-        minDate: minDate,
-        dateFormat: 'yy-mm-dd',
-        onClose: function(selectedDate){
-          $('.ngaydi').datepicker("option", "minDate",selectedDate);
-        }
-      })
-      $('.ngaydi').datepicker({
-        showAmin: 'drop',
-        numberOfmonth: 1,
-        minDate: minDate,
-        dateFormat: 'yy-mm-dd',
-        onClose: function(selectedDate){
-          // $('.nut1').datepicker("option", "minDate",selectedDate);
-        }
-      })
- </script>
 @endsection
