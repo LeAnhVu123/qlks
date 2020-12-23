@@ -167,7 +167,13 @@ class ControllerQLKS extends Controller
 	
 	public function addDD(){
 		$dd = Session::get('datphong');
-		// Session::forget('itemCart.'.$dd[0]['key']);
+		$getSS = Session::get('itemCart');
+		Session::forget('itemCart.'.$dd[0]['key']);
+		$all = Session::get('itemCart');
+		Session::forget('itemCart');
+		foreach($all as $item){
+			Session::push('itemCart',$item);
+		}
 		$kh = Cookie::get('dangnhap');
 		$json = json_decode($kh);
 		$substrDV = substr($dd[0]['madv'],0,strlen($dd[0]['madv']) -1);
