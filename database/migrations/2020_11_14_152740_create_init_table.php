@@ -93,7 +93,7 @@ class CreateInitTable extends Migration
 		
         Schema::create('dondats', function (Blueprint $table) {
             $table->increments('madon'); 
-            $table->unsignedInteger('manv');
+            $table->unsignedInteger('manv')->nullable();
 			$table->unsignedInteger('makh');
 			$table->text('maphong');
 			$table->unsignedInteger('makm')->nullable();
