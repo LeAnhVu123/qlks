@@ -438,7 +438,24 @@ class ControllerQLKS extends Controller
             //     $test .= $i.',';
             // }
 			
-		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             if($a && $ml != "NULL")//chon so luong va loai phong
             {

@@ -30,12 +30,12 @@ class insertAdmin extends Seeder
 			'name_role' => 'manager',
 		]);
 		Nhanvien::create([
-			'taikhoan' => 'vu',
+			'taikhoan' => 'phuoc',
 			'matkhau' => '123',
 			'cmnd' => '01234567890',
-			'sdt' => '0985220501',
-			'hoten' => 'vule',
-			'email' => 'vuanhle@gmail.com',
+			'sdt' => '0908966800',
+			'hoten' => 'tranvanphuoc',
+			'email' => 'phuoc5108147@gmail.com',
 			'role' => 1,
 		]);
 		Khachhang::create([
